@@ -57,7 +57,7 @@ const Description = styled.h4`
   color: rgb(255, 255, 255);
   line-height: 1.2;
   text-align: left;
-  max-width:350px;
+  max-width:400px;
 `
 
 const LandingSection = () => (
