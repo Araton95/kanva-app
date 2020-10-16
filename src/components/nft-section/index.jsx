@@ -91,24 +91,7 @@ const NftSection = () => (
                 <Title>What is NFT?</Title>
               </TitleContainer>
               <Text>
-                NFT stands for Non-Fungible Tokens, a new digital asset or item
-                based on blockchain that is gainingtractions today.
-                ‘Fungibility’ is the characteristics of an item where each unit
-                is indistinguishable andinterchangeable with each other
-                as they are assumed to have  the same value. On the other hand,
-                NFT is treated as collectible and has an individual
-                quality making it unique, rare, and indivisible. Each NFT’s
-                are unique and start as tokens, there is usually a
-                limited number of NFT’s making it a scarce resource. The
-                number of this NFT can be verified in the blockchain
-                hence making it fraud-proof, it is also indivisible as
-                one cannot sell and trade only a fraction of an NFT.
-                Furthermore, NFT’s guarantee authentic ownership making
-                it easy transferable. NFT’s are already used in many
-                such as arts, collectibles, gaming, virtual-assets, and
-                real-world assets; KANVA sees this potential a chance
-                to make gains in cultivating this limited and scarce NFT’s
-                in its platform thru DeFi.
+                NFT stands for Non-Fungible Tokens, a new digital asset or item based on blockchain that is gaining tractions today. ‘Fungibility’ is the characteristics of an item where each unit is indistinguishable and interchangeable with each other as they are assumed to have the same value. On the other hand, NFT is treated as collectible and has an individual quality making it unique, rare, and indivisible.
               </Text>
               <Button>Read More</Button>
 
