@@ -6,6 +6,6 @@ export const content = {
   twitter: 'https://twitter.com/KanvaOfficial',
   discord: 'https://discord.gg/v76WK',
   reddit: 'https://www.reddit.com/user/KanvaOfficial01',
-  email: 'youremail@gmail.com',
+  email: 'officialkanva@gmail.com',
   copyright: '© Copyright 2020 | KANVA | All Rights Reserved',
 }

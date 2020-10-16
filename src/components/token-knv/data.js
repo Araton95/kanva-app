@@ -2,13 +2,13 @@
 export const data = [
   {
     percentage: 40,
-    title: 'Token Sale',
+    title: 'TOKEN SALE',
     titlePercentage: 40,
     titleFigure: '19,200',
   },
   {
     percentage: 13,
-    title: 'UNISWAP INITIAL LIQUDITY',
+    title: 'UNISWAP INITIAL LIQUIDITY',
     titlePercentage: 13,
     titleFigure: '6,240',
   },
@@ -20,24 +20,24 @@ export const data = [
     extra: '• Liquidity Farming',
   },
   {
-    percentage: 13,
+    percentage: 7,
     title: 'FUTURE DEVELOPMENT',
     titlePercentage: 7,
     titleFigure: '3,360',
     extra: '• Full unlock',
   },
   {
-    percentage: 13,
+    percentage: 3,
     title: 'PARTNERSHIP',
     titlePercentage: 3,
     titleFigure: '1,440',
-    extra: '• 3 months lock, and the remaining released for 1 year ater',
+    extra: '• 3 months lock, and the remaining released for 1 year after',
   },
   {
     percentage: 10,
     title: 'TEAM',
     titlePercentage: 10,
     titleFigure: '4800',
-    extra: '• 3 months lock, and the remaining released for 1 year ater',
+    extra: '• 3 months lock, and the remaining released for 1 year later',
   },
 ]

@@ -40,7 +40,7 @@ const MobileText = styled(Text)`
 
 const Title = styled.h1`
   font-size: 55px;
-  font-family: "BunkenTechSansPro";
+  font-family: "Bunken Tech Sans Pro";
   color: #fff;
   text-transform: uppercase;
   line-height: 1.2;

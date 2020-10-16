@@ -39,7 +39,7 @@ const Text = styled.p`
 const Title = styled.h1`
   font-size: 55px;
   color: #fff;
-  font-family: "BunkenTechSansPro";
+  font-family: "Bunken Tech Sans Pro";
   font-weight:bold;
   text-transform: uppercase;
   text-align: left;
@@ -51,7 +51,7 @@ const Title = styled.h1`
 `
 const SmallHeading = styled.h4`
   font-size: 25px;
-  font-family: "BunkenTechSansPro";
+  font-family: "Bunken Tech Sans Pro";
   color: #fff;
   text-transform: uppercase;
   text-align: left;

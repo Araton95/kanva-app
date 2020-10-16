@@ -35,7 +35,7 @@ const VerticalCenter = styled.div`
 
 const BoldText = styled.h1`
   font-size: 60px;
-  font-family: "BunkenTechSansPro";
+  font-family: "Bunken Tech Sans Pro";
   color: #fff;
   text-transform: uppercase;
   line-height: 1.2;
@@ -44,7 +44,7 @@ const BoldText = styled.h1`
 `
 const BoldText2 = styled.h1`
   font-size: 39px;
-  font-family: "BunkenTechSansPro";
+  font-family: "Bunken Tech Sans Pro";
   color: #fff;
   text-transform: uppercase;
   line-height: 1.2;

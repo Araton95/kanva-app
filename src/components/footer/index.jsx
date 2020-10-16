@@ -22,7 +22,7 @@ const VerticalCenter = styled.div`
 `
 const Text = styled.p`
   font-size: 18px;
-  font-family: "BunkenTechSansPro";
+  font-family: "Bunken Tech Sans Pro";
   color: #fff;
   line-height: 1.2;
   margin-bottom: 18px;

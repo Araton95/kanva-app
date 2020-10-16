@@ -41,7 +41,7 @@ const SVG = () => (
       <g id="info">
         <text id="KVN_ETH:_70_allocation_4_536_KVN_" data-name="KVN/ETH: 70% allocation (4,536 KVN) " className="cls-kf-1" x="401.155" y="425.007">
           {data.unit1}
-          /
+          {' '}/{' '}
           {data.unit2}
           :
           {data.percentage1}

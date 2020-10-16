@@ -27,7 +27,7 @@ const TextImage = styled.img`
 `
 const Title = styled.h1`
   font-size: 55px;
-  font-family: "BunkenTechSansPro";
+  font-family: "Bunken Tech Sans Pro";
   color: rgb(0,16,48);
   text-transform: uppercase;
   line-height: 1.2;

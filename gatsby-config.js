@@ -19,7 +19,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         custom: {
-          families: ['BunkenTechSansPro', 'Ubuntu'],
+          families: ['Bunken Tech Sans Pro', 'Ubuntu'],
           urls: ['/fonts/style.css'],
         },
       },
