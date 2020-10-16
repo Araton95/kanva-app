@@ -25,6 +25,7 @@ const Text = styled.p`
   font-family: "BunkenTechSansPro";
   color: #fff;
   line-height: 1.2;
+  margin-bottom: 18px;
   text-align: center;
   text-transform:uppercase
 `
@@ -55,35 +56,36 @@ const Footer = () => (
       <Col xs={22} md={18}>
         <VerticalCenter>
           <Text>Find Us on Social Media</Text>
-          <Row justify="center">
-            <Col xs={22} md={22}>
+
+          <Row justify="center" style={marginBottom}>
+            <Col xs={24} md={24}>
               <Row justify="center">
-                <Col xs={8} md={4}>
+                <Col xs={8} md={2}>
                   <a href={content.telegram} target="_blank" rel="noopener noreferrer">
                     <SVG.TelegramIcon />
                   </a>
                 </Col>
-                <Col xs={8} md={4}>
+                <Col xs={8} md={2}>
                   <a href={content.facebook} target="_blank" rel="noopener noreferrer">
                     <SVG.FacebookIcon />
                   </a>
                 </Col>
-                <Col xs={8} md={4}>
+                <Col xs={8} md={2}>
                   <a href={content.medium} target="_blank" rel="noopener noreferrer">
                     <SVG.MediumIcon />
                   </a>
                 </Col>
-                <Col xs={8} md={4}>
+                <Col xs={8} md={2}>
                   <a href={content.twitter} target="_blank" rel="noopener noreferrer">
                     <SVG.TwitterIcon />
                   </a>
                 </Col>
-                <Col xs={8} md={4}>
+                <Col xs={8} md={2}>
                   <a href={content.discord} target="_blank" rel="noopener noreferrer">
                     <SVG.DiscordIcon />
                   </a>
                 </Col>
-                <Col xs={8} md={4}>
+                <Col xs={8} md={2}>
                   <a href={content.reddit} target="_blank" rel="noopener noreferrer">
                     <SVG.RedditIcon />
                   </a>
@@ -91,6 +93,7 @@ const Footer = () => (
               </Row>
             </Col>
           </Row>
+
           <Text>Get support</Text>
           <Email>{content.email}</Email>
 
@@ -111,7 +114,6 @@ const Footer = () => (
           <Row justify="center">
             <Col xs={24} md={0}>
               <Row justify="center">
-
                 <FooterLogo
                   src={logo}
                 />
@@ -124,9 +126,7 @@ const Footer = () => (
               <CopyrightText>{content.copyright}</CopyrightText>
             </Col>
           </Row>
-
         </VerticalCenter>
-
       </Col>
     </Row>
   </Container>
