@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Row, Col } from 'antd'
+import { withPrefix } from 'gatsby'
 
 import * as data from './data'
-import whitepaper from '../../../static/KANVA_Official_Whitepaper.pdf'
 
 const backgroundImage = require('../../images/kanva-background.png')
 
@@ -93,7 +93,7 @@ const Kanva = () => (
               <Text>
                 {data.Text}
               </Text>
-              <a href="https://drive.google.com/file/d/1iOnXWPcVgLylMniqapFvNNPK94pnf1dh/view" rel="noreferrer" target="_blank">
+              <a href={withPrefix('/KANVA_Official_Whitepaper.pdf')} rel="noopener noreferrer" target="_blank">
                 <Button>White Paper</Button>
               </a>
             </Col>
