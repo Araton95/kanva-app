@@ -91,7 +91,7 @@ const Kanva = () => (
               <Text>
                 {data.Text}
               </Text>
-              <a href="/KANVA_Official_Whitepaper.pdf" rel="noreferrer" target="_blank">
+              <a href="https://drive.google.com/file/d/1iOnXWPcVgLylMniqapFvNNPK94pnf1dh/view" rel="noreferrer" target="_blank">
                 <Button>White Paper</Button>
               </a>
             </Col>
