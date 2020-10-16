@@ -40,7 +40,7 @@ const CopyrightText = styled.p`
   font-size: 16px;
   font-family:'Ubuntu';
   color: #fff;
-  text-align: center;
+  text-align: right;
   margin-bottom:0;
   margin-top: 16px;
 `
