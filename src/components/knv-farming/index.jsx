@@ -67,20 +67,18 @@ const FarmingBtn = styled.div`
   text-align: center;
   margin-bottom:15px;
   border-width: 2px;
-  border-color: rgb(0, 26, 78);
+  border-color: #001a4e;
   border-style: solid;
   border-radius: 15px;
   background-color: rgb(0, 23, 68);
-  -webkit-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.48);
-  -moz-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.48);
-  box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.48);
+  -webkit-box-shadow: -4.3px -4.3px 6px 0px #011844, 4.3px 4.3px 6px 0px #000a1f;
+  -moz-box-shadow: -4.3px -4.3px 6px 0px #011844, 4.3px 4.3px 6px 0px #000a1f;
+  box-shadow: -4.3px -4.3px 6px 0px #011844, 4.3px 4.3px 6px 0px #000a1f;
   width: 238px;
   height: 60px;
   display:flex;
   justify-content:center;
   align-items:center;
-  
-
 `
 
 const KNVFarming = () => (
