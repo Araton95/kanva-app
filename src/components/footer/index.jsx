@@ -95,7 +95,9 @@ const Footer = () => (
           </Row>
 
           <Text>Get support</Text>
-          <Email>{content.email}</Email>
+          <a href={`mailto:${content.email}?subject=Mail from Kanva.org`}>
+            <Email>{content.email}</Email>
+          </a>
 
           <Row
             justify="space-between"
