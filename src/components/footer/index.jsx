@@ -57,7 +57,7 @@ const Footer = () => (
         <VerticalCenter>
           <Text>Find Us on Social Media</Text>
 
-          <Row justify="center" style={marginBottom}>
+          <Row justify="center">
             <Col xs={24} md={24}>
               <Row justify="center">
                 <Col xs={8} md={2}>
