@@ -1,4 +1,5 @@
 import React from 'react'
+import Header from '../components/common/header'
 import LandingSection from '../components/landing-section'
 import Footer from '../components/footer'
 import NftSection from '../components/nft-section'
@@ -10,6 +11,7 @@ import Partners from '../components/partners'
 
 const IndexPage = () => (
   <>
+    <Header />
     <LandingSection />
     <Kanva />
     <TokenKnv />

@@ -6,16 +6,18 @@ import {
   MenuOutlined,
 } from '@ant-design/icons'
 import Seo from './seo'
+import { Link } from "gatsby"
 
 const Icon = require('../../images/logo.png')
 
 const Container = styled.header`
   background-color:transparent;
-  position:absolute;
-  top:10;
-  left:0;
+  position: absolute;
+  top: 10px;
+  left: 0;
   width:100%;
   margin-top:35px;
+  z-index: 1000;
 `
 const Logo = styled.img`
   width: 150px;
@@ -26,11 +28,16 @@ const Logo = styled.img`
 const MenuItem = styled.h3`
   font-family:'Ubuntu';
   font-size: 18px;
-  color: rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 0.7);
   font-weight: bold;
   text-transform: uppercase;
   line-height: 1.2;
   cursor:pointer;
+  transition: color 300ms;
+
+  &:hover {
+    color: rgba(255, 255, 255, 1);
+  }
 `
 
 const Header = () => {
@@ -41,16 +48,21 @@ const Header = () => {
       <Col span={24}>
         <Row justify="center">
           <Col span={18}>
-            <Row justify="space-between" align="middle">
+            <Row justify="space-between"
+              align="middle"
+              style={{
+                alignItems: 'flex-end'
+              }}
+            >
               <Col span={6}>
                 <Logo src={Icon} />
               </Col>
               <Col xs={0} md={18}>
                 <Row justify="space-around">
-                  <MenuItem>KANVA</MenuItem>
-                  <MenuItem>Staking Platform</MenuItem>
-                  <MenuItem>Nft Platform</MenuItem>
-                  <MenuItem>Governance </MenuItem>
+                  <Link to="/"><MenuItem>KANVA</MenuItem></Link>
+                  <Link to="/comingSoon"><MenuItem>Staking Platform</MenuItem></Link>
+                  <Link to="/comingSoon"><MenuItem>Nft Platform</MenuItem></Link>
+                  <Link to="/comingSoon"><MenuItem>Governance </MenuItem></Link>
                 </Row>
               </Col>
               <Col xs={18} md={0}>
@@ -78,16 +90,14 @@ const Header = () => {
                 }}
               >
                 <Row align="top">
-                  <MenuItem>KANVA</MenuItem>
-                  <MenuItem>Staking Platform</MenuItem>
-                  <MenuItem>Nft Platform</MenuItem>
-                  <MenuItem>Governance </MenuItem>
+                  <Link to="/"><MenuItem>KANVA</MenuItem></Link>
+                  <Link to="/comingSoon"><MenuItem>Staking Platform</MenuItem></Link>
+                  <Link to="/comingSoon"><MenuItem>Nft Platform</MenuItem></Link>
+                  <Link to="/comingSoon"><MenuItem>Governance </MenuItem></Link>
                 </Row>
               </Drawer>
             </Row>
-
           </Col>
-
         </Row>
       </Col>
 

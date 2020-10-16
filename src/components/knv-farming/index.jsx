@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Row, Col } from 'antd'
 import SVG from './svg'
+import { Link } from "gatsby"
 
 const backgroundImage = require('../../images/knv-background.png')
 const farmingIcon = require('../../images/farming-btn-icon.png')
@@ -109,12 +110,12 @@ const KNVFarming = () => (
                 palette attained can be used to buy and to have NFT
                 cards in the KANVA collections.
               </Text>
-              <a href="">
+              <Link to="/comingSoon">
                 <FarmingBtn>
                   Start Farming
                   <img src={farmingIcon} alt="farming-icon.png" style={{ paddingLeft: '10px' }} />
                 </FarmingBtn>
-              </a>
+              </Link>
             </Col>
             <Col xs={24} md={11}>
               <SVG />

@@ -43,6 +43,10 @@ const CopyrightText = styled.p`
   text-align: right;
   margin-bottom:0;
   margin-top: 16px;
+
+  @media (max-width: 600px) {
+    text-align: center;
+  }
 `
 const FooterLogo = styled.img`
   width:110px;
@@ -109,21 +113,6 @@ const Footer = () => (
             <Col
               xs={24}
               md={11}
-            >
-              <CopyrightText>{content.copyright}</CopyrightText>
-            </Col>
-          </Row>
-          <Row justify="center">
-            <Col xs={24} md={0}>
-              <Row justify="center">
-                <FooterLogo
-                  src={logo}
-                />
-              </Row>
-            </Col>
-            <Col
-              xs={24}
-              md={0}
             >
               <CopyrightText>{content.copyright}</CopyrightText>
             </Col>

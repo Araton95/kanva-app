@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Row, Col } from 'antd'
-import Header from '../common/header'
 import * as Text from './data'
+
 
 const background = require('../../images/landing-page.png')
 
@@ -15,9 +15,9 @@ const Container = styled.div`
   background-size:cover;
   justify-content:flex-start;
   align-items:center;
-  
+
   @media (max-width: 600px) {
-  min-height:100%;
+    min-height:100%;
   }
 `
 const VerticalCenter = styled.div`
@@ -27,9 +27,9 @@ const VerticalCenter = styled.div`
   padding-bottom:150px;
 
   @media (max-width: 600px) {
-  padding-top:200px;
-  padding-bottom:100px;
-  height:80%;
+    padding-top:200px;
+    padding-bottom:100px;
+    height:80%;
   }
 `
 
@@ -62,7 +62,6 @@ const Description = styled.h4`
 
 const LandingSection = () => (
   <Container>
-    <Header />
     <VerticalCenter>
       <Row justify="center">
         <Col span={18}>
@@ -78,7 +77,6 @@ const LandingSection = () => (
         </Col>
       </Row>
     </VerticalCenter>
-
   </Container>
 )
 
