@@ -1,39 +1,62 @@
 {
-  "name": "kanva",
-  "version": "0.1.0",
+  "name": "Kanva",
   "private": true,
+  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "version": "0.1.0",
+  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-scripts": "3.4.3",
-    "typescript": "~3.7.2"
+    "antd": "^4.7.0",
+    "babel-plugin-styled-components": "^1.10.7",
+    "gatsby": "^2.21.21",
+    "gatsby-background-image": "^1.1.1",
+    "gatsby-image": "^2.4.3",
+    "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-manifest": "^2.4.2",
+    "gatsby-plugin-offline": "^3.2.1",
+    "gatsby-plugin-react-helmet": "^3.3.1",
+    "gatsby-plugin-sharp": "^2.6.2",
+    "gatsby-plugin-styled-components": "^3.3.1",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
+    "gatsby-source-filesystem": "^2.3.1",
+    "gatsby-transformer-sharp": "^2.5.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^6.0.0",
+    "react-multi-carousel": "^2.5.5",
+    "react-slick": "^0.27.11",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.1.0"
   },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.21.4",
+    "eslint-plugin-react-hooks": "^3.0.0",
+    "husky": "^4.2.5"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "lint": "eslint .",
+    "lint:init": "eslint --init",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
