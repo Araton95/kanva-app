@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Row, Col } from 'antd'
-import { Link } from "gatsby"
 
 import * as data from './data'
 
@@ -93,9 +92,9 @@ const Kanva = () => (
               <Text>
                 {data.Text}
               </Text>
-              <Link to="https://drive.google.com/file/d/1iOnXWPcVgLylMniqapFvNNPK94pnf1dh/view" target="_blank">
+              <a href="https://drive.google.com/file/d/1iOnXWPcVgLylMniqapFvNNPK94pnf1dh/view" rel="noreferrer" target="_blank">
                 <Button>White Paper</Button>
-              </Link>
+              </a>
             </Col>
             <Col xs={22} md={0}>
               <MobileText>
