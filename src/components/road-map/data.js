@@ -34,7 +34,7 @@ export const data = [
     title: 'QUARTER 2021',
     data: [
       'Launching of the Kanva governance platform',
-      'Partnership announcement',
+      'Partnership announcements',
       'Interoperability integration, future development',
     ],
   },
