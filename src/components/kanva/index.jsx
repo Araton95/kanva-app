@@ -71,6 +71,12 @@ const Button = styled.div`
   display:flex;
   justify-content:center;
   align-items:center;
+  transition: all 300ms;
+
+  &:hover {
+    transform: translateY(-3px);
+    background-color: #001d55;
+  }
 `
 
 const Kanva = () => (
@@ -85,7 +91,9 @@ const Kanva = () => (
               <Text>
                 {data.Text}
               </Text>
-              <Button>White Paper</Button>
+              <a href="https://drive.google.com/file/d/1iOnXWPcVgLylMniqapFvNNPK94pnf1dh/view" rel="noreferrer" target="_blank">
+                <Button>White Paper</Button>
+              </a>
             </Col>
             <Col xs={22} md={0}>
               <MobileText>

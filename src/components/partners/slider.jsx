@@ -26,13 +26,13 @@ const StyledButton = styled.div`
   height: 30px;
   }
 
-  &:hover { 
-  z-index:999;
-  background-color:rgb(231,237,242);
+  &:hover {
+    z-index:999;
+    background-color:rgb(231,237,242);
   }
 
-  &:before { 
-  display:none;
+  &:before {
+    display:none;
   }
 `
 const PartnerLogo = styled.img`
@@ -41,10 +41,10 @@ const PartnerLogo = styled.img`
   padding:5px 10px;
   object-fit:scale-down;
   object-position:center;
-  
+
   @media (max-width: 600px) {
-  max-width:100px;
-  max-height:100px;
+    max-width:100px;
+    max-height:100px;
   }
 `
 function SampleNextArrow(props) {

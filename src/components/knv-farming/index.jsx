@@ -71,14 +71,18 @@ const FarmingBtn = styled.div`
   border-style: solid;
   border-radius: 15px;
   background-color: rgb(0, 23, 68);
-  -webkit-box-shadow: -4.3px -4.3px 6px 0px #011844, 4.3px 4.3px 6px 0px #000a1f;
-  -moz-box-shadow: -4.3px -4.3px 6px 0px #011844, 4.3px 4.3px 6px 0px #000a1f;
   box-shadow: -4.3px -4.3px 6px 0px #011844, 4.3px 4.3px 6px 0px #000a1f;
   width: 238px;
   height: 60px;
   display:flex;
   justify-content:center;
   align-items:center;
+  transition: all 300ms;
+
+  &:hover {
+    transform: translateY(-3px);
+    background-color: #001d55;
+  }
 `
 
 const KNVFarming = () => (
@@ -105,10 +109,12 @@ const KNVFarming = () => (
                 palette attained can be used to buy and to have NFT
                 cards in the KANVA collections.
               </Text>
-              <FarmingBtn>
-                Start Farming
-                <img src={farmingIcon} alt="farming-icon.png" style={{ paddingLeft: '10px' }} />
-              </FarmingBtn>
+              <a href="">
+                <FarmingBtn>
+                  Start Farming
+                  <img src={farmingIcon} alt="farming-icon.png" style={{ paddingLeft: '10px' }} />
+                </FarmingBtn>
+              </a>
             </Col>
             <Col xs={24} md={11}>
               <SVG />

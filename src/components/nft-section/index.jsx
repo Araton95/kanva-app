@@ -77,6 +77,11 @@ const Button = styled.div`
   justify-content:center;
   align-items:center;
   margin:20px 0px;
+  transition: transform 300ms;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
 `
 const NftSection = () => (
   <Container>
@@ -93,7 +98,9 @@ const NftSection = () => (
               <Text>
                 NFT stands for Non-Fungible Tokens, a new digital asset or item based on blockchain that is gaining tractions today. ‘Fungibility’ is the characteristics of an item where each unit is indistinguishable and interchangeable with each other as they are assumed to have the same value. On the other hand, NFT is treated as collectible and has an individual quality making it unique, rare, and indivisible.
               </Text>
-              <Button>Read More</Button>
+              <a href="https://docs.google.com/presentation/d/16yWBARXttDCwfhQ3v4DeX7-pPrk1idsv3jBjsf1s9gg/edit#slide=id.g9ffc8b98ff_0_735" rel="noreferrer" target="_blank">
+                <Button>Read More</Button>
+              </a>
 
             </Col>
             <Col xs={24} md={11}>
