@@ -33,7 +33,7 @@ const Container = styled.div`
 
   .cls-6 {
   font-size: 25px;
-  font-family: BunkenTechSansPro;
+  font-family: "Bunken Tech Sans Pro";
   }
 
   .cls-6, .cls-7 {
@@ -42,7 +42,7 @@ const Container = styled.div`
 
   .cls-7 {
   font-size: 55px;
-  font-family: BunkenTechSansPro-ExBd, BunkenTechSansPro;
+  font-family: "Bunken Tech Sans Pro ExBd", "Bunken Tech Sans Pro";
   }
 `
 
