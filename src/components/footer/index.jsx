@@ -25,24 +25,24 @@ const Text = styled.p`
   font-family: "Bunken Tech Sans Pro";
   color: #fff;
   line-height: 1.2;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   text-align: center;
   text-transform:uppercase
 `
 const Email = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   font-family:'Ubuntu';
   color: #fff;
   line-height: 1.2;
   text-align: center;
 `
 const CopyrightText = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   font-family:'Ubuntu';
   color: #fff;
   text-align: center;
   margin-bottom:0;
-  margin-top:16px;
+  margin-top: 16px;
 `
 const FooterLogo = styled.img`
   width:110px;
