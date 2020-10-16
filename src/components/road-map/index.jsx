@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   background-image:url(${backgroundImage});
   background-size:cover;
 
-  ul > li { 
+  ul > li {
     font-size:16px;
     color:#fff;
   }
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   background-color:#fff;
-  margin:20px auto;
+  margin:30px auto;
   position:relative;
   display:flex;
   justify-content:flex-end;
@@ -34,7 +34,6 @@ const Container = styled.div`
   -webkit-box-shadow: 4px 7px 33px -7px rgba(158,158,158,0.64);
   -moz-box-shadow: 4px 7px 33px -7px rgba(158,158,158,0.64);
   box-shadow: 4px 7px 33px -7px rgba(158,158,158,0.64);
-
 `
 const Circle = styled.div`
   position:absolute;
@@ -76,12 +75,16 @@ const RoadMap = () => (
                     {_.title}
                   </Container>
                 </Col>
-                <ul>
+                <ul style={{
+                  'width': '100%',
+                  'marginBottom': '30px',
+                  'paddingRight': '40px'
+                }}>
                   {
-            _.data.map((__, index1) => (
-              <li key={index1.toString()}>{__}</li>
-            ))
-}
+                    _.data.map((__, index1) => (
+                      <li key={index1.toString()}>{__}</li>
+                    ))
+                  }
                 </ul>
               </Row>
             </Col>

@@ -1,20 +1,11 @@
 /* eslint-disable import/prefer-default-export */
 export const data = [
   {
-    number: 1,
-    title: 'QUARTER 2021',
-    data: [
-      'Launching of the kanva governance platform',
-      'Partnership announcement',
-      'Interoperability integration, future development',
-    ],
-  },
-  {
     number: 2,
     title: 'QUARTER 2020',
     data: [
       'Conceptualization of the idea of kanva',
-      'Conducting of various research andvalidation of ideas on various models about defi, staking model, and governance',
+      'Conducting of various research and validation of ideas on various models about defi, staking model, and governance',
     ],
   },
   {
@@ -36,6 +27,15 @@ export const data = [
       'Launching of the official kanva website',
       'Presale, uniswap listing & locking of liquidity, centralize exchange listing',
       'Launching of the knv token, nft, and token farming',
+    ],
+  },
+  {
+    number: 1,
+    title: 'QUARTER 2021',
+    data: [
+      'Launching of the kanva governance platform',
+      'Partnership announcement',
+      'Interoperability integration, future development',
     ],
   },
 ]
