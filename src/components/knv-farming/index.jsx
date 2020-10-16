@@ -110,7 +110,7 @@ const KNVFarming = () => (
                 palette attained can be used to buy and to have NFT
                 cards in the KANVA collections.
               </Text>
-              <Link to="/comingSoon">
+              <Link to="/nftPlatform">
                 <FarmingBtn>
                   Start Farming
                   <img src={farmingIcon} alt="farming-icon.png" style={{ paddingLeft: '10px' }} />

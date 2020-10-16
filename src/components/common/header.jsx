@@ -60,9 +60,9 @@ const Header = () => {
               <Col xs={0} md={18}>
                 <Row justify="space-around">
                   <Link to="/"><MenuItem>KANVA</MenuItem></Link>
-                  <Link to="/comingSoon"><MenuItem>Staking Platform</MenuItem></Link>
-                  <Link to="/comingSoon"><MenuItem>Nft Platform</MenuItem></Link>
-                  <Link to="/comingSoon"><MenuItem>Governance </MenuItem></Link>
+                  <Link to="/staking"><MenuItem>Staking Platform</MenuItem></Link>
+                  <Link to="/nftPlatform"><MenuItem>Nft Platform</MenuItem></Link>
+                  <Link to="/governance"><MenuItem>Governance </MenuItem></Link>
                 </Row>
               </Col>
               <Col xs={18} md={0}>
@@ -91,9 +91,9 @@ const Header = () => {
               >
                 <Row align="top">
                   <Link to="/"><MenuItem>KANVA</MenuItem></Link>
-                  <Link to="/comingSoon"><MenuItem>Staking Platform</MenuItem></Link>
-                  <Link to="/comingSoon"><MenuItem>Nft Platform</MenuItem></Link>
-                  <Link to="/comingSoon"><MenuItem>Governance </MenuItem></Link>
+                  <Link to="/staking"><MenuItem>Staking Platform</MenuItem></Link>
+                  <Link to="/nftPlatform"><MenuItem>Nft Platform</MenuItem></Link>
+                  <Link to="/governance"><MenuItem>Governance </MenuItem></Link>
                 </Row>
               </Drawer>
             </Row>
