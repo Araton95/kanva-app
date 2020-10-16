@@ -69,7 +69,7 @@ const RoadMapSvg = () => (
           <text id="_1-2" data-name="1" className="cls-1" x="457.17" y="1328.212">1</text>
           <text id="QUARTER_2021" data-name="QUARTER 2021" className="cls-2" x="582.155" y="1325.01">QUARTER 2021</text>
           <text id="_Launching_of_the_kanva_governance_platform" data-name="•  Launching of the kanva governance platform" className="cls-3" x="661.155" y="1131.012">•  Launching of the kanva governance platform</text>
-          <text id="_Partnership_announcement" data-name="•  Partnership announcements" className="cls-3" x="599.155" y="1154.012">•  Partnership announcements</text>
+          <text id="_Partnership_announcement" data-name="•  Partnership announcements" className="cls-3" x="602" y="1154.012">•  Partnership announcements</text>
           <text id="_Interoperability_integration_future_development" data-name="•  Interoperability integration, future development" className="cls-4" x="495.155" y="1177.013">•  Interoperability integration, future development</text>
         </g>
         <g id="_4" data-name="4">

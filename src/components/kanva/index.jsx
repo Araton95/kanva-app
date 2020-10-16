@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Row, Col } from 'antd'
 
 import * as data from './data'
+import whitepaper from '../../../static/KANVA_Official_Whitepaper.pdf'
 
 const backgroundImage = require('../../images/kanva-background.png')
 
@@ -92,7 +93,7 @@ const Kanva = () => (
               <Text>
                 {data.Text}
               </Text>
-              <a href="https://kanva.org/KANVA_Official_Whitepaper.pdf" rel="noreferrer" target="_blank">
+              <a href={whitepaper} rel="noreferrer" target="_blank">
                 <Button>White Paper</Button>
               </a>
             </Col>
