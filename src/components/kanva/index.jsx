@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Row, Col } from 'antd'
-import whitePaper from '../../../static/KANVA_Official_Whitepaper.pdf'
 import * as data from './data'
 
 const backgroundImage = require('../../images/kanva-background.png')
