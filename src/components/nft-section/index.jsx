@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Row, Col } from 'antd'
+
+import './style.css'
 
 const ntfImage = require('../../images/nft.png')
 const nftHeading = require('../../images/nftHeading.png')
@@ -29,9 +31,10 @@ const Text = styled.p`
   line-height: 1.2;
   text-align: justify;
   margin-bottom:55px;
+  transition: height 300ms;
 
   @media (max-width: 600px) {
-  font-size:16px;
+    font-size:16px;
   }
 `
 const Image = styled.img`
@@ -56,10 +59,10 @@ const Title = styled.h1`
   margin-left: 55px;
   margin-top: 35px;
   margin-bottom: 0px;
-  
+
   @media (max-width: 600px) {
-  font-size:40px;
-  margin-bottom:10px;
+    font-size:40px;
+    margin-bottom:10px;
   }
 `
 const Button = styled.div`
@@ -76,45 +79,58 @@ const Button = styled.div`
   display:flex;
   justify-content:center;
   align-items:center;
-  margin:20px 0px;
+  margin: 20px 0px 40px;
   transition: transform 300ms;
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-3px);
   }
+
+  @media (max-width: 600px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 `
-const NftSection = () => (
-  <Container>
-    <VerticalCenter>
 
-      <Row justify="center">
-        <Col xs={22} md={18}>
-          <Row justify="space-between">
-            <Col xs={24} md={11}>
-              <TitleContainer>
-                <TextImage src={nftHeading} />
-                <Title>What is NFT?</Title>
-              </TitleContainer>
-              <Text>
-                NFT stands for Non-Fungible Tokens, a new digital asset or item based on blockchain that is gaining tractions today. ‘Fungibility’ is the characteristics of an item where each unit is indistinguishable and interchangeable with each other as they are assumed to have the same value. On the other hand, NFT is treated as collectible and has an individual quality making it unique, rare, and indivisible.
-              </Text>
-              <a href="https://docs.google.com/presentation/d/16yWBARXttDCwfhQ3v4DeX7-pPrk1idsv3jBjsf1s9gg/edit#slide=id.g9ffc8b98ff_0_735" rel="noopener noreferrer" target="_blank">
-                <Button>Read More</Button>
-              </a>
+const NftSection = () => {
+  const [expanded, setExpanded] = useState(false)
 
-            </Col>
-            <Col xs={24} md={11}>
-              <Image src={ntfImage} alt="ntf image" />
-            </Col>
+  return (
+    <Container>
+      <VerticalCenter>
 
-          </Row>
+        <Row justify="center">
+          <Col xs={22} md={18}>
+            <Row justify="space-between">
+              <Col xs={24} md={11}>
+                <TitleContainer>
+                  <TextImage src={nftHeading} />
+                  <Title>What is NFT?</Title>
+                </TitleContainer>
+                <Text>
+                  NFT stands for Non-Fungible Tokens, a new digital asset or item based on blockchain that is gaining tractions today. ‘Fungibility’ is the characteristics of an item where each unit is indistinguishable and interchangeable with each other as they are assumed to have the same value. On the other hand, NFT is treated as collectible and has an individual quality making it unique, rare, and indivisible.
+                </Text>
+                <Text className={expanded ? "visible" : "hidden"}>
+                  Each NFT’s are unique and start as tokens, there is usually a limited number of NFT’s making it a scarce
+                  resource. The number of this NFT can be verified in the blockchain hence making it fraud-proof, it is also
+                  indivisible as one cannot sell and trade only a fraction of an NFT. Furthermore, NFT’s guarantee authentic
+                  ownership making it easy transferable. NFT’s are already used in many ways such as arts, collectibles,
+                  gaming, virtual-assets, and real-world assets; KANVA sees this potential a chance to make gains in
+                  cultivating this limited and scarce NFT’s in its platform thru DeFi.
+                </Text>
+                <Button onClick={() => setExpanded(!expanded)}>{ expanded ? "Show Less" : "Read More"}</Button>
+              </Col>
+              <Col xs={24} md={11}>
+                <Image src={ntfImage} alt="ntf image" />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
 
-        </Col>
-      </Row>
-
-    </VerticalCenter>
-
-  </Container>
-)
+      </VerticalCenter>
+    </Container>
+  )
+}
 
 export default NftSection

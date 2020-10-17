@@ -13,3 +13,16 @@ html, body {
     flex-direction: column;
   }
 }
+
+
+@keyframes slideDown {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+
+  to {
+    max-height: 3000px;
+    opacity: 1;
+  }
+}
