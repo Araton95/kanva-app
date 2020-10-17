@@ -24,7 +24,7 @@ export const data = [
     title: 'FUTURE DEVELOPMENT',
     titlePercentage: 7,
     titleFigure: '3,360',
-    extra: '• Full unlock',
+    extra: '• 3 months lock, and the remaining released for 1 year after',
   },
   {
     percentage: 3,
@@ -38,6 +38,6 @@ export const data = [
     title: 'TEAM',
     titlePercentage: 10,
     titleFigure: '4800',
-    extra: '• 3 months lock, and the remaining released for 1 year later',
+    extra: '• 3 months lock, and the remaining released for 1 year after',
   },
 ]
