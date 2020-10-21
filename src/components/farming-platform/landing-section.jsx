@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Row, Col } from "antd";
 import { balance_cards, deposit_cards, Title, Description_Text } from "./data";
 
-const background = require("../../images/farming-platform/bg.png");
+const background = require("../../images/farming-platform/bg-3.png");
 
 const Container = styled.div`
   width: 100%;
@@ -13,7 +13,7 @@ const Container = styled.div`
   background-image: url(${background});
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-y: -68px;
+  background-position-y: -130px;
   justify-content: flex-start;
   align-items: center;
 
@@ -23,12 +23,32 @@ const Container = styled.div`
   }
 
   /* 1801px */
+  @media (max-width: 1262px) {
+    background-position-y: -84px;
+  }
+
+  @media (max-width: 974px) {
+    background-position-y: -64px;
+    background-position-x: -91px;
+  }
+
+  @media (max-width: 836px) {
+    background-position-y: -62px;
+    background-position-x: -154px;
+  }
+
   @media (max-width: 741px) {
+    background-position-y: -144px;
+    background-position-x: -354px;
     min-height: 2208px;
   }
 
   @media (max-width: 600px) {
-    min-height: 2310px;
+    min-height: 2129px;
+  }
+
+  @media (max-width: 420px) {
+    min-height: 2307px;
   }
 `;
 
