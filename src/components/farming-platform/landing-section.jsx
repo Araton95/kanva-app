@@ -234,13 +234,13 @@ const DepositContent = styled.div`
   }
 
   button {
-    background-color: transparent;
+    background: rgba(129, 191, 223, 0.122);
     color: #ffffff;
     font-family: "Ubuntu";
     border: 1px solid #81bfdf;
     font-size: 18px;
     font-weight: bold;
-    border-radius: 20px;
+    border-radius: 15px;
     height: 46px;
     width: 180px;
     outline: none;

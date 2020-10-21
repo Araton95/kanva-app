@@ -90,7 +90,7 @@ export const deposit_cards = [
   },
 ];
 
-export const Title = "KAnva farming platforn";
+export const Title = "KAnva farming platforM";
 export const Description_Text = `KANVA is going to open 4 pools for Yield farming (Ecosystem Fund =
             12,960 KNV); in the first year, 6,480 KNV will be allocated on the
             1st year for Yield farming. It is going to be reduced to 50% every
