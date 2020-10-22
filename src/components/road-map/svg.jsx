@@ -3,6 +3,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
+  background-color: #00112d;
+
   .cls-1 {
   font-size: 28px;
   }
