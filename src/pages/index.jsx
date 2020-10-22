@@ -7,7 +7,7 @@ import KNVFarming from '../components/knv-farming'
 import Kanva from '../components/kanva'
 import TokenKnv from '../components/token-knv'
 import RoadMap from '../components/road-map'
-import Partners from '../components/partners'
+// import Partners from '../components/partners'
 
 const IndexPage = () => (
   <>
@@ -18,7 +18,7 @@ const IndexPage = () => (
     <KNVFarming />
     <NftSection />
     <RoadMap />
-    <Partners />
+    {/* <Partners /> */}
     <Footer />
   </>
 )

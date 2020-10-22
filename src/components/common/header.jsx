@@ -60,7 +60,7 @@ const Header = () => {
               <Col xs={0} md={18}>
                 <Row justify="space-around">
                   <Link to="/"><MenuItem>KANVA</MenuItem></Link>
-                  <Link to="/staking"><MenuItem>Staking Platform</MenuItem></Link>
+                  <Link to="/farming"><MenuItem>Farming Platform</MenuItem></Link>
                   <Link to="/nftPlatform"><MenuItem>Nft Platform</MenuItem></Link>
                   <Link to="/governance"><MenuItem>Governance </MenuItem></Link>
                 </Row>
@@ -91,7 +91,7 @@ const Header = () => {
               >
                 <Row align="top">
                   <Link to="/"><MenuItem>KANVA</MenuItem></Link>
-                  <Link to="/staking"><MenuItem>Staking Platform</MenuItem></Link>
+                  <Link to="/farming"><MenuItem>Farming Platform</MenuItem></Link>
                   <Link to="/nftPlatform"><MenuItem>Nft Platform</MenuItem></Link>
                   <Link to="/governance"><MenuItem>Governance </MenuItem></Link>
                 </Row>
