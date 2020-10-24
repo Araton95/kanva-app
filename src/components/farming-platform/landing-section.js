@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Row, Col } from "antd";
 import { balance_cards, deposit_cards, Title, Description_Text } from "./data";
 
-const background = require("../../images/farming-platform/bg.png");
+const background = require("../../assets/images/farming-platform/bg.png");
 
 const Container = styled.div`
   width: 100%;

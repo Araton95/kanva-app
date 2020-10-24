@@ -1,14 +1,14 @@
 export const balance_cards = [
   {
     title: "Your KANVA Balance",
-    icon: require("../../images/farming-platform/KANVA.png"),
+    icon: require("../../assets/images/farming-platform/KANVA.png"),
     amount: "0.000",
     text_one: "Pending harvest",
     text_two: "0. 000 KANVA",
   },
   {
     title: "Total KANVA Supply",
-    icon: require("../../images/farming-platform/TOTAL.png"),
+    icon: require("../../assets/images/farming-platform/TOTAL.png"),
     amount: "140,509,190",
     text_one: "New rewards per block",
     text_two: "100 KANVA",
@@ -17,9 +17,9 @@ export const balance_cards = [
 
 export const deposit_cards = [
   {
-    bgImage: require("../../images/farming-platform/KNV_ETH_BG.png"),
+    bgImage: require("../../assets/images/farming-platform/KNV_ETH_BG.png"),
     title: {
-      img: require("../../images/farming-platform/KNV_ETH_ICON.png"),
+      img: require("../../assets/images/farming-platform/KNV_ETH_ICON.png"),
       text: "KNV / ETH",
     },
     deposits: [
@@ -39,9 +39,9 @@ export const deposit_cards = [
     button: "Deposit",
   },
   {
-    bgImage: require("../../images/farming-platform/DAI_ETH_BG.png"),
+    bgImage: require("../../assets/images/farming-platform/DAI_ETH_BG.png"),
     title: {
-      img: require("../../images/farming-platform/DAI_ETH_ICON.png"),
+      img: require("../../assets/images/farming-platform/DAI_ETH_ICON.png"),
       text: "DAI / ETH",
     },
     deposits: [
@@ -57,9 +57,9 @@ export const deposit_cards = [
     button: "Deposit",
   },
   {
-    bgImage: require("../../images/farming-platform/USDT_ETH_BG.png"),
+    bgImage: require("../../assets/images/farming-platform/USDT_ETH_BG.png"),
     title: {
-      img: require("../../images/farming-platform/USDT_ETH_ICON.png"),
+      img: require("../../assets/images/farming-platform/USDT_ETH_ICON.png"),
       text: "USDT / ETH",
     },
     deposits: [
@@ -75,9 +75,9 @@ export const deposit_cards = [
     button: "Deposit",
   },
   {
-    bgImage: require("../../images/farming-platform/USDC_ETH_BG.png"),
+    bgImage: require("../../assets/images/farming-platform/USDC_ETH_BG.png"),
     title: {
-      img: require("../../images/farming-platform/USDC_ETH_ICON.png"),
+      img: require("../../assets/images/farming-platform/USDC_ETH_ICON.png"),
       text: "USDC / ETH",
     },
     deposits: [

@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { Row, Col } from "antd";
 import * as SVG from "../svgs/footer";
 
-const logo = require("../images/logo.png");
-const background = require("../images/footer-background.png");
+const logo = require("../assets/images/logo.png");
+const background = require("../assets/images/footer-background.png");
 
 const content = {
   telegram: "https://t.me/KanvaOfficial",

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Row, Col } from "antd";
 
-const backgroundImage = require("../../images/kanva-background.png");
+const backgroundImage = require("../../assets/images/kanva-background.png");
 
 const Container = styled.div`
   width: 100%;

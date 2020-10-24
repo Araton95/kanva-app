@@ -54,7 +54,9 @@ const Header = () => {
               }}
             >
               <Col span={6}>
-                <Logo src={Icon} />
+                <Link to="/">
+                  <Logo src={Icon} />
+                </Link>
               </Col>
               <Col xs={0} md={18}>
                 <Row justify="space-around">

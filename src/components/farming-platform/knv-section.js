@@ -3,7 +3,7 @@ import styled from "styled-components";
 import SVG from "./svg";
 import { Link } from "gatsby";
 
-const farmingIcon = require("../../images/farming-platform/farming_icon.svg");
+const farmingIcon = require("../../assets/images/farming-platform/farming_icon.svg");
 
 const Container = styled.div`
   width: 100%;

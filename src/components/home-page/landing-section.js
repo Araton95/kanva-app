@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Row, Col } from "antd";
 
-const background = require("../../images/landing-page.png");
+const background = require("../../assets/images/landing-page.png");
 
 const LandingSection = () => (
   <BackgroundImage>

@@ -3,7 +3,7 @@ import { Col, Row } from "antd";
 import styled from "styled-components";
 import RoadMapSvg from "../../svgs/roadmap";
 
-const backgroundImage = require("../../images/knv-background.png");
+const backgroundImage = require("../../assets/images/knv-background.png");
 
 const data = [
   {

@@ -4,8 +4,8 @@ import { Row, Col } from "antd";
 import SVG from "../../svgs/knv-farming";
 import { Link } from "gatsby";
 
-const backgroundImage = require("../../images/knv-background.png");
-const farmingIcon = require("../../images/farming-btn-icon.png");
+const backgroundImage = require("../../assets/images/knv-background.png");
+const farmingIcon = require("../../assets/images/farming-btn-icon.png");
 
 const data = {
   unit1: "KVN",

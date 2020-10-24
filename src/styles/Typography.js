@@ -38,6 +38,10 @@ const Typography = createGlobalStyle`
     src: url(${UbuntuRegular});
   }
 
+  html {
+    font-family: Ubuntu, BunkenTechBold,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+  }
+
   p, li {
     letter-spacing: 0.5px;
     margin-bottom: 5px;

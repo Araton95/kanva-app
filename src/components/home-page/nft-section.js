@@ -4,8 +4,8 @@ import { Row, Col } from "antd";
 
 // import "./style.css";
 import { slideDown } from "../../styles";
-const ntfImage = require("../../images/nft.png");
-const nftHeading = require("../../images/nftHeading.png");
+const ntfImage = require("../../assets/images/nft.png");
+const nftHeading = require("../../assets/images/nftHeading.png");
 
 const Container = styled.div`
   width: 100%;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Row, Col } from "antd";
 import SVG from "../../svgs/token-knv";
 
-const nftHeading = require("../../images/nftHeading.png");
+const nftHeading = require("../../assets/images/nftHeading.png");
 
 const Container = styled.div`
   width: 100%;
