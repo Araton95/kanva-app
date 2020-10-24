@@ -31,6 +31,10 @@ export const deposit_cards = [
         text: "Pool rate",
         amount: "$500.000 UNI / week",
       },
+      {
+        text: "PLTE farm rate",
+        amount: "1LP = 1PLTE  (24hrs)",
+      },
     ],
     button: "Deposit",
   },
