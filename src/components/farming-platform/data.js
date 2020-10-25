@@ -96,7 +96,7 @@ export const deposit_cards = [
 
 export const Title = "KAnva farming platforM";
 export const Description_Text = `KANVA is going to open 4 pools for Yield farming (Ecosystem Fund =
-            12,960 KNV); in the first year, 6,480 KNV will be allocated on the
+            12,960 KNV) in the first year, 6,480 KNV will be allocated on the
             1st year for Yield farming. It is going to be reduced to 50% every
             year. This KNV is not subject to vesting or lock up. From this KANVA
             allocated 70% or 4,536 KNV to KNV/ETH pool with 87.2307 KNV pool per

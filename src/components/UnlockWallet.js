@@ -9,7 +9,7 @@ const UnlockWalletContainer = styled.div`
   height: 44px;
   position: absolute;
   width: 100%;
-  z-index: 9999999999;
+  z-index: 9;
   background-color: #001e51;
   box-shadow: 0 5px 9px 0 rgba(0, 14, 41, 0.2);
 `;

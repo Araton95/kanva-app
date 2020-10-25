@@ -292,9 +292,9 @@ const DepositContent = styled.div`
         width: 100%;
       }
 
-      &:last-child {
+      /* &:last-child {
         margin-top: 10px;
-      }
+      } */
 
       .text {
         color: #fefeff;

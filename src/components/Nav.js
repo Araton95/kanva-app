@@ -50,7 +50,7 @@ const HeaderContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: flex-end;
-  z-index: 999999999;
+  z-index: 9;
 `;
 
 const Items = styled.div`
