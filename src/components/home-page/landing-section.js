@@ -56,17 +56,14 @@ const Text = styled.p`
   color: var(--white);
   text-transform: uppercase;
   line-height: 1.2;
-  text-align: left;
-  margin-bottom: 2px;
 `;
 
-const DetailText = styled.h2`
-  font-family: Ubuntu;
+const DetailText = styled.p`
   font-size: 25px;
-  font-weight: bold;
-  max-width: 400px;
-  margin-top: 15px;
-  color: var(--white);
+  width: 400px;
   line-height: 1.2;
-  text-align: left;
+  font-family: Ubuntu;
+  font-weight: bold;
+  margin-top: 22px;
+  color: var(--white);
 `;

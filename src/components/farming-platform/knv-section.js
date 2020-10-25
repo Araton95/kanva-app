@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import SVG from "./svg";
 import { Link } from "gatsby";
 
+import { Button } from "../../styles";
+import SVG from "./svg";
 const farmingIcon = require("../../assets/images/farming-platform/farming_icon.svg");
 
 const Container = styled.div`
@@ -111,35 +112,9 @@ const SmallHeading = styled.h4`
   }
 `;
 
-const FarmingBtn = styled.div`
-  font-size: 18px;
-  background-color: rgb(231, 237, 242);
-  box-shadow: -4.243px -4.243px 6px 0px rgba(255, 255, 255, 0.5),
-    4.243px 4.243px 6px 0px rgba(171, 194, 212, 0.6);
-  color: #29aae0;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 15px;
-  border-width: 2px;
-  border-color: rgb(231, 237, 242);
-  border-style: solid;
-  border-radius: 15px;
-  width: 238px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 300ms;
-
-  &:hover {
-    transform: translateY(-3px);
-    background-color: rgb(231, 237, 242);
-  }
-
-  img {
-    padding-left: 14px;
-    width: 50px;
-  }
+const ButtonImage = styled.img`
+  padding-left: 14px;
+  width: 50px;
 `;
 
 const KNVSection = () => (
@@ -161,14 +136,10 @@ const KNVSection = () => (
             to buy and to have NFT cards in the KANVA collections.
           </Text>
           <Link to="/nftPlatform">
-            <FarmingBtn>
+            <Button secondary>
               Start Farming
-              <img
-                src={farmingIcon}
-                alt="farming-icon.png"
-                style={{ paddingLeft: "10px" }}
-              />
-            </FarmingBtn>
+              <ButtonImage src={farmingIcon} alt="farming-icon.png" />
+            </Button>
           </Link>
         </TextContainer>
         <ImageContainer>

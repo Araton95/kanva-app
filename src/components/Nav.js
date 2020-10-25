@@ -24,7 +24,7 @@ const Logo = styled.img`
 `;
 
 const MenuItem = styled.h3`
-  font-family: UbuntuBold;
+  font-family: Ubuntu;
   font-size: 18px;
   color: rgba(255, 255, 255, 0.7);
   font-weight: bold;

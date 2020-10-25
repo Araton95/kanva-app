@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Row, Col } from "antd";
-
-// import "./style.css";
+import { Button } from "../../styles";
 import { slideDown } from "../../styles";
 const ntfImage = require("../../assets/images/nft.png");
 const nftHeading = require("../../assets/images/nftHeading.png");
@@ -83,29 +82,7 @@ const Title = styled.h1`
   }
 `;
 
-const Button = styled.div`
-  border-radius: 15px;
-  background-color: rgb(231, 237, 242);
-  box-shadow: -4.243px -4.243px 6px 0px rgba(255, 255, 255, 0.5),
-    4.243px 4.243px 6px 0px rgba(171, 194, 212, 0.6);
-  width: 239px;
-  height: 60px;
-  font-size: 18px;
-  color: rgb(41, 170, 224);
-  font-weight: bold;
-  line-height: 1.2;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0px 40px;
-  transition: transform 300ms;
-  cursor: pointer;
-
-  &:hover {
-    transform: translateY(-3px);
-  }
-
+const ReadMoreButton = styled(Button)`
   @media (max-width: 600px) {
     margin-left: auto;
     margin-right: auto;
@@ -148,9 +125,12 @@ const NftSection = () => {
                   cultivating this limited and scarce NFT’s in its platform thru
                   DeFi.
                 </Text>
-                <Button onClick={() => setExpanded(!expanded)}>
+                <ReadMoreButton
+                  secondary
+                  onClick={() => setExpanded(!expanded)}
+                >
                   {expanded ? "Show Less" : "Read More"}
-                </Button>
+                </ReadMoreButton>
               </Col>
               <Col xs={24} md={11}>
                 <Image src={ntfImage} alt="ntf image" />

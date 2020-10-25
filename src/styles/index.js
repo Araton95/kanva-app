@@ -116,6 +116,62 @@ export const Flex = styled.div`
     `};
 `;
 
+const primaryButtonStyles = css`
+  color: rgb(255, 255, 255);
+  border-color: #001a4e;
+  background-color: rgb(0, 23, 68);
+  -webkit-box-shadow: -4.3px -4.3px 6px 0px #011844, 4.3px 4.3px 6px 0px #000a1f;
+  -moz-box-shadow: -4.3px -4.3px 6px 0px #011844, 4.3px 4.3px 6px 0px #000a1f;
+  box-shadow: -4.3px -4.3px 6px 0px #011844, 4.3px 4.3px 6px 0px #000a1f;
+
+  &:hover {
+    transform: translateY(-3px);
+    background-color: #001d55;
+  }
+`;
+
+const secondaryButtonStyle = css`
+  background-color: rgb(231, 237, 242);
+  border-color: rgb(231, 237, 242);
+  box-shadow: -4.243px -4.243px 6px 0px rgba(255, 255, 255, 0.5),
+    4.243px 4.243px 6px 0px rgba(171, 194, 212, 0.6);
+  color: rgb(41, 170, 224);
+
+  &:hover {
+    transform: translateY(-3px);
+    background-color: rgb(231, 237, 242);
+  }
+`;
+
+const getButtonStyles = (props) => {
+  if (props.secondary) {
+    return secondaryButtonStyle;
+  }
+
+  return primaryButtonStyles;
+};
+
+export const Button = styled.button`
+  font-size: 18px;
+  font-weight: bold;
+  /* line-height: 1.2; */
+  font-family: Ubuntu;
+  text-align: center;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 15px;
+  width: 238px;
+  height: 60px;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  transition: all 300ms;
+
+  ${getButtonStyles}
+`;
+
 export const slideDown = keyframes`
   from {
     max-height: 0;

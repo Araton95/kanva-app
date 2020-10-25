@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Row, Col } from "antd";
-
+import { Button } from "../../styles";
 const backgroundImage = require("../../assets/images/kanva-background.png");
 
 const Container = styled.div`
@@ -50,32 +50,6 @@ const Title = styled.h1`
   @media (max-width: 600px) {
     font-size: 40px;
     margin-bottom: 10px;
-  }
-`;
-const Button = styled.div`
-  font-size: 18px;
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-  line-height: 1.2;
-  text-align: center;
-  border-width: 2px;
-  border-color: #001a4e;
-  border-style: solid;
-  border-radius: 15px;
-  background-color: rgb(0, 23, 68);
-  -webkit-box-shadow: -4.3px -4.3px 6px 0px #011844, 4.3px 4.3px 6px 0px #000a1f;
-  -moz-box-shadow: -4.3px -4.3px 6px 0px #011844, 4.3px 4.3px 6px 0px #000a1f;
-  box-shadow: -4.3px -4.3px 6px 0px #011844, 4.3px 4.3px 6px 0px #000a1f;
-  width: 238px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 300ms;
-
-  &:hover {
-    transform: translateY(-3px);
-    background-color: #001d55;
   }
 `;
 
