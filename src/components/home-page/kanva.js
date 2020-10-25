@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Row, Col } from "antd";
-import { Button } from "../../styles";
+import { Button, Container } from "../../styles";
 const backgroundImage = require("../../assets/images/kanva-background.png");
 
-const Container = styled.div`
+const BackgroundImageContainer = styled.div`
   width: 100%;
   background-color: #001030;
   background-image: url(${backgroundImage});
@@ -54,47 +54,45 @@ const Title = styled.h1`
 `;
 
 const Kanva = () => (
-  <Container>
-    <VerticalCenter>
-      <Row justify="center">
-        <Col xs={22} md={18}>
-          <Title>Kanva</Title>
-          <Row justify="space-between">
-            <Col xs={0} md={22}>
-              <Text>
-                KANVA is a cryptocurrency platform developed by the anonymous
-                team of Artists, Developers, Programmers, and Cryptocurrency
-                Enthusiasts.It was established to push the value of art and for
-                its patrons to have a chance to store valuable card collectibles
-                that they can sell in the market through bridging art and
-                decentralized finance.It is a place where the community and
-                holders of various NFT’s can farm NFT and cast their vote for
-                the future featured arts.In this way, KANVA brings value to art
-                through Decentralized Finance.
-              </Text>
+  <BackgroundImageContainer>
+    <Container>
+      <VerticalCenter>
+        <Title>Kanva</Title>
+        <Row justify="space-between">
+          <Col xs={0} md={22}>
+            <Text>
+              KANVA is a cryptocurrency platform developed by the anonymous team
+              of Artists, Developers, Programmers, and Cryptocurrency
+              Enthusiasts.It was established to push the value of art and for
+              its patrons to have a chance to store valuable card collectibles
+              that they can sell in the market through bridging art and
+              decentralized finance.It is a place where the community and
+              holders of various NFT’s can farm NFT and cast their vote for the
+              future featured arts.In this way, KANVA brings value to art
+              through Decentralized Finance.
+            </Text>
 
-              <a href="/KANVA_Official_Whitepaper.pdf" target="_blank">
-                <Button>White Paper</Button>
-              </a>
-            </Col>
-            <Col xs={22} md={0}>
-              <MobileText>
-                KANVA is a cryptocurrency platform developed by the anonymous
-                team of Artists, Developers, Programmers, and Cryptocurrency
-                Enthusiasts.It was established to push the value of art and for
-                its patrons to have a chance to store valuable card collectibles
-                that they can sell in the market through bridging art and
-                decentralized finance.It is a place where the community and
-                holders of various NFT’s can farm NFT and cast their vote for
-                the future featured arts.In this way, KANVA brings value to art
-                through Decentralized Finance.
-              </MobileText>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </VerticalCenter>
-  </Container>
+            <a href="/KANVA_Official_Whitepaper.pdf" target="_blank">
+              <Button>White Paper</Button>
+            </a>
+          </Col>
+          <Col xs={22} md={0}>
+            <MobileText>
+              KANVA is a cryptocurrency platform developed by the anonymous team
+              of Artists, Developers, Programmers, and Cryptocurrency
+              Enthusiasts.It was established to push the value of art and for
+              its patrons to have a chance to store valuable card collectibles
+              that they can sell in the market through bridging art and
+              decentralized finance.It is a place where the community and
+              holders of various NFT’s can farm NFT and cast their vote for the
+              future featured arts.In this way, KANVA brings value to art
+              through Decentralized Finance.
+            </MobileText>
+          </Col>
+        </Row>
+      </VerticalCenter>
+    </Container>
+  </BackgroundImageContainer>
 );
 
 export default Kanva;

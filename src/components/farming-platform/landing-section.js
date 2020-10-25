@@ -324,8 +324,8 @@ const LandingSection = () => (
       </Row>
       <CardContainer>
         <BalanceCardContainer>
-          {balance_cards.map((data) => (
-            <BalanceCard key={data.img}>
+          {balance_cards.map((data, index) => (
+            <BalanceCard key={index}>
               <CardTitle>
                 <p>{data.title}</p>
               </CardTitle>

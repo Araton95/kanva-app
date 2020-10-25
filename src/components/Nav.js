@@ -1,26 +1,29 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
-import { Row, Col, Drawer } from "antd";
+import { Drawer } from "antd";
 import styled from "styled-components";
-import { MenuOutlined } from "@ant-design/icons";
 import { Link } from "gatsby";
-import Seo from "./SEO";
+import { Container } from "../styles";
 
 const Icon = require("../assets/images/logo.png");
 
-const Container = styled.header`
-  background-color: transparent;
-  position: absolute;
-  top: 10px;
-  left: 0;
-  width: 100%;
-  margin-top: 35px;
-  z-index: 1000;
-`;
 const Logo = styled.img`
   width: 150px;
   height: 63px;
-  object-fit: fill;
+
+  @media (max-width: 768px) {
+    height: 40px;
+    width: 100px;
+  }
+`;
+
+const MenuItems = styled.div`
+  display: flex;
+  width: 75%;
+
+  @media (max-width: 920px) {
+    justify-content: flex-end;
+  }
 `;
 
 const MenuItem = styled.h3`
@@ -38,85 +41,118 @@ const MenuItem = styled.h3`
   }
 `;
 
+const HeaderContainer = styled.div`
+  position: absolute;
+  top: 25px;
+  background-color: transparent;
+  display: flex;
+  height: 73px;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 999999999;
+`;
+
+const Items = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.2s;
+
+  @media (max-width: 920px) {
+    display: none;
+  }
+`;
+
+const BurgerIcon = styled.div`
+  display: none;
+  transition: all 0.2s;
+
+  > span {
+    height: 2px;
+    margin-top: 8px;
+    width: 33px;
+    background: var(--white);
+  }
+
+  @media (max-width: 920px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+`;
+
+const MenusContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 30px;
+
+  @media (max-width: 920px) {
+    align-items: center;
+  }
+`;
+
 const Header = () => {
   const [visible, setVisible] = React.useState(false);
   return (
-    <Container>
-      <Seo title="Kanva" description="A Cryptocurrency Platform" />
-      <Col span={24}>
-        <Row justify="center">
-          <Col span={18}>
-            <Row
-              justify="space-between"
-              align="middle"
-              style={{
-                alignItems: "flex-end",
-              }}
-            >
-              <Col span={6}>
+    <>
+      <HeaderContainer>
+        <Container>
+          <MenusContainer>
+            <Link to="/">
+              <Logo src={Icon} />
+            </Link>
+
+            <MenuItems>
+              <Items>
                 <Link to="/">
-                  <Logo src={Icon} />
+                  <MenuItem>KANVA</MenuItem>
                 </Link>
-              </Col>
-              <Col xs={0} md={18}>
-                <Row justify="space-around">
-                  <Link to="/">
-                    <MenuItem>KANVA</MenuItem>
-                  </Link>
-                  <Link to="/farmingPlatform">
-                    <MenuItem>Farming Platform</MenuItem>
-                  </Link>
-                  <Link to="/nftPlatform">
-                    <MenuItem>Nft Platform</MenuItem>
-                  </Link>
-                  <Link to="/governance">
-                    <MenuItem>Governance </MenuItem>
-                  </Link>
-                </Row>
-              </Col>
-              <Col xs={18} md={0}>
-                <Row justify="end">
-                  <MenuOutlined
-                    onClick={() => setVisible(!visible)}
-                    twoToneColor="#fff"
-                    style={{
-                      fontSize: "42px",
-                      color: "#fff",
-                      textAlign: "right",
-                    }}
-                  />
-                </Row>
-              </Col>
-              <Drawer
-                placement="right"
-                closable={false}
-                onClose={() => setVisible(!visible)}
-                visible={visible}
-                key="right"
-                bodyStyle={{
-                  backgroundColor: "#0e1c35",
-                }}
-              >
-                <Row align="top">
-                  <Link to="/">
-                    <MenuItem>KANVA</MenuItem>
-                  </Link>
-                  <Link to="/staking">
-                    <MenuItem>Staking Platform</MenuItem>
-                  </Link>
-                  <Link to="/nftPlatform">
-                    <MenuItem>Nft Platform</MenuItem>
-                  </Link>
-                  <Link to="/governance">
-                    <MenuItem>Governance </MenuItem>
-                  </Link>
-                </Row>
-              </Drawer>
-            </Row>
-          </Col>
-        </Row>
-      </Col>
-    </Container>
+                <Link to="/farmingPlatform">
+                  <MenuItem>Farming Platform</MenuItem>
+                </Link>
+                <Link to="/nftPlatform">
+                  <MenuItem>Nft Platform</MenuItem>
+                </Link>
+
+                <Link to="/governance">
+                  <MenuItem>Governance </MenuItem>
+                </Link>
+              </Items>
+              <BurgerIcon onClick={() => setVisible(!visible)}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </BurgerIcon>
+            </MenuItems>
+          </MenusContainer>
+        </Container>
+        <Drawer
+          placement="right"
+          closable={false}
+          onClose={() => setVisible(!visible)}
+          visible={visible}
+          key="right"
+          bodyStyle={{
+            backgroundColor: "#0e1c35",
+          }}
+        >
+          <Link to="/">
+            <MenuItem>KANVA</MenuItem>
+          </Link>
+          <Link to="/staking">
+            <MenuItem>Staking Platform</MenuItem>
+          </Link>
+          <Link to="/nftPlatform">
+            <MenuItem>Nft Platform</MenuItem>
+          </Link>
+          <Link to="/governance">
+            <MenuItem>Governance </MenuItem>
+          </Link>
+        </Drawer>
+      </HeaderContainer>
+    </>
   );
 };
 

@@ -104,6 +104,12 @@ export const Flex = styled.div`
     `};
 
   ${(props) =>
+    props.alignBottom &&
+    css`
+      align-items: flex-end;
+    `};
+
+  ${(props) =>
     props.alignTop &&
     css`
       align-items: flex-start;

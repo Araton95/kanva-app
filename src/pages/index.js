@@ -1,5 +1,5 @@
 import React from "react";
-
+import SEO from "../components/SEO";
 // Custom import
 import {
   LandingSection,
@@ -12,6 +12,7 @@ import {
 
 const IndexPage = () => (
   <>
+    <SEO title="Home" />
     <LandingSection />
     <Kanva />
     <TokenKnv />

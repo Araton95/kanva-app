@@ -99,6 +99,7 @@ const RoadMap = () => (
     <Col xs={0} md={24}>
       <RoadMapSvg data={data} />
     </Col>
+
     <Col xs={24} md={0}>
       <Wrapper>
         {data.map((_, index) => (

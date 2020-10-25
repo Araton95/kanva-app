@@ -1,22 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import { Row, Col } from "antd";
-
+import { Container } from "../../styles";
 const background = require("../../assets/images/landing-page.png");
 
 const LandingSection = () => (
   <BackgroundImage>
-    <VerticalCenter>
-      <Row justify="center">
-        <Col span={18}>
-          <Text size={60}>THE BRIDGE</Text>
-          <Text>TO DEFI AND ARTS</Text>
-          <DetailText size={25}>
-            KANVA, bringing value to art through Decentralized Finance
-          </DetailText>
-        </Col>
-      </Row>
-    </VerticalCenter>
+    <Container>
+      <VerticalCenter>
+        <Text size={60}>THE BRIDGE</Text>
+        <Text>TO DEFI AND ARTS</Text>
+        <DetailText size={25}>
+          KANVA, bringing value to art through Decentralized Finance
+        </DetailText>
+      </VerticalCenter>
+    </Container>
   </BackgroundImage>
 );
 
@@ -40,7 +37,7 @@ const BackgroundImage = styled.div`
 const VerticalCenter = styled.div`
   width: 100%;
   height: 100%;
-  padding-top: 350px;
+  padding-top: 320px;
   padding-bottom: 150px;
 
   @media (max-width: 600px) {

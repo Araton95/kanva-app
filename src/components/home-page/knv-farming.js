@@ -4,7 +4,7 @@ import { Row, Col } from "antd";
 import { Link } from "gatsby";
 
 import SVG from "../../svgs/knv-farming";
-import { Button } from "../../styles";
+import { Button, Container } from "../../styles";
 const backgroundImage = require("../../assets/images/knv-background.png");
 const farmingIcon = require("../../assets/images/farming-btn-icon.png");
 
@@ -16,7 +16,7 @@ const data = {
   value: "4,536",
 };
 
-const Container = styled.div`
+const BackgroundImageContainer = styled.div`
   width: 100%;
   background-color: #001030;
   background-image: url(${backgroundImage});
@@ -71,45 +71,42 @@ const SmallHeading = styled.h4`
 `;
 
 const KNVFarming = () => (
-  <Container>
-    <VerticalCenter>
-      <Row justify="center">
-        <Col xs={22} md={18}>
-          <Row justify="space-between">
-            <Col xs={24} md={11}>
-              <Title>KNV FARMING</Title>
-              <Text>
-                Supporters of KANVA can farm their NFT in the KNV/ETH pool
-                alongside with 70% allocation of KNV Ecosystem Fund (2,595 KNV)
-                while farming at KANVA one can earn a point which is called
-                palette, points that be used in buying NFT in the collection
-                page.
-              </Text>
-              <SmallHeading>What is Palette (PLTE)?</SmallHeading>
-              <Text>
-                Palette is an exclusive KANVA earned points that gives incentive
-                while farming at KANVA. The accumulated palette attained can be
-                used to buy and to have NFT cards in the KANVA collections.
-              </Text>
-              <Link to="/nftPlatform">
-                <Button>
-                  Start Farming
-                  <img
-                    src={farmingIcon}
-                    alt="farming-icon.png"
-                    style={{ paddingLeft: "10px" }}
-                  />
-                </Button>
-              </Link>
-            </Col>
-            <Col xs={24} md={11}>
-              <SVG data={data} />
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </VerticalCenter>
-  </Container>
+  <BackgroundImageContainer>
+    <Container>
+      <VerticalCenter>
+        <Row justify="space-between">
+          <Col xs={24} md={11}>
+            <Title>KNV FARMING</Title>
+            <Text>
+              Supporters of KANVA can farm their NFT in the KNV/ETH pool
+              alongside with 70% allocation of KNV Ecosystem Fund (2,595 KNV)
+              while farming at KANVA one can earn a point which is called
+              palette, points that be used in buying NFT in the collection page.
+            </Text>
+            <SmallHeading>What is Palette (PLTE)?</SmallHeading>
+            <Text>
+              Palette is an exclusive KANVA earned points that gives incentive
+              while farming at KANVA. The accumulated palette attained can be
+              used to buy and to have NFT cards in the KANVA collections.
+            </Text>
+            <Link to="/nftPlatform">
+              <Button>
+                Start Farming
+                <img
+                  src={farmingIcon}
+                  alt="farming-icon.png"
+                  style={{ paddingLeft: "10px" }}
+                />
+              </Button>
+            </Link>
+          </Col>
+          <Col xs={24} md={11}>
+            <SVG data={data} />
+          </Col>
+        </Row>
+      </VerticalCenter>
+    </Container>
+  </BackgroundImageContainer>
 );
 
 export default KNVFarming;

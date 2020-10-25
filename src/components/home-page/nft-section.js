@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Row, Col } from "antd";
-import { Button } from "../../styles";
-import { slideDown } from "../../styles";
-const ntfImage = require("../../assets/images/nft.png");
-const nftHeading = require("../../assets/images/nftHeading.png");
 
-const Container = styled.div`
+import { Button, Container, slideDown } from "../../styles";
+const nftHeading = require("../../assets/images/nftHeading.png");
+const ntfImage = require("../../assets/images/nft.png");
+
+const BackgroundImageContainer = styled.div`
   width: 100%;
   background-color: #e6edf1;
   display: flex;
@@ -93,53 +93,47 @@ const NftSection = () => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <Container>
-      <VerticalCenter>
-        <Row justify="center">
-          <Col xs={22} md={18}>
-            <Row justify="space-between">
-              <Col xs={24} md={11}>
-                <TitleContainer>
-                  <TextImage src={nftHeading} />
-                  <Title>What is NFT?</Title>
-                </TitleContainer>
-                <Text>
-                  NFT stands for Non-Fungible Tokens, a new digital asset or
-                  item based on blockchain that is gaining tractions today.
-                  ‘Fungibility’ is the characteristics of an item where each
-                  unit is indistinguishable and interchangeable with each other
-                  as they are assumed to have the same value. On the other hand,
-                  NFT is treated as collectible and has an individual quality
-                  making it unique, rare, and indivisible.
-                </Text>
-                <Text className={expanded ? "visible" : "hidden"}>
-                  Each NFT’s are unique and start as tokens, there is usually a
-                  limited number of NFT’s making it a scarce resource. The
-                  number of this NFT can be verified in the blockchain hence
-                  making it fraud-proof, it is also indivisible as one cannot
-                  sell and trade only a fraction of an NFT. Furthermore, NFT’s
-                  guarantee authentic ownership making it easy transferable.
-                  NFT’s are already used in many ways such as arts,
-                  collectibles, gaming, virtual-assets, and real-world assets;
-                  KANVA sees this potential a chance to make gains in
-                  cultivating this limited and scarce NFT’s in its platform thru
-                  DeFi.
-                </Text>
-                <ReadMoreButton
-                  secondary
-                  onClick={() => setExpanded(!expanded)}
-                >
-                  {expanded ? "Show Less" : "Read More"}
-                </ReadMoreButton>
-              </Col>
-              <Col xs={24} md={11}>
-                <Image src={ntfImage} alt="ntf image" />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </VerticalCenter>
-    </Container>
+    <BackgroundImageContainer>
+      <Container>
+        <VerticalCenter>
+          <Row justify="space-between">
+            <Col xs={24} md={11}>
+              <TitleContainer>
+                <TextImage src={nftHeading} />
+                <Title>What is NFT?</Title>
+              </TitleContainer>
+              <Text>
+                NFT stands for Non-Fungible Tokens, a new digital asset or item
+                based on blockchain that is gaining tractions today.
+                ‘Fungibility’ is the characteristics of an item where each unit
+                is indistinguishable and interchangeable with each other as they
+                are assumed to have the same value. On the other hand, NFT is
+                treated as collectible and has an individual quality making it
+                unique, rare, and indivisible.
+              </Text>
+              <Text className={expanded ? "visible" : "hidden"}>
+                Each NFT’s are unique and start as tokens, there is usually a
+                limited number of NFT’s making it a scarce resource. The number
+                of this NFT can be verified in the blockchain hence making it
+                fraud-proof, it is also indivisible as one cannot sell and trade
+                only a fraction of an NFT. Furthermore, NFT’s guarantee
+                authentic ownership making it easy transferable. NFT’s are
+                already used in many ways such as arts, collectibles, gaming,
+                virtual-assets, and real-world assets; KANVA sees this potential
+                a chance to make gains in cultivating this limited and scarce
+                NFT’s in its platform thru DeFi.
+              </Text>
+              <ReadMoreButton secondary onClick={() => setExpanded(!expanded)}>
+                {expanded ? "Show Less" : "Read More"}
+              </ReadMoreButton>
+            </Col>
+            <Col xs={24} md={11}>
+              <Image src={ntfImage} alt="ntf image" />
+            </Col>
+          </Row>
+        </VerticalCenter>
+      </Container>
+    </BackgroundImageContainer>
   );
 };
 
