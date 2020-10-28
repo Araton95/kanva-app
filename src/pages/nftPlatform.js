@@ -1,9 +1,11 @@
 import React from "react";
-import ComingSoon from "../components/common/comingSoon";
+import SEO from "../components/SEO";
+import ChooseFarm from "../components/nft-platform/choose-farm";
 
 const NftPlatformPage = () => (
   <>
-    <ComingSoon />
+    <SEO title="NFT Platform" />
+    <ChooseFarm />
   </>
 );
 
