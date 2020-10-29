@@ -48,7 +48,9 @@ const ChooseFarm = () => (
             </TopSection>
             <BottomSection>
               <Text fontWeight={500}>Deposit</Text>
-              <Button>Select</Button>
+              <Link to="/artistSeries">
+                <Button>Select</Button>
+              </Link>
             </BottomSection>
           </BalanceCard>
         </CardContainer>

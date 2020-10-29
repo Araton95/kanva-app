@@ -3,7 +3,6 @@ import styled from "styled-components";
 import SEO from "../components/SEO";
 
 import { Container, Button } from "../styles";
-import CardList from "../components/kanva-series/card-list";
 const background = require("../assets/images/kanva-series/stars_bg.png");
 const farmingIcon = require("../assets/images/farming-btn-icon.png");
 
@@ -34,19 +33,11 @@ const Text = styled.p`
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0;
-
-  @media (max-width: 800px) {
-    font-size: 16px;
-  }
 `;
 
 const TopButtons = styled.div`
   padding: 20px 0;
   display: flex;
-
-  @media (max-width: 650px) {
-    flex-direction: column;
-  }
 `;
 
 const JointsButton = styled.div`
@@ -59,21 +50,6 @@ const JointsButton = styled.div`
   justify-content: space-around;
   align-items: center;
   background: linear-gradient(270deg, #002247 0%, #00506f 100%);
-
-  @media (max-width: 800px) {
-    height: 65px;
-    font-size: 16px;
-  }
-
-  @media (max-width: 650px) {
-    width: 100%;
-  }
-
-  p {
-    @media (max-width: 500px) {
-      font-size: 12px;
-    }
-  }
 `;
 
 const JointsLine = styled.div`
@@ -90,30 +66,18 @@ const ManageStackButton = styled(Button)`
   margin-left: 20px;
   font-size: 25px;
   font-weight: bold;
-
-  @media (max-width: 800px) {
-    height: 65px;
-    width: 288px;
-    font-size: 16px;
-  }
-
-  @media (max-width: 650px) {
-    margin-top: 10px;
-    margin-left: 0;
-  }
-
   img {
     padding-left: 14px;
   }
 `;
 
-const KavaSeries = () => (
+const ArtistSeries = () => (
   <>
     <SEO title="Kanva Series" />
     <BackgroundImage>
       <VerticalCenter>
         <Container>
-          <Text font={25}>Kanva series</Text>
+          <Text font={25}>ARTIST SERIES</Text>
           <TopButtons>
             <JointsButton>
               <Text>0 ETH/KNV UNIV2-LP</Text>
@@ -125,11 +89,10 @@ const KavaSeries = () => (
               <img src={farmingIcon} alt="farming-icon.png" />
             </ManageStackButton>
           </TopButtons>
-          <CardList />
         </Container>
       </VerticalCenter>
     </BackgroundImage>
   </>
 );
 
-export default KavaSeries;
+export default ArtistSeries;

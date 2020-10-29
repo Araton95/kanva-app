@@ -168,7 +168,6 @@ const getButtonStyles = (props) => {
 export const Button = styled.button`
   font-size: 18px;
   font-weight: bold;
-  /* line-height: 1.2; */
   font-family: Ubuntu;
   text-align: center;
   border-width: 2px;
