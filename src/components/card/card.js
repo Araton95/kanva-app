@@ -1,27 +1,33 @@
 import React from "react";
 import styled from "styled-components";
 
-const cardImage = require("../../assets/images/kanva-series/card-image.jpg");
-
-const CardList = () => (
+const CardList = ({
+  cardImage,
+  name,
+  commonText,
+  buttonText,
+  minted,
+  left,
+  isSoldOut,
+}) => (
   <Card>
     <CardTopSection>
       <CardImage>
         <img src={cardImage} alt="Card-image" />
       </CardImage>
     </CardTopSection>
-    <CardBottomSection>
+    <CardBottomSection borderLess={isSoldOut}>
       <div className="minted">
         <div>
-          <p>8000 Minted</p>
+          <p>{minted}</p>
         </div>
         <div>
-          <p>2000 Left</p>
+          <p>{left}</p>
         </div>
       </div>
-      <AuthorName>albert einstein common</AuthorName>
-      <Text>Common / Common / Common</Text>
-      <button>You need 1 PLTE</button>
+      <AuthorName>{name}</AuthorName>
+      <Text>{commonText}</Text>
+      <button>{buttonText}</button>
     </CardBottomSection>
   </Card>
 );
@@ -50,12 +56,13 @@ const Card = styled.div`
 const CardTopSection = styled.div`
   height: 479px;
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   border-radius: 25px;
   z-index: 2;
   background: linear-gradient(180deg, #004566 0%, #00264a 51.37%, #001030 100%);
-  box-shadow: -8.3px -2px 8px #011844, 1.3px 8.3px 2px rgba(0, 0, 0, 0.23);
+  box-shadow: -8.3px -2px 8px #011844, 7.3px 9.3px 10px rgba(0, 0, 0, 0.323);
 
   @media (max-width: 800px) {
     height: 400px;
@@ -64,7 +71,7 @@ const CardTopSection = styled.div`
 
 const CardImage = styled.div`
   width: 90%;
-  height: 90%;
+  height: 91%;
 
   img {
     width: 100%;
@@ -75,7 +82,7 @@ const CardImage = styled.div`
 
 const CardBottomSection = styled.div`
   padding: 30px 20px;
-  padding-top: 40px;
+  padding-top: 45px;
   position: relative;
   top: -5px;
   display: flex;
@@ -83,7 +90,7 @@ const CardBottomSection = styled.div`
   align-items: center;
   display: flex;
   border-radius: 25px;
-  z-index: 1;
+  z-index: 0;
   background-color: #001030;
   box-shadow: 7.3px 9.3px 10px rgba(0, 0, 0, 0.323);
 
@@ -101,7 +108,8 @@ const CardBottomSection = styled.div`
     color: #ffffff;
     height: 50px;
     width: 200px;
-    border: 1px dashed rgba(0, 191, 223, 0.2);
+    border: ${(props) =>
+      props.borderLess ? 0 : "1px dashed rgba(0, 191, 223, 0.2)"};
   }
 
   .minted {
@@ -119,7 +127,9 @@ const CardBottomSection = styled.div`
         font-family: Ubuntu;
         margin: 0;
         font-size: 17px;
-        font-weight: bold;
+        /* font-weight: bold; */
+        font-weight: 600;
+        text-transform: uppercase;
 
         @media (max-width: 800px) {
           font-size: 16px;

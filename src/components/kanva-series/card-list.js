@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Card from "../card/card";
-
+import { cardData } from "./data";
 const Cards = styled.div`
   width: 100%;
   margin-top: 70px;
@@ -20,8 +20,8 @@ const Cards = styled.div`
 const CardList = () => (
   <>
     <Cards>
-      {Array.from({ length: 17 }).map((value, index) => (
-        <Card key={index} />
+      {cardData.map((card, index) => (
+        <Card key={index} {...card} />
       ))}
     </Cards>
   </>
