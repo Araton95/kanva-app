@@ -1,5 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+const ICON_OPENSEA = require("../../assets/images/kanva-series/icon-opensea.png");
 
 const CardList = ({
   cardImage,
@@ -9,6 +11,7 @@ const CardList = ({
   minted,
   left,
   isSoldOut,
+  isReadyForBuy,
 }) => (
   <Card>
     <CardTopSection>
@@ -16,7 +19,7 @@ const CardList = ({
         <img src={cardImage} alt="Card-image" />
       </CardImage>
     </CardTopSection>
-    <CardBottomSection borderLess={isSoldOut}>
+    <CardBottomSection>
       <div className="minted">
         <div>
           <p>{minted}</p>
@@ -27,7 +30,16 @@ const CardList = ({
       </div>
       <AuthorName>{name}</AuthorName>
       <Text>{commonText}</Text>
-      <button>{buttonText}</button>
+      <Button borderLess={isSoldOut} isBuyButton={isReadyForBuy}>
+        {isSoldOut && (
+          <img
+            src={ICON_OPENSEA}
+            alt="ICON_OPENSEA"
+            style={{ marginRight: "6px", width: "13px", height: "13px" }}
+          />
+        )}
+        {buttonText}
+      </Button>
     </CardBottomSection>
   </Card>
 );
@@ -94,24 +106,6 @@ const CardBottomSection = styled.div`
   background-color: #001030;
   box-shadow: 7.3px 9.3px 10px rgba(0, 0, 0, 0.323);
 
-  button {
-    margin-top: 25px;
-    outline: none;
-    cursor: pointer;
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 15px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #ffffff;
-    height: 50px;
-    width: 200px;
-    border: ${(props) =>
-      props.borderLess ? 0 : "1px dashed rgba(0, 191, 223, 0.2)"};
-  }
-
   .minted {
     display: flex;
     border-radius: 5px;
@@ -163,4 +157,48 @@ const AuthorName = styled.p`
   @media (max-width: 800px) {
     font-size: 16px;
   }
+`;
+
+const borderLessStyle = css`
+  border: 1px solid transparent;
+`;
+
+const normalButtonStyle = css`
+  border: 1px dashed rgba(0, 191, 223, 0.2);
+`;
+
+const buyButtonStyle = css`
+  border: 1px solid #001237;
+  background: #001237;
+  box-shadow: 7.3px 9.3px 10px rgba(0, 0, 0, 0.323);
+`;
+
+const getButtonStyles = (props) => {
+  if (props.isBuyButton) {
+    return buyButtonStyle;
+  }
+
+  if (props.borderLess) {
+    return borderLessStyle;
+  }
+
+  return normalButtonStyle;
+};
+
+const Button = styled.button`
+  margin-top: 25px;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  height: 50px;
+  width: 200px;
+
+  ${getButtonStyles}
 `;

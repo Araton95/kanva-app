@@ -31,6 +31,7 @@ export const cardData = [
     name: "albert einstein common",
     commonText: "Common / Common / Common",
     buttonText: "Buy(1 PLTE)",
+    isReadyForBuy: true,
     minted: "8000 Minted",
     left: "2000 Left",
   },
