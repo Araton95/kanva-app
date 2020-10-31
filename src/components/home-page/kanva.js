@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Row, Col } from "antd";
 import { Player, BigPlayButton, ControlBar } from "video-react";
-
 import { Button, Container } from "../../styles";
 const backgroundImage = require("../../assets/images/kanva-background.png");
+const Video_POSTER = require("../../assets/images/video-poster.jpg");
+const Video = require("../../assets/videoplayback.mp4");
 
 const BackgroundImageContainer = styled.div`
   width: 100%;
@@ -113,7 +114,7 @@ const Kanva = () => (
           </Col>
         </Row>
         <VideoPlayer>
-          <Player src="http://media.w3.org/2010/05/sintel/trailer.mp4">
+          <Player poster={Video_POSTER} src={Video}>
             <BigPlayButton position="center" />
             <ControlBar autoHide={false} className="custom-control" />
           </Player>
