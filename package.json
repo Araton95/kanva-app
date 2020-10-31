@@ -21,7 +21,8 @@
     "react-multi-carousel": "^2.5.5",
     "react-slick": "^0.27.11",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "video-react": "^0.14.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

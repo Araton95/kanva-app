@@ -9,6 +9,7 @@
 import "./src/assets/fonts/style.css";
 // import "./src/styles/global.css";
 import "./node_modules/antd/dist/antd.css";
+import "./node_modules/video-react/dist/video-react.css"; // import css
 
 import React from "react";
 import Layout from "./src/components/Layout";

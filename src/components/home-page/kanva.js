@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Row, Col } from "antd";
+import { Player, BigPlayButton, ControlBar } from "video-react";
+
 import { Button, Container } from "../../styles";
 const backgroundImage = require("../../assets/images/kanva-background.png");
 
@@ -53,6 +55,26 @@ const Title = styled.h1`
   }
 `;
 
+const VideoPlayer = styled.div`
+  margin: 50px;
+
+  margin-top: 80px;
+
+  .video-react {
+    box-shadow: -4.3px -4.3px 6px 0px #011844, 4.3px 4.3px 6px 0px #000a1f;
+    border-radius: 10px;
+    .video-react-video {
+      border-radius: 10px;
+    }
+
+    .custom-control {
+      .video-react-play-progress {
+        background: #29aae0;
+      }
+    }
+  }
+`;
+
 const Kanva = () => (
   <BackgroundImageContainer>
     <Container>
@@ -90,6 +112,12 @@ const Kanva = () => (
             </MobileText>
           </Col>
         </Row>
+        <VideoPlayer>
+          <Player src="http://media.w3.org/2010/05/sintel/trailer.mp4">
+            <BigPlayButton position="center" />
+            <ControlBar autoHide={false} className="custom-control" />
+          </Player>
+        </VideoPlayer>
       </VerticalCenter>
     </Container>
   </BackgroundImageContainer>
