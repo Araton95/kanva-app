@@ -3,9 +3,10 @@ import styled from "styled-components";
 
 const BannerContainer = styled.div`
   background: #f5fafd;
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
+  height: 300px;
+  width: 300px;
+  margin-left: 20px;
+  border-radius: 4px;
   background: rgba(33, 114, 229, 0.1);
   border: 1px solid rgba(33, 114, 229, 0.5);
   display: flex;
@@ -20,6 +21,14 @@ const BannerContainer = styled.div`
     margin: 0;
     font-size: 20px;
     color: #fff;
+  }
+
+  @media (max-width: 850px) {
+    margin-left: 0;
+  }
+
+  @media (max-width: 362px) {
+    width: 100%;
   }
 `;
 

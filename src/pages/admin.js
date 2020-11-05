@@ -38,19 +38,13 @@ const Text = styled.p`
 `;
 
 const FormContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  width: 80%;
-  margin: 0 auto;
-  padding: 20px 30px;
+  padding: 20px;
   box-shadow: -4.3px -4.3px 6px 0px #011844, 4.3px 4.3px 6px 0px #000a1f;
-
-  @media (max-width: 760px) {
-    width: 100%;
-    margin: 0;
-  }
 
   @media (max-width: 400px) {
     padding: 20px;
@@ -108,21 +102,47 @@ const Input = styled.input`
   }
 `;
 
-const SubmitButton = styled(Button)`
+const CustomButton = styled(Button)`
   align-self: flex-start;
   margin-top: 15px;
   height: 55px;
+  /* border-radius: 4px; */
+  /* background: rgba(33, 114, 229, 0.1); */
+  /* border: 1px solid rgba(33, 114, 229, 0.5); */
+  /* box-shadow: none; */
 `;
 
+const FieldContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+`;
+
+const Form = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+
+  @media (max-width: 850px) {
+    flex-direction: column-reverse;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+`;
+
+const initialState = {
+  name: "",
+  rarity: "",
+  supply: 0,
+  palettePoints: 0,
+  claim: 0,
+  max: 0,
+};
+
 const AdminPage = () => {
-  const [data, setData] = useState({
-    name: "",
-    rarity: "",
-    supply: "",
-    palettePoints: "",
-    claim: "",
-    max: "",
-  });
+  const [data, setData] = useState(initialState);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -141,63 +161,73 @@ const AdminPage = () => {
             <FormContainer>
               <Text font={25}>Contact Us</Text>
 
-              <UploadImage />
+              <Form>
+                <FieldContainer>
+                  <FormFields>
+                    <Input
+                      type="text"
+                      placeholder="Name"
+                      name="name"
+                      onChange={handleChange}
+                      value={data.name}
+                    />
 
-              <FormFields>
-                <Input
-                  type="text"
-                  placeholder="Name"
-                  name="name"
-                  onChange={handleChange}
-                  value={data.name}
-                />
+                    <Input
+                      type="text"
+                      placeholder="Rarity"
+                      name="rarity"
+                      onChange={handleChange}
+                      value={data.rarity}
+                    />
+                  </FormFields>
 
-                <Input
-                  type="text"
-                  placeholder="Rarity"
-                  name="rarity"
-                  onChange={handleChange}
-                  value={data.rarity}
-                />
-              </FormFields>
+                  <FormFields>
+                    <Input
+                      type="number"
+                      placeholder="Supply"
+                      name="supply"
+                      onChange={handleChange}
+                      value={data.supply}
+                    />
 
-              <FormFields>
-                <Input
-                  type="number"
-                  placeholder="Supply"
-                  name="supply"
-                  onChange={handleChange}
-                  value={data.supply}
-                />
+                    <Input
+                      type="number"
+                      placeholder="Palette points"
+                      name="palettePoints"
+                      onChange={handleChange}
+                      value={data.palettePoints}
+                    />
+                  </FormFields>
 
-                <Input
-                  type="number"
-                  placeholder="Palette points"
-                  name="palettePoints"
-                  onChange={handleChange}
-                  value={data.palettePoints}
-                />
-              </FormFields>
+                  <FormFields>
+                    <Input
+                      type="number"
+                      placeholder="Days to claim MIN "
+                      name="claim"
+                      onChange={handleChange}
+                      value={data.claim}
+                    />
 
-              <FormFields>
-                <Input
-                  type="number"
-                  placeholder="Days to claim MIN "
-                  name="claim"
-                  onChange={handleChange}
-                  value={data.claim}
-                />
-
-                <Input
-                  type="number"
-                  placeholder="Days to claim MAX"
-                  name="max"
-                  onChange={handleChange}
-                  value={data.max}
-                />
-              </FormFields>
-
-              <SubmitButton>Submit</SubmitButton>
+                    <Input
+                      type="number"
+                      placeholder="Days to claim MAX"
+                      name="max"
+                      onChange={handleChange}
+                      value={data.max}
+                    />
+                  </FormFields>
+                  <ButtonContainer>
+                    <CustomButton>Submit</CustomButton>
+                    <CustomButton
+                      onClick={() => setData(initialState)}
+                      style={{ marginLeft: "15px" }}
+                    >
+                      Reset
+                    </CustomButton>
+                  </ButtonContainer>
+                </FieldContainer>
+                <UploadImage />
+              </Form>
             </FormContainer>
           </Container>
         </VerticalCenter>
