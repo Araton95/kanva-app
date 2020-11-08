@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SEO from "../components/SEO";
 
+import Modal from "../components/common/modal";
 import { Container, Button } from "../styles";
 import CardList from "../components/kanva-series/card-list";
 const background = require("../assets/images/kanva-series/stars_bg.png");
@@ -107,29 +108,33 @@ const ManageStackButton = styled(Button)`
   }
 `;
 
-const KavaSeries = () => (
-  <>
-    <SEO title="Kanva Series" />
-    <BackgroundImage>
-      <VerticalCenter>
-        <Container>
-          <Text font={25}>Kanva series</Text>
-          <TopButtons>
-            <JointsButton>
-              <Text>0 ETH/KNV UNIV2-LP</Text>
-              <Text>0,000 PLTE Earned</Text>
-              <JointsLine />
-            </JointsButton>
-            <ManageStackButton>
-              Manage Stake
-              <img src={farmingIcon} alt="farming-icon.png" />
-            </ManageStackButton>
-          </TopButtons>
-          <CardList />
-        </Container>
-      </VerticalCenter>
-    </BackgroundImage>
-  </>
-);
+const KavaSeries = () => {
+  const [showModal, setModal] = React.useState(false);
+  return (
+    <>
+      <SEO title="Kanva Series" />
+      <BackgroundImage>
+        <VerticalCenter>
+          <Container>
+            <Text font={25}>Kanva series</Text>
+            <TopButtons>
+              <JointsButton>
+                <Text>0 ETH/KNV UNIV2-LP</Text>
+                <Text>0,000 PLTE Earned</Text>
+                <JointsLine />
+              </JointsButton>
+              <ManageStackButton onClick={() => setModal(true)}>
+                Manage Stake
+                <img src={farmingIcon} alt="farming-icon.png" />
+              </ManageStackButton>
+            </TopButtons>
+            <CardList />
+          </Container>
+        </VerticalCenter>
+      </BackgroundImage>
+      <Modal showModal={showModal} setModal={setModal} />
+    </>
+  );
+};
 
 export default KavaSeries;

@@ -1,9 +1,73 @@
 import React from "react";
 import styled from "styled-components";
 import { Row, Col } from "antd";
-import { balance_cards, deposit_cards, Title, Description_Text } from "./data";
 
+import Modal from "../common/modal";
+import { balance_cards, deposit_cards, Title, Description_Text } from "./data";
 const background = require("../../assets/images/farming-platform/bg.png");
+
+const LandingSection = () => {
+  const [showModal, setModal] = React.useState(false);
+
+  return (
+    <Container>
+      <VerticalCenter>
+        <Row justify="center">
+          <Col>
+            <BoldText>{Title}</BoldText>
+            <Description>{Description_Text}</Description>
+          </Col>
+        </Row>
+        <CardContainer>
+          <BalanceCardContainer>
+            {balance_cards.map((data, index) => (
+              <BalanceCard key={index}>
+                <CardTitle>
+                  <p>{data.title}</p>
+                </CardTitle>
+                <TopSection>
+                  <img className="icon" src={data.icon} alt={data.icon}></img>
+                  <p>{data.amount}</p>
+                </TopSection>
+                <BottomSection>
+                  <p>{data.text_one}</p>
+                  <p>{data.text_two}</p>
+                </BottomSection>
+              </BalanceCard>
+            ))}
+          </BalanceCardContainer>
+          <POOL>
+            <BoldText>participating pools</BoldText>
+          </POOL>
+
+          {deposit_cards.map((data, index) => (
+            <DepositCard key={index} img={data.bgImage} alt={data.bgImage}>
+              <DepositCardTitle>
+                <img src={data.title.img} alt={data.title.img} />
+                <p>{data.title.text}</p>
+              </DepositCardTitle>
+              <DepositContent>
+                <div className="text-container">
+                  {data.deposits.map((data, index) => (
+                    <div key={index} className="text-content">
+                      <div className="text">{data.text}</div>
+                      <div className="text">{data.amount}</div>
+                    </div>
+                  ))}
+                </div>
+                <button onClick={() => setModal(true)}>{data.button}</button>
+              </DepositContent>
+            </DepositCard>
+          ))}
+        </CardContainer>
+      </VerticalCenter>
+
+      <Modal showModal={showModal} setModal={setModal} />
+    </Container>
+  );
+};
+
+export default LandingSection;
 
 const Container = styled.div`
   width: 100%;
@@ -262,12 +326,18 @@ const DepositContent = styled.div`
     height: 46px;
     width: 180px;
     outline: none;
+    cursor: pointer;
     box-shadow: 5px 7px 4px rgba(0, 0, 0, 0.55);
+    transition: all 300ms;
 
     @media (max-width: 600px) {
       margin-top: 15px;
       height: 40px;
       font-size: 16px;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
     }
   }
 
@@ -292,10 +362,6 @@ const DepositContent = styled.div`
         width: 100%;
       }
 
-      /* &:last-child {
-        margin-top: 10px;
-      } */
-
       .text {
         color: #fefeff;
         font-family: Ubuntu;
@@ -312,60 +378,3 @@ const DepositContent = styled.div`
     }
   }
 `;
-
-const LandingSection = () => (
-  <Container>
-    <VerticalCenter>
-      <Row justify="center">
-        <Col>
-          <BoldText>{Title}</BoldText>
-          <Description>{Description_Text}</Description>
-        </Col>
-      </Row>
-      <CardContainer>
-        <BalanceCardContainer>
-          {balance_cards.map((data, index) => (
-            <BalanceCard key={index}>
-              <CardTitle>
-                <p>{data.title}</p>
-              </CardTitle>
-              <TopSection>
-                <img className="icon" src={data.icon} alt={data.icon}></img>
-                <p>{data.amount}</p>
-              </TopSection>
-              <BottomSection>
-                <p>{data.text_one}</p>
-                <p>{data.text_two}</p>
-              </BottomSection>
-            </BalanceCard>
-          ))}
-        </BalanceCardContainer>
-        <POOL>
-          <BoldText>participating pools</BoldText>
-        </POOL>
-
-        {deposit_cards.map((data, index) => (
-          <DepositCard key={index} img={data.bgImage} alt={data.bgImage}>
-            <DepositCardTitle>
-              <img src={data.title.img} alt={data.title.img} />
-              <p>{data.title.text}</p>
-            </DepositCardTitle>
-            <DepositContent>
-              <div className="text-container">
-                {data.deposits.map((data, index) => (
-                  <div key={index} className="text-content">
-                    <div className="text">{data.text}</div>
-                    <div className="text">{data.amount}</div>
-                  </div>
-                ))}
-              </div>
-              <button>{data.button}</button>
-            </DepositContent>
-          </DepositCard>
-        ))}
-      </CardContainer>
-    </VerticalCenter>
-  </Container>
-);
-
-export default LandingSection;

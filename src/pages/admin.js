@@ -159,7 +159,7 @@ const AdminPage = () => {
         <VerticalCenter>
           <Container>
             <FormContainer>
-              <Text font={25}>Contact Us</Text>
+              <Text font={25}>Admin</Text>
 
               <Form>
                 <FieldContainer>
