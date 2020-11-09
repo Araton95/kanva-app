@@ -6,6 +6,15 @@
 
 // You can delete this file if you're not using it
 
-import './static/fonts/style.css'
-import './src/styles/global.css'
-import './node_modules/antd/dist/antd.css'
+import "./src/assets/fonts/style.css";
+// import "./src/styles/global.css";
+import "./node_modules/antd/dist/antd.css";
+import "./node_modules/video-react/dist/video-react.css"; // import css
+import "./node_modules/rodal/lib/rodal.css";
+
+import React from "react";
+import Layout from "./src/components/Layout";
+
+export function wrapPageElement({ element, props }) {
+  return <Layout {...props}>{element}</Layout>;
+}
