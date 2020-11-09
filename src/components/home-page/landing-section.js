@@ -6,7 +6,15 @@ const bg_video = require("../../assets/video.mp4");
 const LandingSection = () => (
   <BackgroundImage>
     <Video>
-      <video height="100%" width="100%" autoPlay playsInline loop muted src={bg_video} />
+      <video
+        playsInline
+        muted
+        height="100%"
+        width="100%"
+        loop
+        autoPlay
+        src={bg_video}
+      />
     </Video>
     <Container>
       <VerticalCenter>
@@ -63,6 +71,10 @@ const Text = styled.p`
   color: var(--white);
   text-transform: uppercase;
   line-height: 1.2;
+
+  @media (max-width: 600px) {
+    font-size: 30px;
+  }
 `;
 
 const DetailText = styled.p`
@@ -73,4 +85,9 @@ const DetailText = styled.p`
   font-weight: bold;
   margin-top: 22px;
   color: var(--white);
+
+  @media (max-width: 600px) {
+    font-size: 20px;
+    width: 100%;
+  }
 `;
