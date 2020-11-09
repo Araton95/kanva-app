@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { Container } from "../../styles";
-const background = require("../../assets/images/landing-page.png");
 const bg_video = require("../../assets/video.mp4");
 
-{
-  /* <Container>
+const LandingSection = () => (
+  <BackgroundImage>
+    <Video>
+      <video height="100%" width="100%" loop autoPlay src={bg_video} />
+    </Video>
+    <Container>
       <VerticalCenter>
         <Text size={60}>THE BRIDGE</Text>
         <Text>TO DEFI AND ARTS</Text>
@@ -13,33 +16,31 @@ const bg_video = require("../../assets/video.mp4");
           KANVA, bringing value to art through Decentralized Finance
         </DetailText>
       </VerticalCenter>
-    </Container> */
-}
-
-const LandingSection = () => (
-  <Video>
-    <video height="100%" width="100%" loop autoPlay src={bg_video} />
-  </Video>
+    </Container>
+  </BackgroundImage>
 );
 
 export default LandingSection;
 
-const Video = styled.div`
-  height: 100vh;
-  width: 100%;
-  background: #010f48;
-  video {
-    object-fit: cover;
-  }
-`;
-
-const BackgroundImage = styled.video`
+const BackgroundImage = styled.div`
+  position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 1100px;
+  background-color: #001030;
 
   @media (max-width: 600px) {
     min-height: 100%;
+  }
+`;
+
+const Video = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  video {
+    object-fit: cover;
   }
 `;
 
