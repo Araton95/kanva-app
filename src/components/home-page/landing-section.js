@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Container } from "../../styles";
 const background = require("../../assets/images/landing-page.png");
+const bg_video = require("../../assets/video.mp4");
 
-const LandingSection = () => (
-  <BackgroundImage>
-    <Container>
+{
+  /* <Container>
       <VerticalCenter>
         <Text size={60}>THE BRIDGE</Text>
         <Text>TO DEFI AND ARTS</Text>
@@ -13,21 +13,30 @@ const LandingSection = () => (
           KANVA, bringing value to art through Decentralized Finance
         </DetailText>
       </VerticalCenter>
-    </Container>
-  </BackgroundImage>
+    </Container> */
+}
+
+const LandingSection = () => (
+  <Video>
+    <video height="100%" width="100%" loop autoPlay src={bg_video} />
+  </Video>
 );
 
 export default LandingSection;
 
-const BackgroundImage = styled.div`
+const Video = styled.div`
+  height: 100vh;
+  width: 100%;
+  background: #010f48;
+  video {
+    object-fit: cover;
+  }
+`;
+
+const BackgroundImage = styled.video`
   width: 100%;
   height: 100vh;
   min-height: 1100px;
-  background-color: #001030;
-  background-image: url(${background});
-  background-size: cover;
-  justify-content: flex-start;
-  align-items: center;
 
   @media (max-width: 600px) {
     min-height: 100%;
