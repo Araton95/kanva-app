@@ -6,7 +6,7 @@ const bg_video = require("../../assets/video.mp4");
 const LandingSection = () => (
   <BackgroundImage>
     <Video>
-      <video height="100%" width="100%" loop autoPlay src={bg_video} />
+      <video height="100%" width="100%" autoPlay playsInline loop muted src={bg_video} />
     </Video>
     <Container>
       <VerticalCenter>
