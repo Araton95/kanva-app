@@ -23,7 +23,7 @@ const Footer = () => (
       <Col xs={22} md={18}>
         <VerticalCenter>
           <Text>Find Us on Social Media</Text>
-
+          {/*
           <Row justify="center">
             <Col xs={24} md={24}>
               <Row justify="center">
@@ -83,7 +83,36 @@ const Footer = () => (
                 </Col>
               </Row>
             </Col>
-          </Row>
+          </Row> */}
+
+          <FooterIcons>
+            <a
+              href={content.telegram}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SVG.TelegramIcon />
+            </a>
+            <a
+              href={content.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SVG.FacebookIcon />
+            </a>
+            <a href={content.medium} target="_blank" rel="noopener noreferrer">
+              <SVG.MediumIcon />
+            </a>
+            <a href={content.twitter} target="_blank" rel="noopener noreferrer">
+              <SVG.TwitterIcon />
+            </a>
+            <a href={content.discord} target="_blank" rel="noopener noreferrer">
+              <SVG.DiscordIcon />
+            </a>
+            <a href={content.reddit} target="_blank" rel="noopener noreferrer">
+              <SVG.RedditIcon />
+            </a>
+          </FooterIcons>
 
           <Text>Get support</Text>
           <a href={`mailto:${content.email}?subject=Mail from Kanva.org`}>
@@ -150,4 +179,15 @@ const FooterLogo = styled.img`
   width: 110px;
   height: 50px;
   object-fit: 100%;
+`;
+
+const FooterIcons = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  a {
+    width: 90px;
+  }
 `;

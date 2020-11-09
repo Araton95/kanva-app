@@ -1,7 +1,7 @@
 import React from "react";
 
 export const MediumIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="3.528cm" height="2.528cm">
+  <svg xmlns="http://www.w3.org/2000/svg" width="3cm" height="2.528cm">
     <defs>
       <filter
         filterUnits="userSpaceOnUse"
@@ -46,7 +46,7 @@ export const MediumIcon = () => (
 );
 
 export const TelegramIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="3.528cm" height="2.528cm">
+  <svg xmlns="http://www.w3.org/2000/svg" width="3cm" height="2.528cm">
     <defs>
       <filter
         filterUnits="userSpaceOnUse"
@@ -91,7 +91,7 @@ export const TelegramIcon = () => (
 );
 
 export const DiscordIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="3.528cm" height="2.528cm">
+  <svg xmlns="http://www.w3.org/2000/svg" width="3cm" height="2.528cm">
     <defs>
       <filter
         filterUnits="userSpaceOnUse"
@@ -136,7 +136,7 @@ export const DiscordIcon = () => (
 );
 
 export const FacebookIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="3.528cm" height="2.528cm">
+  <svg xmlns="http://www.w3.org/2000/svg" width="3cm" height="2.528cm">
     <defs>
       <filter
         filterUnits="userSpaceOnUse"
@@ -181,7 +181,7 @@ export const FacebookIcon = () => (
 );
 
 export const TwitterIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="3.528cm" height="2.528cm">
+  <svg xmlns="http://www.w3.org/2000/svg" width="3cm" height="2.528cm">
     <defs>
       <filter
         filterUnits="userSpaceOnUse"
@@ -226,7 +226,7 @@ export const TwitterIcon = () => (
 );
 
 export const RedditIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="3.528cm" height="2.528cm">
+  <svg xmlns="http://www.w3.org/2000/svg" width="3cm" height="2.528cm">
     <defs>
       <filter
         filterUnits="userSpaceOnUse"

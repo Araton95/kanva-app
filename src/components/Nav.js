@@ -141,12 +141,13 @@ const Header = () => {
           <Link to="/">
             <MenuItem>KANVA</MenuItem>
           </Link>
-          <Link to="/staking">
-            <MenuItem>Staking Platform</MenuItem>
+          <Link to="/farmingPlatform">
+            <MenuItem>Farming Platform</MenuItem>
           </Link>
           <Link to="/nftPlatform">
             <MenuItem>Nft Platform</MenuItem>
           </Link>
+
           <Link to="/governance">
             <MenuItem>Governance </MenuItem>
           </Link>
