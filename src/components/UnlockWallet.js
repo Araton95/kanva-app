@@ -54,7 +54,7 @@ const UnlockWallet = () => {
             onClick={() => connectWallet()}
             className={walletContent ? "hide" : ""}
           >
-            <Item mL>Unlock Wallet</Item>
+            <ConnectWallet>Unlock Wallet</ConnectWallet>
             <Image src={WalletIcon} alt="WalletIcon" />
           </WalletButton>
         </WalletButtonContainer>
@@ -73,12 +73,12 @@ const UnlockWalletContainer = styled.div`
 `;
 
 const Item = styled.p`
-  color: #ffffff;
+  color: rgba(255,255,255,0.9);
   font-family: Ubuntu;
   font-size: 16px;
   font-weight: bold;
-  cursor: pointer;
-  margin-right: ${(props) => (props.mL ? 10 : 20)}px;
+  cursor: default;
+  margin-right: 20px;
   margin-bottom: 0;
 
   @media (max-width: 800px) {
@@ -90,6 +90,15 @@ const Item = styled.p`
     }
   }
 `;
+
+const ConnectWallet = styled(Item)`
+  cursor: pointer;
+  margin-right: 10px;
+
+  &:hover {
+    color: #ffffff;
+  }
+`
 
 const Image = styled.img`
   height: 16px;
