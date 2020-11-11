@@ -1,15 +1,73 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { toChecksumAddress, fromWei } from 'web3-utils'
+import Jazzicon, { jsNumberForAddress } from 'react-jazzicon'
+import { Link } from "gatsby"
 
 import { Container } from "../styles";
-import CryptoIcon from "../assets/images/crypto-ico.png";
 import WalletIcon from "../assets/images/wallet-ico.png";
+import Web3Client from '../services/Web3Client'
+import { shortenAddress, formatNumber } from '../utils'
+
+const UnlockWallet = () => {
+  const [walletContent, setWallet] = useState(false)
+  const [address, setAddress] = useState(null)
+  const [knvBalance, setKnvBalance] = useState(0)
+  const [plteBalance, setPlteBalance] = useState(0)
+
+  const connectWallet = async () => {
+    const web3Client = new Web3Client()
+    const { web3 } = web3Client
+
+    try {
+      await web3Client.connectEth()
+      const accounts = await web3.eth.getAccounts()
+      const address = accounts[0]
+      setAddress(toChecksumAddress(address))
+    } catch (error) {
+      console.log('declined')
+    }
+
+    const getKnvBalance = '124875000000000000000'
+    const getPlteBalance = '224875000000000000000'
+
+    setKnvBalance(getKnvBalance)
+    setPlteBalance(getPlteBalance)
+    setWallet(true)
+  }
+
+  return (
+    <UnlockWalletContainer>
+      <Container>
+        <WalletButtonContainer>
+          {walletContent &&
+            <WalletContent>
+              <Item><Link to="/comingSoon">My Collection</Link></Item>
+              <Item>{ formatNumber(fromWei(knvBalance)) } KNV</Item>
+              <Item>{ formatNumber(fromWei(plteBalance)) } PLTE</Item>
+              <Item>{ shortenAddress(address) }</Item>
+              <Jazzicon diameter={18} seed={jsNumberForAddress(address)} />
+            </WalletContent>
+          }
+
+          <WalletButton
+            onClick={() => connectWallet()}
+            className={walletContent ? "hide" : ""}
+          >
+            <Item mL>Unlock Wallet</Item>
+            <Image src={WalletIcon} alt="WalletIcon" />
+          </WalletButton>
+        </WalletButtonContainer>
+      </Container>
+    </UnlockWalletContainer>
+  );
+};
 
 const UnlockWalletContainer = styled.div`
   height: 44px;
   position: absolute;
   width: 100%;
-  z-index: 9;
+  z-index: 999;
   background-color: #001e51;
   box-shadow: 0 5px 9px 0 rgba(0, 14, 41, 0.2);
 `;
@@ -20,7 +78,8 @@ const Item = styled.p`
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  margin-right: ${(props) => (props.mL ? 10 : 30)}px;
+  margin-right: ${(props) => (props.mL ? 10 : 20)}px;
+  margin-bottom: 0;
 
   @media (max-width: 800px) {
     margin-right: 10px;
@@ -53,16 +112,8 @@ const WalletButton = styled.div`
 `;
 
 const WalletContent = styled.div`
-  display: none;
+  display: flex;
   align-items: center;
-
-  transform: translateY(-100%);
-  transition: all 0.5s;
-
-  &.visible {
-    display: flex;
-    transform: translate(0px, 0px);
-  }
 `;
 
 const WalletButtonContainer = styled.div`
@@ -73,31 +124,5 @@ const WalletButtonContainer = styled.div`
   align-items: center;
 `;
 
-const UnlockWallet = () => {
-  const [walletContent, setWallet] = React.useState(false);
-  return (
-    <UnlockWalletContainer>
-      <Container>
-        <WalletButtonContainer>
-          <WalletContent className={walletContent ? "visible" : ""}>
-            <Item>My Collection</Item>
-            <Item>0.000 KNV</Item>
-            <Item>0.000 PLTE</Item>
-            <Item>0xcdD2...616C</Item>
-            <Image src={CryptoIcon} alt="CryptoIcon" />
-          </WalletContent>
-
-          <WalletButton
-            onClick={() => setWallet(true)}
-            className={walletContent ? "hide" : ""}
-          >
-            <Item mL>Unlock Wallet</Item>
-            <Image src={WalletIcon} alt="WalletIcon" />
-          </WalletButton>
-        </WalletButtonContainer>
-      </Container>
-    </UnlockWalletContainer>
-  );
-};
 
 export default UnlockWallet;

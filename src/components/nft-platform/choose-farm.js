@@ -34,7 +34,7 @@ const ChooseFarm = () => (
             </TopSection>
             <BottomSection>
               <Text fontWeight={500}>Deposit</Text>
-              <Link to="/kanvaSeries">
+              <Link to="/comingSoon">
                 <Button>Select</Button>
               </Link>
             </BottomSection>
@@ -48,7 +48,7 @@ const ChooseFarm = () => (
             </TopSection>
             <BottomSection>
               <Text fontWeight={500}>Deposit</Text>
-              <Link to="/artistSeries">
+              <Link to="/comingSoon">
                 <Button>Select</Button>
               </Link>
             </BottomSection>
