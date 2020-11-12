@@ -44,6 +44,11 @@ export const getDepositedTokens = (pool, user) => {
   return instance.balanceOf(user).call()
 }
 
+export const getPoolSupply = (pool) => {
+  const instance = getPoolInstance(pool)
+  return instance.totalSupply().call()
+}
+
 export const getLpApproval = (pool, user, spender) => {
   const instance = getLPTokenInstance(pool)
   return instance.allowance(user, spender).call()

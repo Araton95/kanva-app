@@ -1,4 +1,6 @@
 import Web3 from 'web3'
+import { toChecksumAddress } from 'web3-utils'
+
 import { wssGateway } from '../constants'
 
 export default class Web3Client {
@@ -14,6 +16,12 @@ export default class Web3Client {
       throw new Error('Web3 is not initialized')
     }
     return Web3Client.instance
+  }
+
+  getWallet() {
+    if (Web3Client.instance) {
+      return this.web3.eth.getAccounts().then((accounts) => toChecksumAddress(accounts[0]) )
+    }
   }
 
   createWeb3(provider) {

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Spin } from "antd";
 import styled from "styled-components";
-import { toChecksumAddress } from 'web3-utils'
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon'
 import { Link } from "gatsby"
 
@@ -13,7 +12,7 @@ import { shortenAddress, formatNumber, fromWeiToKanva } from '../utils'
 
 const UnlockWallet = () => {
   const [showLoader, setShowLoader] = useState(false)
-  const [walletContent, setWallet] = useState(false)
+  const [isConnected, setConnected] = useState(false)
   const [address, setAddress] = useState(null)
   const [knvBalance, setKnvBalance] = useState(0)
   const [plteBalance, setPlteBalance] = useState(0)
@@ -25,23 +24,22 @@ const UnlockWallet = () => {
   const connectWallet = async () => {
     setShowLoader(true)
     const web3Client = new Web3Client()
-    const { web3 } = web3Client
 
     try {
       // Enable ETH process ...
       await web3Client.connectEth()
 
       // Set user address
-      const accounts = await web3.eth.getAccounts()
-      setAddress(toChecksumAddress(accounts[0]))
+      const userWallet = await web3Client.getWallet()
 
       // Fetch kanva and palette balances from contracts
-      const knv = await getKanvaBalance(accounts[0])
-      const plte = await getPaletteBalance(accounts[0])
+      const knv = await getKanvaBalance(userWallet)
+      const plte = await getPaletteBalance(userWallet)
 
+      setAddress(userWallet)
       setKnvBalance(knv)
       setPlteBalance(plte)
-      setWallet(true)
+      setConnected(true)
     } catch (error) {
       console.log('error', error)
     } finally {
@@ -55,7 +53,7 @@ const UnlockWallet = () => {
         <WalletButtonContainer>
           { showLoader ? <Spin /> :
             <>
-              {walletContent &&
+              {isConnected &&
                 <WalletContent>
                   <Item><Link to="/comingSoon">My Collection</Link></Item>
                   <Item>{ formatNumber(fromWeiToKanva(knvBalance)) } KNV</Item>
@@ -67,7 +65,7 @@ const UnlockWallet = () => {
 
               <WalletButton
                 onClick={() => connectWallet()}
-                className={walletContent ? "hide" : ""}
+                className={isConnected ? "hide" : ""}
               >
                 <ConnectWallet>Unlock Wallet</ConnectWallet>
                 <Image src={WalletIcon} alt="WalletIcon" />
