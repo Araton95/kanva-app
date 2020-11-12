@@ -24,7 +24,7 @@ export const shortenAddress = (address, charsStart = 3, charsEnd = 4) => {
  * @return {number} - Formatted number to be displayed on the UI
  */
 export function formatNumber(n, d = 3) {
-  return parseFloat(Number(n).toFixed(d))
+  return parseFloat(Number(n).toFixed(d)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }
 
 /**

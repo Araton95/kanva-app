@@ -59,7 +59,7 @@ const UnlockWallet = () => {
                 <WalletContent>
                   <Item><Link to="/comingSoon">My Collection</Link></Item>
                   <Item>{ formatNumber(fromWeiToKanva(knvBalance)) } KNV</Item>
-                  <Item>{ formatNumber(fromWei(plteBalance)) } PLTE</Item>
+                  <Item>{ plteBalance } PLTE</Item>
                   <Item>{ shortenAddress(address) }</Item>
                   <Jazzicon diameter={18} seed={jsNumberForAddress(address)} />
                 </WalletContent>
