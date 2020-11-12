@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Spin } from "antd";
 import styled from "styled-components";
-import { toChecksumAddress, fromWei } from 'web3-utils'
+import { toChecksumAddress } from 'web3-utils'
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon'
 import { Link } from "gatsby"
 
