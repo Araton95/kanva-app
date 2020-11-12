@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Spin } from "antd";
 import styled from "styled-components";
 import { toChecksumAddress, fromWei } from 'web3-utils'
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon'
@@ -7,56 +8,72 @@ import { Link } from "gatsby"
 import { Container } from "../styles";
 import WalletIcon from "../assets/images/wallet-ico.png";
 import Web3Client from '../services/Web3Client'
-import { shortenAddress, formatNumber } from '../utils'
+import { getPaletteBalance, getKanvaBalance } from '../services/ContractService'
+import { shortenAddress, formatNumber, fromWeiToKanva } from '../utils'
 
 const UnlockWallet = () => {
+  const [showLoader, setShowLoader] = useState(false)
   const [walletContent, setWallet] = useState(false)
   const [address, setAddress] = useState(null)
   const [knvBalance, setKnvBalance] = useState(0)
   const [plteBalance, setPlteBalance] = useState(0)
 
+  useEffect(() => {
+    connectWallet()
+  }, [])
+
   const connectWallet = async () => {
+    setShowLoader(true)
     const web3Client = new Web3Client()
     const { web3 } = web3Client
 
     try {
+      // Enable ETH process ...
       await web3Client.connectEth()
+
+      // Set user address
       const accounts = await web3.eth.getAccounts()
-      const address = accounts[0]
-      setAddress(toChecksumAddress(address))
+      setAddress(toChecksumAddress(accounts[0]))
+
+      // Fetch kanva and palette balances from contracts
+      const knv = await getKanvaBalance(accounts[0])
+      const plte = await getPaletteBalance(accounts[0])
+
+      setKnvBalance(knv)
+      setPlteBalance(plte)
+      setWallet(true)
     } catch (error) {
-      console.log('declined')
+      console.log('error', error)
+    } finally {
+      setShowLoader(false)
     }
-
-    const getKnvBalance = '124875000000000000000'
-    const getPlteBalance = '224875000000000000000'
-
-    setKnvBalance(getKnvBalance)
-    setPlteBalance(getPlteBalance)
-    setWallet(true)
   }
 
   return (
     <UnlockWalletContainer>
       <Container>
         <WalletButtonContainer>
-          {walletContent &&
-            <WalletContent>
-              <Item><Link to="/comingSoon">My Collection</Link></Item>
-              <Item>{ formatNumber(fromWei(knvBalance)) } KNV</Item>
-              <Item>{ formatNumber(fromWei(plteBalance)) } PLTE</Item>
-              <Item>{ shortenAddress(address) }</Item>
-              <Jazzicon diameter={18} seed={jsNumberForAddress(address)} />
-            </WalletContent>
-          }
+          { showLoader ? <Spin /> :
+            <>
+              {walletContent &&
+                <WalletContent>
+                  <Item><Link to="/comingSoon">My Collection</Link></Item>
+                  <Item>{ formatNumber(fromWeiToKanva(knvBalance)) } KNV</Item>
+                  <Item>{ formatNumber(fromWei(plteBalance)) } PLTE</Item>
+                  <Item>{ shortenAddress(address) }</Item>
+                  <Jazzicon diameter={18} seed={jsNumberForAddress(address)} />
+                </WalletContent>
+              }
 
-          <WalletButton
-            onClick={() => connectWallet()}
-            className={walletContent ? "hide" : ""}
-          >
-            <ConnectWallet>Unlock Wallet</ConnectWallet>
-            <Image src={WalletIcon} alt="WalletIcon" />
-          </WalletButton>
+              <WalletButton
+                onClick={() => connectWallet()}
+                className={walletContent ? "hide" : ""}
+              >
+                <ConnectWallet>Unlock Wallet</ConnectWallet>
+                <Image src={WalletIcon} alt="WalletIcon" />
+              </WalletButton>
+            </>
+          }
         </WalletButtonContainer>
       </Container>
     </UnlockWalletContainer>

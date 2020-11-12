@@ -1,5 +1,5 @@
 import Web3 from 'web3'
-const gateway = 'wss://mainnet.infura.io/ws/v3/723b4aa0e1984905ac524232c6764ef2'
+import { wssGateway } from '../constants'
 
 export default class Web3Client {
   constructor(provider) {
@@ -24,7 +24,7 @@ export default class Web3Client {
     } else if (typeof window.web3 !== 'undefined') {
       web3 = new Web3(window.web3.currentProvider)
     } else {
-      web3 = new Web3(new Web3.providers.WebsocketProvider(gateway))
+      web3 = new Web3(new Web3.providers.WebsocketProvider(wssGateway))
     }
 
     return web3

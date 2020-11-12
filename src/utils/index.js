@@ -1,4 +1,6 @@
 
+import { BN } from 'web3-utils'
+
 /*
  * @function shortenAddress
  *
@@ -24,3 +26,28 @@ export const shortenAddress = (address, charsStart = 3, charsEnd = 4) => {
 export function formatNumber(n, d = 3) {
   return parseFloat(Number(n).toFixed(d))
 }
+
+/**
+ * @function fromWeiToKanva
+ *
+ * @param {number} amount - Amount in Kanva (10**8)
+ * @return {number} - Formatted number
+ */
+export function fromWeiToKanva(amount) {
+  const knvDecimal = new BN(8) // Constant value from contracts
+  const knvAmount = new BN(amount).div(new BN(10).pow(knvDecimal))
+  return knvAmount.toString()
+}
+
+export class Singleton {
+  instance = null
+
+  static getInstance() {
+    if (!this.instance) {
+      this.instance = this.createInstance()
+    }
+
+    return this.instance
+  }
+}
+
