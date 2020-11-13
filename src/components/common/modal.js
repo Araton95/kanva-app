@@ -19,6 +19,7 @@ import { fromWeiToKanva } from '../../utils'
 import Web3Client from '../../services/Web3Client'
 
 const Modal = ({
+  updateDepositsAmounts,
   userWallet,
   setModal,
   setUser,
@@ -54,7 +55,7 @@ const Modal = ({
         }
 
         setIsApproved(true)
-        await updateDepositAmount()
+        await updateUserDepositAmount()
         await updateEarningsAmount()
       })
     }
@@ -103,7 +104,13 @@ const Modal = ({
 
     const amount = toWei(event.target.depositAmount.value)
     depositLp(pool, userWallet, amount)
-    .then(() => updateDepositAmount())
+    .then(() => {
+      // Update user deposit amount
+      updateUserDepositAmount()
+
+      // Update total deposits amount
+      updateDepositsAmounts()
+    })
     .catch(error => console.log(error))
     .finally(() => setDepositLoader(false))
   }
@@ -118,7 +125,13 @@ const Modal = ({
 
     const amount = toWei(event.target.withdrawAmount.value)
     withdrawLp(pool, userWallet, amount)
-    .then(() => updateDepositAmount())
+    .then(() => {
+      // Update user deposit amount
+      updateUserDepositAmount()
+
+      // Update total deposits amount
+      updateDepositsAmounts()
+    })
     .catch(error => console.log(error))
     .finally(() => setWithdrawLoader(false))
   }
@@ -137,7 +150,7 @@ const Modal = ({
     .finally(() => setClaimLoader(false))
   }
 
-  const updateDepositAmount = async () => {
+  const updateUserDepositAmount = async () => {
     const depositedTokens = await getDepositedTokens(pool, userWallet)
     setDeposited(depositedTokens.toString())
   }

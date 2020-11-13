@@ -45,20 +45,9 @@ const LandingSection = () => {
       const totalSupply = await getKanvaSupply()
       setKnvSupply(formatNumber(fromWeiToKanva(totalSupply)))
 
-      let poolDeposited = await getPoolSupply(Pools['KNV/ETH'])
-      setKnvEthDeposit(formatNumber(fromWei(poolDeposited)))
-
-      poolDeposited = await getPoolSupply(Pools['DAI/ETH'])
-      setDaiEthDeposit(formatNumber(fromWei(poolDeposited)))
-
-      poolDeposited = await getPoolSupply(Pools['USDT/ETH'])
-      setUsdtEthDeposit(formatNumber(fromWei(poolDeposited)))
-
-      poolDeposited = await getPoolSupply(Pools['USDC/ETH'])
-      setUsdcEthDeposit(formatNumber(fromWei(poolDeposited)))
+      await updateDepositsAmounts()
     })
   }, [])
-
 
   useEffect(() => {
     if (address) {
@@ -67,6 +56,24 @@ const LandingSection = () => {
       })
     }
   }, [address])
+
+  const updateDepositsAmounts = async () => {
+    try {
+      let poolDeposited = await getPoolSupply(Pools['KNV/ETH'])
+      setKnvEthDeposit(fromWei(poolDeposited))
+
+      poolDeposited = await getPoolSupply(Pools['DAI/ETH'])
+      setDaiEthDeposit(fromWei(poolDeposited))
+
+      poolDeposited = await getPoolSupply(Pools['USDT/ETH'])
+      setUsdtEthDeposit(fromWei(poolDeposited))
+
+      poolDeposited = await getPoolSupply(Pools['USDC/ETH'])
+      setUsdcEthDeposit(fromWei(poolDeposited), 12)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const openModal = (pool) => {
     setSelectedPool(pool)
@@ -136,7 +143,7 @@ const LandingSection = () => {
               <div className="text-container">
                 <div className="text-content">
                   <div className="text">Total deposit</div>
-                  <div className="text">{ knvEthDeposit } KNV</div>
+                  <div className="text">{ knvEthDeposit } UNIV2-LP</div>
                 </div>
                 <div className="text-content">
                   <div className="text">Pool rate</div>
@@ -161,7 +168,7 @@ const LandingSection = () => {
               <div className="text-container">
                 <div className="text-content">
                     <div className="text">Total deposit</div>
-                    <div className="text">{ daiEthDeposit } KNV</div>
+                    <div className="text">{ daiEthDeposit } UNIV2-LP</div>
                   </div>
                   <div className="text-content">
                     <div className="text">Pool rate</div>
@@ -182,7 +189,7 @@ const LandingSection = () => {
               <div className="text-container">
                 <div className="text-content">
                     <div className="text">Total deposit</div>
-                    <div className="text">{ usdtEthDeposit } KNV</div>
+                    <div className="text">{ usdtEthDeposit } UNIV2-LP</div>
                   </div>
                   <div className="text-content">
                     <div className="text">Pool rate</div>
@@ -203,7 +210,7 @@ const LandingSection = () => {
               <div className="text-container">
                 <div className="text-content">
                     <div className="text">Total deposit</div>
-                    <div className="text">{ usdcEthDeposit } KNV</div>
+                    <div className="text">{ usdcEthDeposit } UNIV2-LP</div>
                   </div>
                   <div className="text-content">
                     <div className="text">Pool rate</div>
@@ -222,6 +229,7 @@ const LandingSection = () => {
           setUser={setAddress}
           pool={selectedPool}
           userWallet={address}
+          updateDepositsAmounts={updateDepositsAmounts}
         />
       }
     </Container>
