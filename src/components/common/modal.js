@@ -16,10 +16,12 @@ import {
   getDepositedTokens
 } from '../../services/ContractService'
 import { fromWeiToKanva } from '../../utils'
+import Web3Client from '../../services/Web3Client'
 
 const Modal = ({
   userWallet,
   setModal,
+  setUser,
   pool
 }) => {
   const [approveLoader, setApproveLoader] = useState(false)
@@ -58,8 +60,25 @@ const Modal = ({
     }
   }, [userWallet])
 
-  const approve = (event) => {
+  const approve = async (event) => {
     event.preventDefault()
+
+    if (!userWallet) {
+      try {
+        const web3Client = new Web3Client()
+        // Enable ETH process ...
+        await web3Client.connectEth()
+
+        // Get and update props wallet
+        const wallet = await web3Client.getWallet()
+        setUser(wallet)
+      } catch (error) {
+        console.log(error)
+      } finally {
+        return
+      }
+    }
+
     if (approveLoader) {
       return
     }
@@ -251,10 +270,15 @@ const RodalContent = styled.div`
     height: 50px;
     border-radius: 4px;
     cursor: pointer;
+    transition: all 300ms;
 
     &:disabled {
       cursor: default;
       opacity: 0.5;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
     }
   }
 
@@ -277,4 +301,13 @@ const Input = styled.input`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  border: 1px solid #011130;
+  border-radius: 4px;
+  -moz-appearance: textfield;
+
+  &:active,
+  &:focus {
+    outline: none;
+    border: 1px solid #015fcc
+  }
 `

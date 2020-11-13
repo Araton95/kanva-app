@@ -60,6 +60,14 @@ const LandingSection = () => {
   }, [])
 
 
+  useEffect(() => {
+    if (address) {
+      getKanvaBalance(address).then(knv => {
+        setKnvBalance(formatNumber(fromWeiToKanva(knv)))
+      })
+    }
+  }, [address])
+
   const openModal = (pool) => {
     setSelectedPool(pool)
     setModal(true)
@@ -211,6 +219,7 @@ const LandingSection = () => {
       { showModal &&
         <Modal
           setModal={setModal}
+          setUser={setAddress}
           pool={selectedPool}
           userWallet={address}
         />
