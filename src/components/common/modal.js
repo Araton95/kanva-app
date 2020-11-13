@@ -1,8 +1,17 @@
-import React from "react";
-import Rodal from "rodal";
-import styled from "styled-components";
+import React, { useState, useEffect } from "react"
+import Rodal from "rodal"
+import styled from "styled-components"
 
-const Modal = ({ showModal, setModal }) => {
+import { Pools } from '../../constants'
+
+const Modal = ({
+  showModal,
+  setModal,
+  pool
+}) => {
+  const isKnvPoolSelected = pool === Pools.KNV_ETH
+  const poolTokenName = `${pool}-UNIV2-LP`
+
   return (
     <RodalContainer>
       <Rodal
@@ -13,29 +22,40 @@ const Modal = ({ showModal, setModal }) => {
         }}
       >
         <RodalContent>
-          <h2>Deposit $MEME, Earn Pineapples, Mint NFTs.</h2>
+        { isKnvPoolSelected ?
+          <>
+            <h2>Deposit {poolTokenName} tokens, Earn KNV, Earn Palettes, Mint NFTs.</h2>
+            <p>
+              Staking {poolTokenName} tokens in the Genesis pool earns you roughly 1 credit
+              per day. With enough Palette, you can mint an exclusive
+              limited-edition NFT meme. Supply and palettes required differ
+              across NFTs.
+            </p>
+
+            <button>Approve {poolTokenName}</button>
+
+            <p>
+              You are currently staking <span> 0 {poolTokenName} </span> - the maximum is 5 {poolTokenName}
+            </p>
+          </> :
+          <>
+          <h2>Deposit{poolTokenName} tokens, earn KNV.</h2>
           <p>
-            Staking MEME tokens in the Genesis pool earns you roughly 1 credit
-            per day. With enough pineapple, you can mint an exclusive
-            limited-edition NFT meme. Supply and pineapples required differ
-            across NFTs.
+            Staking {poolTokenName} tokens in the Staking reward pool earns you KNV tokens.
           </p>
 
-          <button>Approve Meme</button>
-
-          <p>
-            You are currently staking <span> 0 $MEME</span> - the maximum is 5
-            $MEME
-          </p>
+          <button>Approve {poolTokenName}</button>
+        </>
+        }
 
           <div className="line"></div>
         </RodalContent>
       </Rodal>
     </RodalContainer>
-  );
-};
+  )
+}
 
-export default Modal;
+export default Modal
 
 const RodalContainer = styled.div`
   .rodal {
@@ -86,7 +106,7 @@ const RodalContent = styled.div`
     font-size: 18px;
     background: #fff;
     border: 1px solid #010f30;
-    width: 190px;
+    width: 275px;
     height: 50px;
     border-radius: 4px;
     cursor: pointer;

@@ -21,17 +21,18 @@ const USDC_ETH_BG = require("../../assets/images/farming-platform/USDC_ETH_BG.pn
 const USDC_ETH_ICON = require("../../assets/images/farming-platform/USDC_ETH_ICON.png")
 
 const LandingSection = () => {
-  const web3Client = new Web3Client()
 
-  const [showModal, setModal] = React.useState(false)
+  const [showModal, setModal] = useState(false)
   const [knvBalance, setKnvBalance] = useState(0)
   const [knvSupply, setKnvSupply] = useState(0)
   const [knvEthDeposit, setKnvEthDeposit] = useState(0)
   const [daiEthDeposit, setDaiEthDeposit] = useState(0)
   const [usdcEthDeposit, setUsdcEthDeposit] = useState(0)
   const [usdtEthDeposit, setUsdtEthDeposit] = useState(0)
+  const [selectedPool, setSelectedPool] = useState(null)
 
   useEffect(() => {
+    const web3Client = new Web3Client()
     web3Client.getWallet().then(async wallet => {
       if (wallet) {
         const knv = await getKanvaBalance(wallet)
@@ -54,6 +55,12 @@ const LandingSection = () => {
       setUsdcEthDeposit(formatNumber(fromWeiToKanva(poolDeposited)))
     })
   }, [])
+
+
+  const openModal = (pool) => {
+    setSelectedPool(pool)
+    setModal(true)
+  }
 
   return (
     <Container>
@@ -129,7 +136,7 @@ const LandingSection = () => {
                   <div className="text">1LP = 1PLTE (24hrs)</div>
                 </div>
               </div>
-              <button onClick={() => setModal(true)}>Deposit</button>
+              <button onClick={() => openModal(Pools.KNV_ETH)}>Deposit</button>
             </DepositContent>
           </DepositCard>
 
@@ -150,7 +157,7 @@ const LandingSection = () => {
                     <div className="text">12.4615 KNV / week</div>
                   </div>
               </div>
-              <button onClick={() => setModal(true)}>Deposit</button>
+              <button onClick={() => openModal(Pools.DAI_ETH)}>Deposit</button>
             </DepositContent>
           </DepositCard>
 
@@ -171,7 +178,7 @@ const LandingSection = () => {
                     <div className="text">12.4615 KNV / week</div>
                   </div>
               </div>
-              <button onClick={() => setModal(true)}>Deposit</button>
+              <button onClick={() => openModal(Pools.USDT_ETH)}>Deposit</button>
             </DepositContent>
           </DepositCard>
 
@@ -192,13 +199,17 @@ const LandingSection = () => {
                     <div className="text">12.4615 KNV / week</div>
                   </div>
               </div>
-              <button onClick={() => setModal(true)}>Deposit</button>
+              <button onClick={() => openModal(Pools.USDC_ETH)}>Deposit</button>
             </DepositContent>
           </DepositCard>
         </CardContainer>
       </VerticalCenter>
 
-      <Modal showModal={showModal} setModal={setModal} />
+      <Modal
+        showModal={showModal}
+        setModal={setModal}
+        pool={selectedPool}
+      />
     </Container>
   )
 }

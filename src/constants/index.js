@@ -1,8 +1,8 @@
 export const Pools = Object.freeze({
-  KNV_ETH: 'KNV_ETH',
-  USDC_ETH: 'USDC_ETH',
-  USDT_ETH: 'USDT_ETH',
-  DAI_ETH: 'DAI_ETH'
+  KNV_ETH: 'KNV/ETH',
+  USDC_ETH: 'USDC/ETH',
+  USDT_ETH: 'USDT/ETH',
+  DAI_ETH: 'DAI/ETH'
 })
 
 export const wssGateway = 'wss://mainnet.infura.io/ws/v3/723b4aa0e1984905ac524232c6764ef2'
