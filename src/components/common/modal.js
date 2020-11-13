@@ -210,7 +210,7 @@ const Modal = ({
                         Max
                       </span>
                     </InputGroup>
-                    <button type="submit" disabled={depositLoader}>
+                    <button type="submit" disabled={depositLoader || parseFloat(fromWei(lpBalance)) === 0}>
                       { depositLoader ? <Spin /> : 'Deposit' }
                     </button>
                   </Form>
@@ -232,7 +232,7 @@ const Modal = ({
                         Max
                       </span>
                     </InputGroup>
-                    <button type="submit" disabled={withdrawLoader}>
+                    <button type="submit" disabled={withdrawLoader || parseFloat(fromWei(deposited)) === 0}>
                       { withdrawLoader ? <Spin /> : 'Withdraw' }
                     </button>
                   </Form>
@@ -323,7 +323,7 @@ const RodalContent = styled.div`
       opacity: 0.5;
     }
 
-    &:hover {
+    &:not([disabled]):hover {
       transform: translateY(-3px);
     }
   }
