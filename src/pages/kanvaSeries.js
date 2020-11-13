@@ -1,12 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import SEO from "../components/SEO";
+import React from "react"
+import styled from "styled-components"
+import SEO from "../components/SEO"
 
-import Modal from "../components/common/modal";
-import { Container, Button } from "../styles";
-import CardList from "../components/kanva-series/card-list";
-const background = require("../assets/images/kanva-series/stars_bg.png");
-const farmingIcon = require("../assets/images/farming-btn-icon.png");
+import Modal from "../components/common/modal"
+import { Container, Button } from "../styles"
+import CardList from "../components/kanva-series/card-list"
+import { Pools } from '../constants'
+
+const background = require("../assets/images/kanva-series/stars_bg.png")
+const farmingIcon = require("../assets/images/farming-btn-icon.png")
 
 const BackgroundImage = styled.div`
   width: 100%;
@@ -132,7 +134,7 @@ const KavaSeries = () => {
           </Container>
         </VerticalCenter>
       </BackgroundImage>
-      <Modal showModal={showModal} setModal={setModal} />
+      <Modal showModal={showModal} setModal={setModal} pool={Pools['KNV/ETH']} />
     </>
   );
 };

@@ -57,25 +57,25 @@ export class KanvaNft extends ContractSingleton {
 
 export class KnvEthPool extends ContractSingleton {
   static createInstance() {
-    return new KnvEthPool(PaletteRewards, poolsAddresses['KNV_ETH_POOL'])
+    return new KnvEthPool(PaletteRewards, poolsAddresses['KNV/ETH_POOL'])
   }
 }
 
 export class UsdcEthPool extends ContractSingleton {
   static createInstance() {
-    return new UsdcEthPool(StakingRewards, poolsAddresses['USDC_ETH_POOL'])
+    return new UsdcEthPool(StakingRewards, poolsAddresses['USDC/ETH_POOL'])
   }
 }
 
 export class UsdtEthPool extends ContractSingleton {
   static createInstance() {
-    return new UsdtEthPool(StakingRewards, poolsAddresses['USDT_ETH_POOL'])
+    return new UsdtEthPool(StakingRewards, poolsAddresses['USDT/ETH_POOL'])
   }
 }
 
 export class DaiEthPool extends ContractSingleton {
   static createInstance() {
-    return new DaiEthPool(StakingRewards, poolsAddresses['DAI_ETH_POOL'])
+    return new DaiEthPool(StakingRewards, poolsAddresses['DAI/ETH_POOL'])
   }
 }
 
@@ -83,24 +83,24 @@ export class DaiEthPool extends ContractSingleton {
 
 export class KnvEthV2 extends ContractSingleton {
   static createInstance() {
-    return new KnvEthV2(ERC20, liquidityTokensAddresses['KNV_ETH_V2'])
+    return new KnvEthV2(ERC20, liquidityTokensAddresses['KNV/ETH_V2'])
   }
 }
 
 export class UsdcEthV2 extends ContractSingleton {
   static createInstance() {
-    return new UsdcEthV2(ERC20, poolsAddresses['USDC_ETH_V2'])
+    return new UsdcEthV2(ERC20, liquidityTokensAddresses['USDC/ETH_V2'])
   }
 }
 
 export class UsdtEthV2 extends ContractSingleton {
   static createInstance() {
-    return new UsdtEthV2(ERC20, poolsAddresses['USDT_ETH_V2'])
+    return new UsdtEthV2(ERC20, liquidityTokensAddresses['USDT/ETH_V2'])
   }
 }
 
 export class DaiEthV2 extends ContractSingleton {
   static createInstance() {
-    return new DaiEthV2(ERC20, poolsAddresses['DAI_ETH_V2'])
+    return new DaiEthV2(ERC20, liquidityTokensAddresses['DAI/ETH_V2'])
   }
 }

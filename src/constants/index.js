@@ -1,11 +1,11 @@
 export const Pools = Object.freeze({
-  KNV_ETH: 'KNV/ETH',
-  USDC_ETH: 'USDC/ETH',
-  USDT_ETH: 'USDT/ETH',
-  DAI_ETH: 'DAI/ETH'
+  'KNV/ETH':  'KNV/ETH',
+  'USDC/ETH': 'USDC/ETH',
+  'USDT/ETH': 'USDT/ETH',
+  'DAI/ETH':  'DAI/ETH'
 })
 
-export const wssGateway = 'wss://mainnet.infura.io/ws/v3/723b4aa0e1984905ac524232c6764ef2'
+export const wssGateway = 'wss://ropsten.infura.io/ws/v3/723b4aa0e1984905ac524232c6764ef2'
 
 export const coreAddresses = Object.freeze({
   'ADMIN_WALLET':             '0x9C16c04bDA8904EC30a0D7045b276a3c66012Fd3',
@@ -15,17 +15,17 @@ export const coreAddresses = Object.freeze({
 })
 
 export const poolsAddresses = Object.freeze({
-  'KNV_ETH_POOL':   '0xE820b54177188b36f6c7A2202d66cC1C58BC6E82',
-  'USDC_ETH_POOL':  '0xDcB488Ecf9350D2EEe8B56daBB6Ac88745531e9E',
-  'USDT_ETH_POOL':  '0x3D091f330049E53c702a1c6196cDD731ce32af4c',
-  'DAI_ETH_POOL':   '0xC550AA736294797Bd3795954418B13356CC991ef',
+  'KNV/ETH_POOL':   '0xE820b54177188b36f6c7A2202d66cC1C58BC6E82',
+  'USDC/ETH_POOL':  '0xDcB488Ecf9350D2EEe8B56daBB6Ac88745531e9E',
+  'USDT/ETH_POOL':  '0x3D091f330049E53c702a1c6196cDD731ce32af4c',
+  'DAI/ETH_POOL':   '0xC550AA736294797Bd3795954418B13356CC991ef',
 })
 
 export const liquidityTokensAddresses = Object.freeze({
-  'KNV_ETH_V2':   '0x323dbc822407899eed2480bfa5b060d60523bd70',
-  'USDC_ETH_V2':  '0xbc30AaA8e99d0f0e435FC938034850c2fC77f753',
-  'USDT_ETH_V2':  '0x230c4C6De893F369920a94Bd354589EA1A8BcAfD',
-  'DAI_ETH_V2':   '0xE8c6d3d1612cfD65e3D8fcAB3bA90D100029a79C',
+  'KNV/ETH_V2':   '0x323dbc822407899eed2480bfa5b060d60523bd70',
+  'USDC/ETH_V2':  '0xbc30AaA8e99d0f0e435FC938034850c2fC77f753',
+  'USDT/ETH_V2':  '0x230c4C6De893F369920a94Bd354589EA1A8BcAfD',
+  'DAI/ETH_V2':   '0xE8c6d3d1612cfD65e3D8fcAB3bA90D100029a79C',
 })
 
 export const MAX_UINT =

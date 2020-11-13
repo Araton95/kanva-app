@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { Row, Col } from "antd"
+import { fromWei } from 'web3-utils'
 
 import Modal from "../common/modal"
 import Web3Client from '../../services/Web3Client'
@@ -23,6 +24,7 @@ const USDC_ETH_ICON = require("../../assets/images/farming-platform/USDC_ETH_ICO
 const LandingSection = () => {
 
   const [showModal, setModal] = useState(false)
+  const [address, setAddress] = useState(null)
   const [knvBalance, setKnvBalance] = useState(0)
   const [knvSupply, setKnvSupply] = useState(0)
   const [knvEthDeposit, setKnvEthDeposit] = useState(0)
@@ -37,22 +39,23 @@ const LandingSection = () => {
       if (wallet) {
         const knv = await getKanvaBalance(wallet)
         setKnvBalance(formatNumber(fromWeiToKanva(knv)))
+        setAddress(wallet)
       }
 
       const totalSupply = await getKanvaSupply()
       setKnvSupply(formatNumber(fromWeiToKanva(totalSupply)))
 
-      let poolDeposited = await getPoolSupply(Pools.KNV_ETH)
-      setKnvEthDeposit(formatNumber(fromWeiToKanva(poolDeposited)))
+      let poolDeposited = await getPoolSupply(Pools['KNV/ETH'])
+      setKnvEthDeposit(formatNumber(fromWei(poolDeposited)))
 
-      poolDeposited = await getPoolSupply(Pools.DAI_ETH)
-      setDaiEthDeposit(formatNumber(fromWeiToKanva(poolDeposited)))
+      poolDeposited = await getPoolSupply(Pools['DAI/ETH'])
+      setDaiEthDeposit(formatNumber(fromWei(poolDeposited)))
 
-      poolDeposited = await getPoolSupply(Pools.USDT_ETH)
-      setUsdtEthDeposit(formatNumber(fromWeiToKanva(poolDeposited)))
+      poolDeposited = await getPoolSupply(Pools['USDT/ETH'])
+      setUsdtEthDeposit(formatNumber(fromWei(poolDeposited)))
 
-      poolDeposited = await getPoolSupply(Pools.USDC_ETH)
-      setUsdcEthDeposit(formatNumber(fromWeiToKanva(poolDeposited)))
+      poolDeposited = await getPoolSupply(Pools['USDC/ETH'])
+      setUsdcEthDeposit(formatNumber(fromWei(poolDeposited)))
     })
   }, [])
 
@@ -136,7 +139,7 @@ const LandingSection = () => {
                   <div className="text">1LP = 1PLTE (24hrs)</div>
                 </div>
               </div>
-              <button onClick={() => openModal(Pools.KNV_ETH)}>Deposit</button>
+              <button onClick={() => openModal(Pools['KNV/ETH'])}>Deposit</button>
             </DepositContent>
           </DepositCard>
 
@@ -157,7 +160,7 @@ const LandingSection = () => {
                     <div className="text">12.4615 KNV / week</div>
                   </div>
               </div>
-              <button onClick={() => openModal(Pools.DAI_ETH)}>Deposit</button>
+              <button onClick={() => openModal(Pools['DAI/ETH'])}>Deposit</button>
             </DepositContent>
           </DepositCard>
 
@@ -178,7 +181,7 @@ const LandingSection = () => {
                     <div className="text">12.4615 KNV / week</div>
                   </div>
               </div>
-              <button onClick={() => openModal(Pools.USDT_ETH)}>Deposit</button>
+              <button onClick={() => openModal(Pools['USDT/ETH'])}>Deposit</button>
             </DepositContent>
           </DepositCard>
 
@@ -199,17 +202,19 @@ const LandingSection = () => {
                     <div className="text">12.4615 KNV / week</div>
                   </div>
               </div>
-              <button onClick={() => openModal(Pools.USDC_ETH)}>Deposit</button>
+              <button onClick={() => openModal(Pools['USDC/ETH'])}>Deposit</button>
             </DepositContent>
           </DepositCard>
         </CardContainer>
       </VerticalCenter>
 
-      <Modal
-        showModal={showModal}
-        setModal={setModal}
-        pool={selectedPool}
-      />
+      { showModal &&
+        <Modal
+          setModal={setModal}
+          pool={selectedPool}
+          userWallet={address}
+        />
+      }
     </Container>
   )
 }

@@ -1,5 +1,5 @@
 
-import { BN } from 'web3-utils'
+import { fromWei } from 'web3-utils'
 
 /*
  * @function shortenAddress
@@ -29,14 +29,15 @@ export function formatNumber(n, d = 3) {
 
 /**
  * @function fromWeiToKanva
+ * KNV use 8 decimals, gwei use 9. We using gwei and divide it to 10
  *
  * @param {number} amount - Amount in Kanva (10**8)
  * @return {number} - Formatted number
  */
 export function fromWeiToKanva(amount) {
-  const knvDecimal = new BN(8) // Constant value from contracts
-  const knvAmount = new BN(amount).div(new BN(10).pow(knvDecimal))
-  return knvAmount.toString()
+  const gweiAmount = fromWei(amount, 'gwei')
+  const kanvaAmount = gweiAmount * 10
+  return kanvaAmount.toString()
 }
 
 export class Singleton {

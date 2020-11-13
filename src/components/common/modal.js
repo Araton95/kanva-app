@@ -1,54 +1,191 @@
 import React, { useState, useEffect } from "react"
 import Rodal from "rodal"
+import { Spin } from 'antd'
+import { fromWei, toWei } from 'web3-utils'
 import styled from "styled-components"
 
-import { Pools } from '../../constants'
+import { Pools, MAX_UINT } from '../../constants'
+import {
+  depositLp,
+  withdrawLp,
+  withdrawReward,
+  approveLpTokens,
+  getLpApproval,
+  getPoolAddress,
+  getEarnedRewards,
+  getDepositedTokens
+} from '../../services/ContractService'
+import { fromWeiToKanva } from '../../utils'
 
 const Modal = ({
-  showModal,
+  userWallet,
   setModal,
   pool
 }) => {
-  const isKnvPoolSelected = pool === Pools.KNV_ETH
+  const [approveLoader, setApproveLoader] = useState(false)
+  const [depositLoader, setDepositLoader] = useState(false)
+  const [withdrawLoader, setWithdrawLoader] = useState(false)
+  const [claimLoader, setClaimLoader] = useState(false)
+
+  const [isApproved, setIsApproved] = useState(false)
+  const [deposited, setDeposited] = useState('0')
+  const [rewards, setRewards] = useState('0')
+
+  const isKnvPoolSelected = pool === Pools['KNV/ETH']
   const poolTokenName = `${pool}-UNIV2-LP`
+
+  const modalText = !isKnvPoolSelected ?
+    `Staking ${poolTokenName} tokens in the ${pool} pool earns you KNV Tokens.`
+    :
+    `Staking ${poolTokenName} tokens in the ${pool} pool earns you roughly x7 KNV compared to other pools,\
+    you could also earn 5 palette points(max) per day. With enough Palette points, you can mint an exclusive NFT.\
+    Supply and palettes required differs across NFTs.`
+
+  useEffect(() => {
+    if (userWallet) {
+      const poolAddress = getPoolAddress(pool)
+      getLpApproval(pool, userWallet, poolAddress).then(async currentAllowance => {
+        // If not approved
+        if (currentAllowance.toString() !== MAX_UINT) {
+          setIsApproved(false)
+          return
+        }
+
+        setIsApproved(true)
+        await updateDepositAmount()
+        await updateEarningsAmount()
+      })
+    }
+  }, [userWallet])
+
+  const approve = (event) => {
+    event.preventDefault()
+    if (approveLoader) {
+      return
+    }
+
+    setApproveLoader(true)
+
+    const poolAddress = getPoolAddress(pool)
+    approveLpTokens(pool, userWallet, poolAddress)
+    .then(() => setIsApproved(true))
+    .catch(error => console.log(error))
+    .finally(() => setApproveLoader(false))
+  }
+
+  const deposit = (event) => {
+    event.preventDefault()
+
+    if (depositLoader) {
+      return
+    }
+
+    setDepositLoader(true)
+
+    const amount = toWei(event.target.depositAmount.value)
+    depositLp(pool, userWallet, amount)
+    .then(() => updateDepositAmount())
+    .catch(error => console.log(error))
+    .finally(() => setDepositLoader(false))
+  }
+
+  const withdraw = (event) => {
+    event.preventDefault()
+    if (withdrawLoader) {
+      return
+    }
+
+    setWithdrawLoader(true)
+
+    const amount = toWei(event.target.withdrawAmount.value)
+    withdrawLp(pool, userWallet, amount)
+    .then(() => updateDepositAmount())
+    .catch(error => console.log(error))
+    .finally(() => setWithdrawLoader(false))
+  }
+
+  const claim = (event) => {
+    event.preventDefault()
+    if (claimLoader) {
+      return
+    }
+
+    setClaimLoader(true)
+
+    withdrawReward(pool, userWallet)
+    .then(() => updateEarningsAmount())
+    .catch(error => console.log(error))
+    .finally(() => setClaimLoader(false))
+  }
+
+  const updateDepositAmount = async () => {
+    const depositedTokens = await getDepositedTokens(pool, userWallet)
+    setDeposited(depositedTokens.toString())
+  }
+
+  const updateEarningsAmount = async () => {
+    const availableRewards = await getEarnedRewards(pool, userWallet)
+    setRewards(availableRewards.toString())
+  }
 
   return (
     <RodalContainer>
       <Rodal
-        visible={showModal}
+        visible={true}
         onClose={() => setModal(false)}
         customStyles={{
           height: "fit-content",
         }}
       >
         <RodalContent>
-        { isKnvPoolSelected ?
-          <>
-            <h2>Deposit {poolTokenName} tokens, Earn KNV, Earn Palettes, Mint NFTs.</h2>
-            <p>
-              Staking {poolTokenName} tokens in the Genesis pool earns you roughly 1 credit
-              per day. With enough Palette, you can mint an exclusive
-              limited-edition NFT meme. Supply and palettes required differ
-              across NFTs.
-            </p>
+            <h2>{ pool } pool</h2>
+            <InfoText>{ modalText }</InfoText>
+            {!isApproved &&
+              <>
+                <Form name="approve-ref" onSubmit={e => approve(e)}>
+                  <button type="submit" disabled={approveLoader}>
+                    { approveLoader ? <Spin /> : 'Approve' }
+                  </button>
+                </Form>
+              </>
+            }
 
-            <button>Approve {poolTokenName}</button>
+            {isApproved &&
+              <>
+                <div className="line"></div>
 
-            <p>
-              You are currently staking <span> 0 {poolTokenName} </span> - the maximum is 5 {poolTokenName}
-            </p>
-          </> :
-          <>
-          <h2>Deposit{poolTokenName} tokens, earn KNV.</h2>
-          <p>
-            Staking {poolTokenName} tokens in the Staking reward pool earns you KNV tokens.
-          </p>
+                <h2>Your deposit: <b>{ fromWei(deposited) }</b> { poolTokenName }</h2>
+                <>
+                  <h2>Stake more</h2>
+                  <Form name="deposit-ref" onSubmit={e => deposit(e)}>
+                    <Input type="number" name="depositAmount" required placeholder="0.5" step="any" />
+                    <button type="submit" disabled={depositLoader}>
+                      { depositLoader ? <Spin /> : 'Deposit' }
+                    </button>
+                  </Form>
 
-          <button>Approve {poolTokenName}</button>
-        </>
-        }
+                  <h2>Withdraw from pool</h2>
+                  <Form name="withdraw-ref" onSubmit={e => withdraw(e)}>
+                    <Input type="number" name="withdrawAmount" required placeholder="0.5" step="any" />
+                    <button type="submit" disabled={withdrawLoader}>
+                      { withdrawLoader ? <Spin /> : 'Withdraw' }
+                    </button>
+                  </Form>
+                </>
 
-          <div className="line"></div>
+                <div className="line"></div>
+
+                <h2>Your rewards: <b>{ fromWeiToKanva(rewards) }</b> KNV</h2>
+                <>
+                  <h2>Claim reward</h2>
+                  <Form name="claim-ref" onSubmit={e => claim(e)}>
+                    <button type="submit" disabled={claimLoader}>
+                      { claimLoader ? <Spin /> : 'Claim' }
+                    </button>
+                  </Form>
+                </>
+              </>
+            }
         </RodalContent>
       </Rodal>
     </RodalContainer>
@@ -68,6 +205,10 @@ const RodalContainer = styled.div`
     }
   }
 `;
+
+const InfoText = styled.p`
+  margin-bottom: 20px
+`
 
 const RodalContent = styled.div`
   margin-top: 15px;
@@ -99,17 +240,22 @@ const RodalContent = styled.div`
   }
 
   button {
-    margin: 20px 0;
+    margin: 0;
     outline: none;
     font-family: Ubuntu;
     font-weight: 500;
     font-size: 18px;
     background: #fff;
     border: 1px solid #010f30;
-    width: 275px;
+    width: 175px;
     height: 50px;
     border-radius: 4px;
     cursor: pointer;
+
+    &:disabled {
+      cursor: default;
+      opacity: 0.5;
+    }
   }
 
   .line {
@@ -118,3 +264,17 @@ const RodalContent = styled.div`
     border: 1px dashed #bbb;
   }
 `;
+
+const Form = styled.form`
+  display: flex;
+  margin-bottom: 30px;
+`
+
+const Input = styled.input`
+  margin-right: 15px;
+  padding: 0 15px;
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`
