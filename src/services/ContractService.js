@@ -59,6 +59,11 @@ export const getKanvaBalance = (user) => {
   return instance.balanceOf(user).call()
 }
 
+export const getLpTokenBalance = (pool, user) => {
+  const instance = getLPTokenInstance(pool)
+  return instance.balanceOf(user).call()
+}
+
 export const getKanvaSupply = () => {
   const instance = KanvaToken.getInstance()
   return instance.totalSupply().call()

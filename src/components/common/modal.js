@@ -13,6 +13,7 @@ import {
   getLpApproval,
   getPoolAddress,
   getEarnedRewards,
+  getLpTokenBalance,
   getDepositedTokens
 } from '../../services/ContractService'
 import { fromWeiToKanva } from '../../utils'
@@ -33,6 +34,9 @@ const Modal = ({
   const [isApproved, setIsApproved] = useState(false)
   const [deposited, setDeposited] = useState('0')
   const [rewards, setRewards] = useState('0')
+  const [lpBalance, setLpBalance] = useState('0')
+  const [depositAmount, setDepositAmount] = useState('0.05')
+  const [withdrawAmount, setWithdrawAmount] = useState('0.05')
 
   const isKnvPoolSelected = pool === Pools['KNV/ETH']
   const poolTokenName = `${pool}-UNIV2-LP`
@@ -53,8 +57,11 @@ const Modal = ({
           setIsApproved(false)
           return
         }
-
         setIsApproved(true)
+
+        const lpTokenBalance = await getLpTokenBalance(pool, userWallet)
+        setLpBalance(lpTokenBalance.toString())
+
         await updateUserDepositAmount()
         await updateEarningsAmount()
       })
@@ -190,7 +197,19 @@ const Modal = ({
                 <>
                   <h2>Stake more</h2>
                   <Form name="deposit-ref" onSubmit={e => deposit(e)}>
-                    <Input type="number" name="depositAmount" required placeholder="0.5" step="any" />
+                    <InputGroup>
+                      <Input
+                        type="number"
+                        name="depositAmount"
+                        step="any"
+                        value={depositAmount}
+                        onChange={(e) => setDepositAmount(e.target.value)}
+                        required
+                      />
+                      <span onClick={() => setDepositAmount(fromWei(lpBalance))}>
+                        Max
+                      </span>
+                    </InputGroup>
                     <button type="submit" disabled={depositLoader}>
                       { depositLoader ? <Spin /> : 'Deposit' }
                     </button>
@@ -198,7 +217,21 @@ const Modal = ({
 
                   <h2>Withdraw from pool</h2>
                   <Form name="withdraw-ref" onSubmit={e => withdraw(e)}>
-                    <Input type="number" name="withdrawAmount" required placeholder="0.5" step="any" />
+                    <InputGroup>
+                      <Input
+                        type="number"
+                        name="withdrawAmount"
+                        required
+                        placeholder="0.5"
+                        step="any"
+                        value={withdrawAmount}
+                        onChange={(e) => setWithdrawAmount(e.target.value)}
+                        required
+                      />
+                      <span onClick={() => setWithdrawAmount(fromWei(deposited))}>
+                        Max
+                      </span>
+                    </InputGroup>
                     <button type="submit" disabled={withdrawLoader}>
                       { withdrawLoader ? <Spin /> : 'Withdraw' }
                     </button>
@@ -307,9 +340,29 @@ const Form = styled.form`
   margin-bottom: 30px;
 `
 
-const Input = styled.input`
+const InputGroup = styled.div`
+  position: relative;
   margin-right: 15px;
-  padding: 0 15px;
+
+  span {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    padding: 12px 10px;
+    font-size: 16px;
+    transition: 300ms color;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 100;
+
+    &:hover {
+      color: #015fcc;
+    }
+  }
+`
+
+const Input = styled.input`
+  padding: 0 50px 0 15px;
   font-size: 18px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -317,6 +370,7 @@ const Input = styled.input`
   border: 1px solid #011130;
   border-radius: 4px;
   -moz-appearance: textfield;
+  height: 100%;
 
   &:active,
   &:focus {
