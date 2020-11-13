@@ -3,6 +3,7 @@ import { Spin } from "antd";
 import styled from "styled-components";
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon'
 import { Link } from "gatsby"
+import { fromWei } from "web3-utils"
 
 import { Container } from "../styles";
 import WalletIcon from "../assets/images/wallet-ico.png";
@@ -36,9 +37,9 @@ const UnlockWallet = () => {
       const knv = await getKanvaBalance(userWallet)
       const plte = await getPaletteBalance(userWallet)
 
-      setAddress(userWallet)
-      setKnvBalance(knv)
-      setPlteBalance(plte)
+      setAddress(shortenAddress(userWallet))
+      setKnvBalance(formatNumber(fromWeiToKanva(knv)))
+      setPlteBalance(formatNumber(fromWei(plte)))
       setConnected(true)
     } catch (error) {
       console.log('error', error)
@@ -56,9 +57,9 @@ const UnlockWallet = () => {
               {isConnected &&
                 <WalletContent>
                   <Item><Link to="/comingSoon">My Collection</Link></Item>
-                  <Item>{ formatNumber(fromWeiToKanva(knvBalance)) } KNV</Item>
+                  <Item>{ knvBalance } KNV</Item>
                   <Item>{ plteBalance } PLTE</Item>
-                  <Item>{ shortenAddress(address) }</Item>
+                  <Item>{ address }</Item>
                   <Jazzicon diameter={18} seed={jsNumberForAddress(address)} />
                 </WalletContent>
               }

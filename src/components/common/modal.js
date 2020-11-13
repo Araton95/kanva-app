@@ -4,7 +4,7 @@ import { Spin } from 'antd'
 import { fromWei, toWei } from 'web3-utils'
 import styled from "styled-components"
 
-import { Pools, MAX_UINT } from '../../constants'
+import { Pools } from '../../constants'
 import {
   depositLp,
   withdrawLp,
@@ -53,14 +53,14 @@ const Modal = ({
       const poolAddress = getPoolAddress(pool)
       getLpApproval(pool, userWallet, poolAddress).then(async currentAllowance => {
         // If not approved
-        if (currentAllowance.toString() !== MAX_UINT) {
+        if (currentAllowance.toString() === '0') {
           setIsApproved(false)
           return
         }
         setIsApproved(true)
 
         const lpTokenBalance = await getLpTokenBalance(pool, userWallet)
-        setLpBalance(lpTokenBalance.toString())
+        setLpBalance(fromWei(lpTokenBalance.toString()))
 
         await updateUserDepositAmount()
         await updateEarningsAmount()
@@ -159,12 +159,12 @@ const Modal = ({
 
   const updateUserDepositAmount = async () => {
     const depositedTokens = await getDepositedTokens(pool, userWallet)
-    setDeposited(depositedTokens.toString())
+    setDeposited(fromWei(depositedTokens.toString()))
   }
 
   const updateEarningsAmount = async () => {
     const availableRewards = await getEarnedRewards(pool, userWallet)
-    setRewards(availableRewards.toString())
+    setRewards(fromWeiToKanva(availableRewards.toString()))
   }
 
   return (
@@ -193,7 +193,7 @@ const Modal = ({
               <>
                 <div className="line"></div>
 
-                <h2>Your deposit: <b>{ fromWei(deposited) }</b> { poolTokenName }</h2>
+                <h2>Your deposit: <b>{ deposited }</b> { poolTokenName }</h2>
                 <>
                   <h2>Stake more</h2>
                   <Form name="deposit-ref" onSubmit={e => deposit(e)}>
@@ -206,11 +206,11 @@ const Modal = ({
                         onChange={(e) => setDepositAmount(e.target.value)}
                         required
                       />
-                      <span onClick={() => setDepositAmount(fromWei(lpBalance))}>
+                      <span onClick={() => setDepositAmount(lpBalance)}>
                         Max
                       </span>
                     </InputGroup>
-                    <button type="submit" disabled={depositLoader || parseFloat(fromWei(lpBalance)) === 0}>
+                    <button type="submit" disabled={depositLoader || parseFloat(lpBalance) === 0}>
                       { depositLoader ? <Spin /> : 'Deposit' }
                     </button>
                   </Form>
@@ -228,11 +228,11 @@ const Modal = ({
                         onChange={(e) => setWithdrawAmount(e.target.value)}
                         required
                       />
-                      <span onClick={() => setWithdrawAmount(fromWei(deposited))}>
+                      <span onClick={() => setWithdrawAmount(deposited)}>
                         Max
                       </span>
                     </InputGroup>
-                    <button type="submit" disabled={withdrawLoader || parseFloat(fromWei(deposited)) === 0}>
+                    <button type="submit" disabled={withdrawLoader || parseFloat(deposited) === 0}>
                       { withdrawLoader ? <Spin /> : 'Withdraw' }
                     </button>
                   </Form>
@@ -240,7 +240,7 @@ const Modal = ({
 
                 <div className="line"></div>
 
-                <h2>Your rewards: <b>{ fromWeiToKanva(rewards) }</b> KNV</h2>
+                <h2>Your rewards: <b>{ rewards }</b> KNV</h2>
                 <>
                   <h2>Claim reward</h2>
                   <Form name="claim-ref" onSubmit={e => claim(e)}>

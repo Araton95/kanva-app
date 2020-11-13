@@ -71,7 +71,7 @@ export const getKanvaSupply = () => {
 
 export const getPaletteBalance = (user) => {
   const instance = KnvEthPool.getInstance()
-  return instance.pallettes(user).call()
+  return instance.palletteEarned(user).call()
 }
 
 export const getEarnedRewards = (pool, user) => {
