@@ -37,7 +37,12 @@ export function formatNumber(n, d = 3) {
 export function fromWeiToKanva(amount) {
   const gweiAmount = fromWei(amount, 'gwei')
   const kanvaAmount = gweiAmount * 10
-  return kanvaAmount.toString()
+
+  if (getDecimalsCount(kanvaAmount) > 8) {
+    return kanvaAmount.toFixed(8)
+  } else {
+    return kanvaAmount.toString()
+  }
 }
 
 export class Singleton {
@@ -52,3 +57,7 @@ export class Singleton {
   }
 }
 
+export const getDecimalsCount = (value) => {
+  if (Math.floor(value) === value) return 0
+  return value.toString().split(".")[1].length || 0;
+}

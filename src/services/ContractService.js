@@ -76,7 +76,7 @@ export const getPaletteBalance = (user) => {
 
 export const getEarnedRewards = (pool, user) => {
   const instance = getPoolInstance(pool)
-  return instance.rewards(user).call()
+  return instance.earned(user).call()
 }
 
 export const getPoolAddress = (pool) => {
