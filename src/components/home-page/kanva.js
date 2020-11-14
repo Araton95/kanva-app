@@ -58,8 +58,13 @@ const Title = styled.h1`
 
 const VideoPlayer = styled.div`
   margin: 50px;
-
   margin-top: 80px;
+
+
+  @media (max-width: 600px) {
+    margin: 20px;
+    margin-top: 40px;
+  }
 
   .video-react {
     box-shadow: -4.3px -4.3px 6px 0px #011844, 4.3px 4.3px 6px 0px #000a1f;
