@@ -37,7 +37,7 @@ const UnlockWallet = () => {
       const knv = await getKanvaBalance(userWallet)
       const plte = await getPaletteBalance(userWallet)
 
-      setAddress(shortenAddress(userWallet))
+      setAddress(userWallet)
       setKnvBalance(formatNumber(fromWeiToKanva(knv)))
       setPlteBalance(formatNumber(fromWei(plte)))
       setConnected(true)
@@ -59,7 +59,7 @@ const UnlockWallet = () => {
                   <Item><Link to="/comingSoon">My Collection</Link></Item>
                   <Item>{ knvBalance } KNV</Item>
                   <Item>{ plteBalance } PLTE</Item>
-                  <Item>{ address }</Item>
+                  <Item>{ shortenAddress(address) }</Item>
                   <Jazzicon diameter={18} seed={jsNumberForAddress(address)} />
                 </WalletContent>
               }
