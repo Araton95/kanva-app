@@ -108,10 +108,10 @@ const LandingSection = () => {
                 <img className="icon" src={knvIcon} alt="Kanva balance icon"></img>
                 <p>{ knvBalance } KNV</p>
               </TopSection>
-              <BottomSection>
+              {/* <BottomSection>
                 <p>Pending harvest</p>
                 <p>0 KNV</p>
-              </BottomSection>
+              </BottomSection> */}
             </BalanceCard>
 
             <BalanceCard>
@@ -123,8 +123,8 @@ const LandingSection = () => {
                 <p>{ knvSupply } KNV</p>
               </TopSection>
               <BottomSection>
-                <p>New rewards per block</p>
-                <p>100 KNV</p>
+                <p>Total rewards per week</p>
+                <p>124.6152 KNV</p>
               </BottomSection>
             </BalanceCard>
           </BalanceCardContainer>
