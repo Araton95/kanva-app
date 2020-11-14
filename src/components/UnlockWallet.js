@@ -100,8 +100,9 @@ const Item = styled.p`
   @media (max-width: 800px) {
     margin-right: 10px;
     font-size: 14px;
+    white-space: nowrap;
 
-    :last-child {
+    &:last-of-type {
       margin-right: 0;
     }
   }
@@ -139,6 +140,12 @@ const WalletButton = styled.div`
 const WalletContent = styled.div`
   display: flex;
   align-items: center;
+
+  @media (max-width: 800px) {
+    .paper {
+      display: none !important;
+    }
+  }
 `;
 
 const WalletButtonContainer = styled.div`

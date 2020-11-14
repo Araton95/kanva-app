@@ -541,7 +541,7 @@ const DepositContent = styled.div`
         text-align: center;
 
         @media (max-width: 600px) {
-          font-size: 16px;
+          font-size: 14px;
         }
       }
     }

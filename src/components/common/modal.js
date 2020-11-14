@@ -44,9 +44,9 @@ const Modal = ({
   const modalText = !isKnvPoolSelected ?
     `Staking ${poolTokenName} tokens in the ${pool} pool earns you KNV Tokens.`
     :
-    `Staking ${poolTokenName} tokens in the ${pool} pool earns you roughly x7 KNV compared to other pools,\
-    you could also earn 5 palette points(max) per day. With enough Palette points, you can mint an exclusive NFT.\
-    Supply and palettes required differs across NFTs.`
+    `Staking ${poolTokenName} tokens in the ${pool} pool earns you roughly x7 KNV compared to other pools.
+    You could also earn five palette points(max) per day. With enough Palette points, you can mint an exclusive NFT.
+    Supply and palettes required are different across NFTs.`
 
   useEffect(() => {
     if (userWallet) {
@@ -281,10 +281,6 @@ const RodalContent = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 776px) {
-    padding: 0;
-  }
-
   h2 {
     color: #010f30;
     font-family: Ubuntu;
@@ -317,6 +313,8 @@ const RodalContent = styled.div`
     border-radius: 4px;
     cursor: pointer;
     transition: all 300ms;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     &:disabled {
       cursor: default;
@@ -333,11 +331,42 @@ const RodalContent = styled.div`
     margin: 20px 0;
     border: 1px dashed #bbb;
   }
+
+  @media (max-width: 776px) {
+    padding: 0;
+  }
+
+  @media (max-width: 600px) {
+    .line {
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
 `;
 
 const Form = styled.form`
   display: flex;
   margin-bottom: 30px;
+
+  @media (max-width: 600px) {
+    margin-bottom: 0px;
+    & > div {
+      width: 70%;
+
+      input {
+        font-size: 16px;
+        width: 100%;
+      }
+    }
+
+    & > button {
+      font-size: 16px;
+      width: 30%;
+    }
+  }
 `
 
 const InputGroup = styled.div`
