@@ -58,14 +58,21 @@ const Modal = ({
         }
         setIsApproved(true)
 
-        const lpTokenBalance = await getLpTokenBalance(pool, userWallet)
-        setLpBalance(fromWei(lpTokenBalance.toString()))
-
+        await updateLpBalance()
         await updateUserDepositAmount()
         await updateEarningsAmount()
       })
     }
   }, [userWallet])
+
+  const updateLpBalance = async () => {
+    try {
+      const lpTokenBalance = await getLpTokenBalance(pool, userWallet)
+      setLpBalance(fromWei(lpTokenBalance.toString()))
+    } catch (error) {
+      throw error
+    }
+  }
 
   const approve = async (event) => {
     event.preventDefault()
@@ -78,7 +85,7 @@ const Modal = ({
 
     const poolAddress = getPoolAddress(pool)
     approveLpTokens(pool, userWallet, poolAddress)
-    .then(() => setIsApproved(true))
+    .then(() => updateLpBalance().then(() => setIsApproved(true)))
     .catch(error => console.log(error))
     .finally(() => setApproveLoader(false))
   }
