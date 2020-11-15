@@ -1,73 +1,255 @@
-import React from "react";
-import styled from "styled-components";
-import { Row, Col } from "antd";
+import React, { useState, useEffect } from "react"
+import styled from "styled-components"
+import { Row, Col } from "antd"
+import { fromWei } from 'web3-utils'
 
-import Modal from "../common/modal";
-import { balance_cards, deposit_cards, Title, Description_Text } from "./data";
-const background = require("../../assets/images/farming-platform/bg.png");
+import Modal from "../common/modal"
+import Web3Client from '../../services/Web3Client'
+import { formatNumber, fromWeiToKanva } from '../../utils'
+import { getKanvaBalance, getKanvaSupply, getPoolSupply } from "../../services/ContractService"
+import { Pools } from '../../constants'
+
+const knvIcon = require("../../assets/images/farming-platform/KANVA.png")
+const totalIcon = require("../../assets/images/farming-platform/TOTAL.png")
+const background = require("../../assets/images/farming-platform/bg.png")
+const KNV_ETH_BG = require("../../assets/images/farming-platform/KNV_ETH_BG.png")
+const KNV_ETH_ICON = require("../../assets/images/farming-platform/KNV_ETH_ICON.png")
+const DAI_ETH_BG = require("../../assets/images/farming-platform/DAI_ETH_BG.png")
+const DAI_ETH_ICON = require("../../assets/images/farming-platform/DAI_ETH_ICON.png")
+const USDT_ETH_BG = require("../../assets/images/farming-platform/USDT_ETH_BG.png")
+const USDT_ETH_ICON = require("../../assets/images/farming-platform/USDT_ETH_ICON.png")
+const USDC_ETH_BG = require("../../assets/images/farming-platform/USDC_ETH_BG.png")
+const USDC_ETH_ICON = require("../../assets/images/farming-platform/USDC_ETH_ICON.png")
 
 const LandingSection = () => {
-  const [showModal, setModal] = React.useState(false);
+
+  const [showModal, setModal] = useState(false)
+  const [address, setAddress] = useState(null)
+  const [knvBalance, setKnvBalance] = useState(0)
+  const [knvSupply, setKnvSupply] = useState(0)
+  const [knvEthDeposit, setKnvEthDeposit] = useState(0)
+  const [daiEthDeposit, setDaiEthDeposit] = useState(0)
+  const [usdcEthDeposit, setUsdcEthDeposit] = useState(0)
+  const [usdtEthDeposit, setUsdtEthDeposit] = useState(0)
+  const [selectedPool, setSelectedPool] = useState(null)
+
+  useEffect(() => {
+    const web3Client = new Web3Client()
+    web3Client.getWallet().then(async wallet => {
+      if (wallet) {
+        const knv = await getKanvaBalance(wallet)
+        setKnvBalance(formatNumber(fromWeiToKanva(knv)))
+        setAddress(wallet)
+      }
+
+      const totalSupply = await getKanvaSupply()
+      setKnvSupply(formatNumber(fromWeiToKanva(totalSupply)))
+
+      await updateDepositsAmounts()
+    }).catch(error => console.error(error))
+  }, [])
+
+  useEffect(() => {
+    if (address) {
+      getKanvaBalance(address).then(knv => {
+        setKnvBalance(formatNumber(fromWeiToKanva(knv)))
+      })
+    }
+  }, [address])
+
+  const updateDepositsAmounts = async () => {
+    try {
+      let poolDeposited = await getPoolSupply(Pools['KNV/ETH'])
+      setKnvEthDeposit(fromWei(poolDeposited))
+
+      poolDeposited = await getPoolSupply(Pools['DAI/ETH'])
+      setDaiEthDeposit(fromWei(poolDeposited))
+
+      poolDeposited = await getPoolSupply(Pools['USDT/ETH'])
+      setUsdtEthDeposit(fromWei(poolDeposited))
+
+      poolDeposited = await getPoolSupply(Pools['USDC/ETH'])
+      setUsdcEthDeposit(fromWei(poolDeposited), 12)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const openModal = async (pool) => {
+    try {
+      if (!address) {
+        const web3Client = new Web3Client()
+        // Enable ETH process ...
+        await web3Client.connectEth()
+
+        // Get and update props wallet
+        const wallet = await web3Client.getWallet()
+        setAddress(wallet)
+      }
+
+      setSelectedPool(pool)
+      setModal(true)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <Container>
       <VerticalCenter>
         <Row justify="center">
           <Col>
-            <BoldText>{Title}</BoldText>
-            <Description>{Description_Text}</Description>
+            <BoldText>Kanva farming platform</BoldText>
+            <Description>
+              KANVA is going to open 4 pools for Yield farming (Ecosystem Fund =
+              12,960 KNV) in the first year, 6,480 KNV will be allocated on the
+              1st year for Yield farming. It is going to be reduced to 50% every
+              year. This KNV is not subject to vesting or lock up. From this KANVA
+              allocated 70% or 4,536 KNV to KNV/ETH pool with 87.2307 KNV pool per
+              week. The remaining thirty percent or 1944 KNV will be equally
+              divided into three poll USDC/ETH, USDT/ETH, and DAI/ETH with each
+              has 10% or 648 allocations with of 12.4615 KNV pool per week.
+            </Description>
           </Col>
         </Row>
         <CardContainer>
           <BalanceCardContainer>
-            {balance_cards.map((data, index) => (
-              <BalanceCard key={index}>
-                <CardTitle>
-                  <p>{data.title}</p>
-                </CardTitle>
-                <TopSection>
-                  <img className="icon" src={data.icon} alt={data.icon}></img>
-                  <p>{data.amount}</p>
-                </TopSection>
-                <BottomSection>
-                  <p>{data.text_one}</p>
-                  <p>{data.text_two}</p>
-                </BottomSection>
-              </BalanceCard>
-            ))}
-          </BalanceCardContainer>
-          <POOL>
-            <BoldText>participating pools</BoldText>
-          </POOL>
+            <BalanceCard>
+              <CardTitle>
+                <p>Your KANVA Balance</p>
+              </CardTitle>
+              <TopSection>
+                <img className="icon" src={knvIcon} alt="Kanva balance icon"></img>
+                <p>{ knvBalance } KNV</p>
+              </TopSection>
+              {/* <BottomSection>
+                <p>Pending harvest</p>
+                <p>0 KNV</p>
+              </BottomSection> */}
+            </BalanceCard>
 
-          {deposit_cards.map((data, index) => (
-            <DepositCard key={index} img={data.bgImage} alt={data.bgImage}>
-              <DepositCardTitle>
-                <img src={data.title.img} alt={data.title.img} />
-                <p>{data.title.text}</p>
-              </DepositCardTitle>
-              <DepositContent>
-                <div className="text-container">
-                  {data.deposits.map((data, index) => (
-                    <div key={index} className="text-content">
-                      <div className="text">{data.text}</div>
-                      <div className="text">{data.amount}</div>
-                    </div>
-                  ))}
+            <BalanceCard>
+              <CardTitle>
+                <p>Total KANVA Supply</p>
+              </CardTitle>
+              <TopSection>
+                <img className="icon" src={totalIcon} alt="Kanva total supply icon"></img>
+                <p>{ knvSupply } KNV</p>
+              </TopSection>
+              <BottomSection>
+                <p>Total rewards per week</p>
+                <p>124.6152 KNV2</p>
+              </BottomSection>
+            </BalanceCard>
+          </BalanceCardContainer>
+
+          <PoolsHeader>
+            <BoldText>Participating pools</BoldText>
+          </PoolsHeader>
+
+          <DepositCard img={KNV_ETH_BG} alt="KNV/ETH Pool icon">
+            <DepositCardTitle>
+              <img src={KNV_ETH_ICON} alt="KNV_ETH_ICON" />
+              <p>KNV / ETH</p>
+            </DepositCardTitle>
+
+            <DepositContent>
+              <div className="text-container">
+                <div className="text-content">
+                  <div className="text">Total deposit</div>
+                  <div className="text">{ knvEthDeposit } UNIV2-LP</div>
                 </div>
-                <button onClick={() => setModal(true)}>{data.button}</button>
-              </DepositContent>
-            </DepositCard>
-          ))}
+                <div className="text-content">
+                  <div className="text">Pool rate</div>
+                  <div className="text">87.2307 KNV2 / week</div>
+                </div>
+                <div className="text-content">
+                  <div className="text">PLTE farm rate</div>
+                  <div className="text">0.00001LP = 1PLTE (24hrs)</div>
+                </div>
+              </div>
+              <button onClick={() => openModal(Pools['KNV/ETH'])}>Deposit</button>
+            </DepositContent>
+          </DepositCard>
+
+          <DepositCard img={DAI_ETH_BG} alt="DAI/ETH Pool icon">
+            <DepositCardTitle>
+              <img src={DAI_ETH_ICON} alt="DAI_ETH_ICON" />
+              <p>DAI / ETH</p>
+            </DepositCardTitle>
+
+            <DepositContent>
+              <div className="text-container">
+                <div className="text-content">
+                    <div className="text">Total deposit</div>
+                    <div className="text">{ daiEthDeposit } UNIV2-LP</div>
+                  </div>
+                  <div className="text-content">
+                    <div className="text">Pool rate</div>
+                    <div className="text">12.4615 KNV2 / week</div>
+                  </div>
+              </div>
+              <button onClick={() => openModal(Pools['DAI/ETH'])}>Deposit</button>
+            </DepositContent>
+          </DepositCard>
+
+          <DepositCard img={USDT_ETH_BG} alt="USDT/ETH Pool icon">
+            <DepositCardTitle>
+              <img src={USDT_ETH_ICON} alt="USDT_ETH_ICON" />
+              <p>USDT / ETH</p>
+            </DepositCardTitle>
+
+            <DepositContent>
+              <div className="text-container">
+                <div className="text-content">
+                    <div className="text">Total deposit</div>
+                    <div className="text">{ usdtEthDeposit } UNIV2-LP</div>
+                  </div>
+                  <div className="text-content">
+                    <div className="text">Pool rate</div>
+                    <div className="text">12.4615 KNV2 / week</div>
+                  </div>
+              </div>
+              <button onClick={() => openModal(Pools['USDT/ETH'])}>Deposit</button>
+            </DepositContent>
+          </DepositCard>
+
+          <DepositCard img={USDC_ETH_BG} alt="USDC/ETH Pool icon">
+            <DepositCardTitle>
+              <img src={USDC_ETH_ICON} alt="USDT_ETH_ICON" />
+              <p>USDC / ETH</p>
+            </DepositCardTitle>
+
+            <DepositContent>
+              <div className="text-container">
+                <div className="text-content">
+                    <div className="text">Total deposit</div>
+                    <div className="text">{ usdcEthDeposit } UNIV2-LP</div>
+                  </div>
+                  <div className="text-content">
+                    <div className="text">Pool rate</div>
+                    <div className="text">12.4615 KNV2 / week</div>
+                  </div>
+              </div>
+              <button onClick={() => openModal(Pools['USDC/ETH'])}>Deposit</button>
+            </DepositContent>
+          </DepositCard>
         </CardContainer>
       </VerticalCenter>
 
-      <Modal showModal={showModal} setModal={setModal} />
+      { showModal &&
+        <Modal
+          setModal={setModal}
+          pool={selectedPool}
+          userWallet={address}
+          updateDepositsAmounts={updateDepositsAmounts}
+        />
+      }
     </Container>
-  );
-};
+  )
+}
 
-export default LandingSection;
+export default LandingSection
 
 const Container = styled.div`
   width: 100%;
@@ -251,7 +433,7 @@ const Description = styled.h4`
   }
 `;
 
-const POOL = styled.div`
+const PoolsHeader = styled.div`
   margin-top: 30px;
   margin-bottom: 72px;
 `;
@@ -372,7 +554,7 @@ const DepositContent = styled.div`
         text-align: center;
 
         @media (max-width: 600px) {
-          font-size: 16px;
+          font-size: 14px;
         }
       }
     }

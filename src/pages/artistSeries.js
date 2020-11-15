@@ -77,7 +77,7 @@ const ArtistSeries = () => (
     <BackgroundImage>
       <VerticalCenter>
         <Container>
-          <Text font={25}>ARTIST SERIES</Text>
+          {/* <Text font={25}>ARTIST SERIES</Text>
           <TopButtons>
             <JointsButton>
               <Text>0 ETH/KNV UNIV2-LP</Text>
@@ -88,7 +88,7 @@ const ArtistSeries = () => (
               Manage Stake
               <img src={farmingIcon} alt="farming-icon.png" />
             </ManageStackButton>
-          </TopButtons>
+          </TopButtons> */}
         </Container>
       </VerticalCenter>
     </BackgroundImage>

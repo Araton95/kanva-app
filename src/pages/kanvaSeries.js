@@ -1,12 +1,16 @@
-import React from "react";
-import styled from "styled-components";
-import SEO from "../components/SEO";
+import React from "react"
+import styled from "styled-components"
+import SEO from "../components/SEO"
 
-import Modal from "../components/common/modal";
-import { Container, Button } from "../styles";
-import CardList from "../components/kanva-series/card-list";
-const background = require("../assets/images/kanva-series/stars_bg.png");
-const farmingIcon = require("../assets/images/farming-btn-icon.png");
+
+import Modal from "../components/common/modal"
+import { Container, Button } from "../styles"
+import CardList from "../components/kanva-series/card-list"
+import { Pools } from '../constants'
+
+const background = require("../assets/images/kanva-series/stars_bg.png")
+const farmingIcon = require("../assets/images/farming-btn-icon.png")
+
 
 const BackgroundImage = styled.div`
   width: 100%;
@@ -116,7 +120,7 @@ const KavaSeries = () => {
       <BackgroundImage>
         <VerticalCenter>
           <Container>
-            <Text font={25}>Kanva series</Text>
+            {/* <Text font={25}>Kanva series</Text>
             <TopButtons>
               <JointsButton>
                 <Text>0 ETH/KNV UNIV2-LP</Text>
@@ -128,11 +132,11 @@ const KavaSeries = () => {
                 <img src={farmingIcon} alt="farming-icon.png" />
               </ManageStackButton>
             </TopButtons>
-            <CardList />
+            <CardList /> */}
           </Container>
         </VerticalCenter>
       </BackgroundImage>
-      <Modal showModal={showModal} setModal={setModal} />
+      <Modal showModal={showModal} setModal={setModal} pool={Pools['KNV/ETH']} />
     </>
   );
 };

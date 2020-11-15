@@ -9,7 +9,7 @@ const backgroundImage = require("../../assets/images/knv-background.png");
 const farmingIcon = require("../../assets/images/farming-btn-icon.png");
 
 const data = {
-  unit1: "KVN",
+  unit1: "KNV",
   unit2: "ETH",
   percentage1: "70",
   percentage2: "70",

@@ -119,6 +119,10 @@ const Footer = () => (
             <Email>{content.email}</Email>
           </a>
 
+          <a href="https://solidity.finance/audits/Kanva/" target="_blank">
+            <Link>Smart contracts audit report</Link>
+          </a>
+
           <Row justify="space-between" align="bottom">
             <Col xs={0} md={6}>
               <FooterLogo src={logo} />
@@ -160,6 +164,14 @@ const Email = styled.p`
   font-size: 16px;
   font-family: Ubuntu;
   color: #fff;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 20px;
+`;
+const Link = styled.p`
+  font-size: 16px;
+  font-family: Ubuntu;
+  color: #27aae0;
   line-height: 1.2;
   text-align: center;
 `;

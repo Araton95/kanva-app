@@ -16,7 +16,7 @@ const CardList = ({
   <Card>
     <CardTopSection>
       <CardImage>
-        <img src={cardImage} alt="Card-image" />
+        <img src={cardImage} alt="Kanva NFT Card" />
       </CardImage>
     </CardTopSection>
     <CardBottomSection>

@@ -1,5 +1,5 @@
-import React from "react";
-import ComingSoon from "../components/common/comingSoon";
+import React from "react"
+import ComingSoon from "../components/common/comingSoon"
 
 const ComingSoonPage = () => (
   <>
@@ -7,4 +7,4 @@ const ComingSoonPage = () => (
   </>
 );
 
-export default ComingSoonPage;
+export default ComingSoonPage

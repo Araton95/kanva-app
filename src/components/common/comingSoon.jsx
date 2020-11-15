@@ -12,7 +12,7 @@ const Container = styled.div`
     rgba(33, 36, 41, 0) 100%
   );
   background-color: #001231;
-  z-index: 10;
+  z-index: 3;
 `;
 
 const BoldText = styled.h1`
