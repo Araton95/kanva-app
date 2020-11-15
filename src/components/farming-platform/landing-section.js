@@ -138,7 +138,7 @@ const LandingSection = () => {
               </TopSection>
               <BottomSection>
                 <p>Total rewards per week</p>
-                <p>124.6152 KNV</p>
+                <p>124.6152 KNV2</p>
               </BottomSection>
             </BalanceCard>
           </BalanceCardContainer>
@@ -161,11 +161,11 @@ const LandingSection = () => {
                 </div>
                 <div className="text-content">
                   <div className="text">Pool rate</div>
-                  <div className="text">87.2307 KNV / week</div>
+                  <div className="text">87.2307 KNV2 / week</div>
                 </div>
                 <div className="text-content">
                   <div className="text">PLTE farm rate</div>
-                  <div className="text">1LP = 1PLTE (24hrs)</div>
+                  <div className="text">0.00001LP = 1PLTE (24hrs)</div>
                 </div>
               </div>
               <button onClick={() => openModal(Pools['KNV/ETH'])}>Deposit</button>
@@ -186,7 +186,7 @@ const LandingSection = () => {
                   </div>
                   <div className="text-content">
                     <div className="text">Pool rate</div>
-                    <div className="text">12.4615 KNV / week</div>
+                    <div className="text">12.4615 KNV2 / week</div>
                   </div>
               </div>
               <button onClick={() => openModal(Pools['DAI/ETH'])}>Deposit</button>
@@ -207,7 +207,7 @@ const LandingSection = () => {
                   </div>
                   <div className="text-content">
                     <div className="text">Pool rate</div>
-                    <div className="text">12.4615 KNV / week</div>
+                    <div className="text">12.4615 KNV2 / week</div>
                   </div>
               </div>
               <button onClick={() => openModal(Pools['USDT/ETH'])}>Deposit</button>
@@ -228,7 +228,7 @@ const LandingSection = () => {
                   </div>
                   <div className="text-content">
                     <div className="text">Pool rate</div>
-                    <div className="text">12.4615 KNV / week</div>
+                    <div className="text">12.4615 KNV2 / week</div>
                   </div>
               </div>
               <button onClick={() => openModal(Pools['USDC/ETH'])}>Deposit</button>
