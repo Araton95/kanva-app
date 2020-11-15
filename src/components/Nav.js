@@ -50,7 +50,7 @@ const HeaderContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: flex-end;
-  z-index: 9;
+  z-index: 90;
 `;
 
 const Items = styled.div`
@@ -109,15 +109,15 @@ const Header = () => {
                 <Link to="/">
                   <MenuItem>KANVA</MenuItem>
                 </Link>
-                <Link to="/farmingPlatform">
+                <Link to="/soon">
                   <MenuItem>Farming Platform</MenuItem>
                 </Link>
-                <Link to="/nftPlatform">
+                <Link to="/soon">
                   <MenuItem>Nft Platform</MenuItem>
                 </Link>
 
-                <Link to="/governance">
-                  <MenuItem>Governance </MenuItem>
+                <Link to="/soon">
+                  <MenuItem>Governance</MenuItem>
                 </Link>
               </Items>
               <BurgerIcon onClick={() => setVisible(!visible)}>
@@ -141,14 +141,14 @@ const Header = () => {
           <Link to="/">
             <MenuItem>KANVA</MenuItem>
           </Link>
-          <Link to="/farmingPlatform">
+          <Link to="/soon">
             <MenuItem>Farming Platform</MenuItem>
           </Link>
-          <Link to="/nftPlatform">
+          <Link to="/soon">
             <MenuItem>Nft Platform</MenuItem>
           </Link>
 
-          <Link to="/governance">
+          <Link to="/soon">
             <MenuItem>Governance </MenuItem>
           </Link>
         </Drawer>
