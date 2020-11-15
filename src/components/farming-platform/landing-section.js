@@ -46,7 +46,7 @@ const LandingSection = () => {
       setKnvSupply(formatNumber(fromWeiToKanva(totalSupply)))
 
       await updateDepositsAmounts()
-    })
+    }).catch(error => console.error(error))
   }, [])
 
   useEffect(() => {
@@ -75,9 +75,23 @@ const LandingSection = () => {
     }
   }
 
-  const openModal = (pool) => {
-    setSelectedPool(pool)
-    setModal(true)
+  const openModal = async (pool) => {
+    try {
+      if (!address) {
+        const web3Client = new Web3Client()
+        // Enable ETH process ...
+        await web3Client.connectEth()
+
+        // Get and update props wallet
+        const wallet = await web3Client.getWallet()
+        setAddress(wallet)
+      }
+
+      setSelectedPool(pool)
+      setModal(true)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -226,7 +240,6 @@ const LandingSection = () => {
       { showModal &&
         <Modal
           setModal={setModal}
-          setUser={setAddress}
           pool={selectedPool}
           userWallet={address}
           updateDepositsAmounts={updateDepositsAmounts}

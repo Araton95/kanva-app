@@ -20,8 +20,10 @@ export default class Web3Client {
 
   getWallet() {
     if (Web3Client.instance) {
-      return this.web3.eth.getAccounts().then((accounts) => toChecksumAddress(accounts[0]) )
+      return this.web3.eth.getAccounts().then((accounts) => toChecksumAddress(accounts[0]))
     }
+
+    return null
   }
 
   createWeb3(provider) {
@@ -44,6 +46,9 @@ export default class Web3Client {
         window.ethereum.enable()
         .then(resolve)
         .catch(reject)
+      } else {
+        alert('Seems your browser does not support Ethereum wallets. \n\n Please install Metamask for interacting with Kanva!')
+        reject()
       }
     })
   }

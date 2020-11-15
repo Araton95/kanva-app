@@ -23,7 +23,6 @@ const Modal = ({
   updateDepositsAmounts,
   userWallet,
   setModal,
-  setUser,
   pool
 }) => {
   const [approveLoader, setApproveLoader] = useState(false)
@@ -70,22 +69,6 @@ const Modal = ({
 
   const approve = async (event) => {
     event.preventDefault()
-
-    if (!userWallet) {
-      try {
-        const web3Client = new Web3Client()
-        // Enable ETH process ...
-        await web3Client.connectEth()
-
-        // Get and update props wallet
-        const wallet = await web3Client.getWallet()
-        setUser(wallet)
-      } catch (error) {
-        console.log(error)
-      } finally {
-        return
-      }
-    }
 
     if (approveLoader) {
       return

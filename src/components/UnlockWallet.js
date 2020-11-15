@@ -30,9 +30,21 @@ const UnlockWallet = () => {
       // Enable ETH process ...
       await web3Client.connectEth()
 
-      // Set user address
+      // Fetch user address
       const userWallet = await web3Client.getWallet()
 
+      // Update user wallet and balances
+      await updateUserData(userWallet)
+
+      setConnected(true)
+      startAccountSwitchDetector()
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
+
+  const updateUserData = async (userWallet) => {
+    try {
       // Fetch kanva and palette balances from contracts
       const knv = await getKanvaBalance(userWallet)
       const plte = await getPaletteBalance(userWallet)
@@ -40,12 +52,19 @@ const UnlockWallet = () => {
       setAddress(userWallet)
       setKnvBalance(formatNumber(fromWeiToKanva(knv)))
       setPlteBalance(formatNumber(fromWei(plte)))
-      setConnected(true)
     } catch (error) {
-      console.log('error', error)
+      throw error
     } finally {
+      // Hide loader after all actions
       setShowLoader(false)
     }
+  }
+
+  const startAccountSwitchDetector = () => {
+    window.ethereum.on('accountsChanged', async (accounts) => {
+      setShowLoader(true)
+      await updateUserData(accounts[0])
+    })
   }
 
   return (
