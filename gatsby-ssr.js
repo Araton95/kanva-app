@@ -14,10 +14,6 @@ import "./node_modules/video-react/dist/video-react.css"; // import css
 import "./node_modules/rodal/lib/rodal.css";
 import Layout from "./src/components/Layout";
 
-
-import React from "react"
-import Layout from "./src/components/Layout";
-
 export function wrapPageElement({ element, props }) {
   return <Layout {...props}>{element}</Layout>;
 }
