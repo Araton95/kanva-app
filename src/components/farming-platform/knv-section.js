@@ -112,6 +112,24 @@ const SmallHeading = styled.h4`
   }
 `;
 
+const ButtonsGroup = styled.div`
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+
+  & > a:first-of-type {
+    margin-right: 20px;
+  }
+
+  @media (max-width: 672px) {
+    flex-direction: column;
+    & > a:first-of-type {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+`
+
 const ButtonImage = styled.img`
   padding-left: 14px;
   width: 50px;
@@ -135,12 +153,19 @@ const KNVSection = () => (
             while farming at KANVA. The accumulated palette attained can be used
             to buy and to have NFT cards in the KANVA collections.
           </Text>
-          <Link to="/nftPlatform">
-            <Button secondary>
-              Start Farming
-              <ButtonImage src={farmingIcon} alt="farming-icon.png" />
-            </Button>
-          </Link>
+          <ButtonsGroup>
+            <Link to="/nftPlatform">
+              <Button secondary>
+                Start Farming
+                <ButtonImage src={farmingIcon} alt="farming-icon.png" />
+              </Button>
+            </Link>
+            <a href="/FARMING_MANUAL.pdf" target="_blank">
+              <Button secondary>
+                Farming Manual
+              </Button>
+            </a>
+          </ButtonsGroup>
         </TextContainer>
         <ImageContainer>
           <SVG />
