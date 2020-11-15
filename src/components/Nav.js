@@ -109,10 +109,10 @@ const Header = () => {
                 <Link to="/">
                   <MenuItem>KANVA</MenuItem>
                 </Link>
-                <Link to="/soon">
+                <Link to="/farmingPlatform">
                   <MenuItem>Farming Platform</MenuItem>
                 </Link>
-                <Link to="/soon">
+                <Link to="/nftPlatform">
                   <MenuItem>Nft Platform</MenuItem>
                 </Link>
 
@@ -141,15 +141,15 @@ const Header = () => {
           <Link to="/">
             <MenuItem>KANVA</MenuItem>
           </Link>
-          <Link to="/soon">
+          <Link to="/farmingPlatform">
             <MenuItem>Farming Platform</MenuItem>
           </Link>
-          <Link to="/soon">
+          <Link to="/nftPlatform">
             <MenuItem>Nft Platform</MenuItem>
           </Link>
 
           <Link to="/soon">
-            <MenuItem>Governance </MenuItem>
+            <MenuItem>Governance</MenuItem>
           </Link>
         </Drawer>
       </HeaderContainer>
