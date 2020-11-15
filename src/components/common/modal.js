@@ -223,7 +223,7 @@ const Modal = ({
 
                 <div className="line"></div>
 
-                <h2>Your rewards: <b>{ rewards }</b> KNV</h2>
+                <h2>Your rewards: <b>{ rewards }</b> KNV2</h2>
                 <>
                   <h2>Claim reward</h2>
                   <Form name="claim-ref" onSubmit={e => claim(e)}>
