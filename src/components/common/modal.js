@@ -41,9 +41,9 @@ const Modal = ({
   const poolTokenName = `${pool}-UNIV2-LP`
 
   const modalText = !isKnvPoolSelected ?
-    `Staking ${poolTokenName} tokens in the ${pool} pool earns you KNV Tokens.`
+    `Staking ${poolTokenName} tokens in the ${pool} pool earns you KNV2 Tokens.`
     :
-    `Staking ${poolTokenName} tokens in the ${pool} pool earns you roughly x7 KNV compared to other pools.
+    `Staking ${poolTokenName} tokens in the ${pool} pool earns you roughly x7 KNV2 compared to other pools.
     You could also earn five palette points(max) per day. With enough Palette points, you can mint an exclusive NFT.
     Supply and palettes required are different across NFTs.`
 
