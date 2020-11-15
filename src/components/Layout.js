@@ -11,7 +11,7 @@ export default function Layout({ children }) {
       <GlobalStyles />
       <Typography />
       <>
-        {/* <UnlockWallet /> */}
+        <UnlockWallet />
         <Nav />
         {children}
         <Footer />
